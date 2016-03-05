@@ -4,13 +4,9 @@ import ReactDOM from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
-import rootReducer from './reducers';
-import promiseResolver from './middlewares/promiseResolver';
-
-const store = createStore(rootReducer, applyMiddleware(promiseResolver));
+import store from './createStore';
 
 ReactDOM.render(
 	<Provider store={store}>
