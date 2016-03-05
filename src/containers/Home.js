@@ -33,4 +33,8 @@ function mapStateToProps(state) {
 	};
 }
 
+Home.prefetchData = [
+	articleActions.getArticleLatest
+];
+
 export default connect(mapStateToProps, articleActions)(Home);

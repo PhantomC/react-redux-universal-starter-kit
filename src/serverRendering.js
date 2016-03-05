@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 
-import { match, RoutingContext } from 'react-router';
+import { match, RouterContext } from 'react-router';
 import routes from './routes';
 
 import { createStore, applyMiddleware } from 'redux';
@@ -11,24 +11,7 @@ import promiseResolver from './middlewares/promiseResolver';
 
 import { Provider } from 'react-redux';
 
-function renderHTML(renderedComponent) {
-  const HTML = `
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>React Redux Universal Starter Kit</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      </head>
-      <body>
-        <div id="app">${renderedComponent}</div>
-        <script src="/assets/bundle.js"></script>
-      </body>
-    </html>    
-  `;
-  return HTML;
-}
+import prefetchComponentData from './utils/prefetchComponentData';
 
 export default function(req, res) {
 
@@ -43,13 +26,36 @@ export default function(req, res) {
       res.status(404).end('Not found');
     }
     
-    const renderedComponent = ReactDOM.renderToString(
-      <Provider store={store}>
-        <RoutingContext {...renderProps} />
-      </Provider>
-    );
+    prefetchComponentData(store.dispatch, renderProps.components, renderProps.params)
+      .then(() => res.status(200).end(renderHTML()))
+      .catch(err => res.end(err.message));
+    
+    function renderHTML() {
+      
+      const renderedComponent = ReactDOM.renderToString(
+          <Provider store={store}>
+            <RouterContext {...renderProps} />
+          </Provider>
+        );
+      
+      const HTML = `
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>React Redux Universal Starter Kit</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+          </head>
+          <body>
+            <div id="app">${renderedComponent}</div>
+            <script src="/assets/bundle.js"></script>
+          </body>
+        </html>    
+      `;
 
-    res.status(200).end(renderHTML(renderedComponent));
- 
+      return HTML;
+    }
+
   });  
 };

@@ -1,3 +1,6 @@
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 export function getArticleLatest() {
 	return {
 		type: 'GET_ARTICLE_LATEST',

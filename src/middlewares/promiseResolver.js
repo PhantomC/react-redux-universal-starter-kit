@@ -6,7 +6,7 @@ export default store => next => action => {
 		return next(action);
 	}
 
-	promise.then(response => {
+	return promise.then(response => {
     	if (response.status >= 400) {
       		throw new Error("Bad response from server");
       		return false;

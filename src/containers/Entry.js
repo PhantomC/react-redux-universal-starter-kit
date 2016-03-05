@@ -36,12 +36,18 @@ class Entry extends Component {
 	}
 }
 
-
 function mapStateToProps(state) {
 	return {
 		articleActive: state.articleActive,
 		articleLatest: state.articleLatest
 	};
 }
+
+Entry.prefetchData = [
+	function(params) {
+		return articleActions.getArticleById(params.id);
+	},
+	articleActions.getArticleLatest
+];
 
 export default connect(mapStateToProps, articleActions)(Entry);
