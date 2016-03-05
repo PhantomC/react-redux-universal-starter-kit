@@ -6,10 +6,10 @@ import routes from './routes';
 
 import { Provider } from 'react-redux';
 
-import store from './createStore';
+import createStore from './createStore';
 
 ReactDOM.render(
-	<Provider store={store}>
+	<Provider store={createStore(window.__INITIAL_STATE__)}>
 		<Router routes={routes} history={browserHistory} />
 	</Provider>
 	, document.getElementById('app'));
