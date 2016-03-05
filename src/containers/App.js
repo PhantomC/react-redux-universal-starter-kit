@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import Header from './Header';
-import Nav from './Nav';
-import Footer from './Footer';
+import Header from '../components/Header';
+import Nav from '../components/Nav';
+import Footer from '../components/Footer';
 
 export default class App extends Component {
-	
+
 	constructor(props) {
 		super(props);
 	}
