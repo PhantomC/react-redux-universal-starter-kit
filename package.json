@@ -13,7 +13,12 @@
     "url": "git+https://github.com/suranartnc/react-redux-universal-starter-kit.git"
   },
   "keywords": [
-    "react", "redux", "universal", "isomorphic", "ES2015", "webpack"
+    "react",
+    "redux",
+    "universal",
+    "isomorphic",
+    "ES2015",
+    "webpack"
   ],
   "author": "Suranart Niamcome",
   "license": "MIT",
@@ -26,9 +31,12 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.6.0",
+    "es6-promise": "^3.1.2",
     "express": "^4.13.4",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.0"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
