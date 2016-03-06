@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 
+import Helmet from "react-helmet";
+
 import { match, RouterContext } from 'react-router';
 import routes from './routes';
 
@@ -37,14 +39,17 @@ export default function(req, res) {
       
       const initialState = store.getState();
 
+      let head = Helmet.rewind();
+
       const HTML = `
         <!DOCTYPE html>
         <html lang="en">
           <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>React Redux Universal Starter Kit</title>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+            ${head.title.toString()}
+            ${head.meta.toString()}
+            ${head.link.toString()}
           </head>
           <body>
             <div id="app">${renderedComponent}</div>

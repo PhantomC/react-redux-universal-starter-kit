@@ -1,8 +1,11 @@
 import React from 'react';
 
+import Helmet from 'react-helmet';
+
 export default function() {
 	return (
 		<div>
+			<Helmet title="About" />
 			<div className="col-md-8">
 				This is about page.
 			</div>

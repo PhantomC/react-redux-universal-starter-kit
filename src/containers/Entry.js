@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Helmet from 'react-helmet';
+
 import * as articleActions from '../actions/articleActions';
 import { connect } from 'react-redux';
 
@@ -22,6 +24,15 @@ class Entry extends Component {
 	render() {
 		return (
 			<div>
+				<Helmet 
+					title={ this.props.articleActive.title }
+					meta={[
+				        {
+				        	"name": "description", 
+				        	"content": "Add description here"
+				        }
+				    ]} 
+			    />
 				<div className="col-md-8">
 					<article>
 						<h1>{ this.props.articleActive.title }</h1>
