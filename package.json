@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "dev": "node .",
-    "lint": "eslint src/*",
-    "build": "webpack --config webpack.config.prod.js"
+    "build": "webpack --config webpack.config.prod.js",
+    "deploy": "NODE_ENV=production node .",
+    "lint": "eslint src/*"
   },
   "repository": {
     "type": "git",

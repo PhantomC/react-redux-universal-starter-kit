@@ -6,15 +6,14 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     
     entry: [
-        // 'eventsource-polyfill', // necessary for hot reloading with IE
         'webpack-hot-middleware/client',
         path.join(__dirname, 'src/client.js')
     ],
 
     output: {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/assets/'
+        publicPath: '/dist/'
     },
 
     plugins: [
@@ -26,8 +25,11 @@ module.exports = {
         loaders: [
             {
                 test: /\.js?$/,
-                loaders: ['babel'],
-                exclude: /node_modules/
+                loader: 'babel',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['react-hmre'],
+                }
             }
         ]
     }

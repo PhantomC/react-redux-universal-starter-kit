@@ -56,7 +56,7 @@ export default function(req, res) {
             <script type="application/javascript">
               window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
             </script>
-            <script src="/assets/bundle.js"></script>
+            <script src="/dist/bundle.js"></script>
           </body>
         </html>    
       `;
