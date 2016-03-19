@@ -10,3 +10,10 @@ npm install
 ```bash
 npm run dev
 ```
+
+## Running Production Server
+
+```bash
+npm run build
+npm run deploy
+```
