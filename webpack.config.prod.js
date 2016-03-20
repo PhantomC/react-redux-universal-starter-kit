@@ -3,8 +3,10 @@ var webpack = require('webpack');
 
 var AssetsPlugin = require('assets-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 var autoprefixer = require('autoprefixer');
-var nested = require('postcss-nested');
+var precss = require('precss');
+var cssnano = require('cssnano');
 
 module.exports = {
 
@@ -32,11 +34,6 @@ module.exports = {
     },
 
     plugins: [
-        new AssetsPlugin({
-            filename: 'assets.json',
-            path: 'build'
-        }),
-        new ExtractTextPlugin('[name].[hash].css'),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
@@ -48,11 +45,17 @@ module.exports = {
           compress: {
             warnings: false
           }
-        })
+        }),
+        new AssetsPlugin({
+            filename: 'assets.json',
+            path: 'build'
+        }),
+        new ExtractTextPlugin('[name].[hash].css')
     ],
 
-    postcss: [
-        nested(),
-        autoprefixer()
+    postcss: [ 
+        autoprefixer({ browsers: ['last 2 versions'] }),
+        precss(),
+        cssnano()
     ]
 };

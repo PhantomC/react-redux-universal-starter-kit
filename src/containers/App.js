@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
-import style from '../scss/App.css';
+import styles from '../css/App.css';
 
 export default class App extends Component {
 
@@ -16,16 +16,13 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div className="container">
+			<div className={ styles.container }>
 				<Helmet
 				    title="React Redux Universal Starter Kit"
 				/>
 				<Header />
 				<Nav />
 				<div className="row">
-					<div className={style.test}>
-						555
-					</div>
 					{ this.props.children }
 				</div>
 				<Footer />
