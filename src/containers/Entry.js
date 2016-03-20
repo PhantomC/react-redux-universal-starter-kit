@@ -10,13 +10,14 @@ import ArticleList from '../components/ArticleList';
 class Entry extends Component {
 
 	componentDidMount() {
-		this.props.getArticleById(this.props.params.id);
-		this.props.getArticleLatest();
+		if (this.props.articleActive.data.id != this.props.params.id) {
+			this.props.getArticleContentById(this.props.params.id);
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.params.id !== this.props.params.id) {
-			this.props.getArticleById(nextProps.params.id);
+			this.props.getArticleContentById(nextProps.params.id);
 		}
 	}
 
@@ -28,8 +29,8 @@ class Entry extends Component {
 		}
 		return (
 			<article>
-				<h1>{ this.props.articleActive.title }</h1>
-				<div dangerouslySetInnerHTML={{ __html: this.props.articleActive.body }} />
+				<h1>{ this.props.articleActive.data.title }</h1>
+				<div dangerouslySetInnerHTML={{ __html: this.props.articleActive.data.body }} />
 			</article>
 		);
 	}
@@ -38,7 +39,7 @@ class Entry extends Component {
 		return (
 			<div>
 				<Helmet 
-					title={ this.props.articleActive.title }
+					title={ this.props.articleActive.data.title }
 					meta={[
 				        {
 				        	"name": "description", 
@@ -50,7 +51,7 @@ class Entry extends Component {
 					{ this.renderArticle() }
 				</div>
 				<div className="col-md-4">
-					<ArticleList articles={this.props.articleLatest} />
+					<ArticleList articles={this.props.articleActive.related} />
 				</div>
 			</div>
 		);
@@ -59,16 +60,14 @@ class Entry extends Component {
 
 function mapStateToProps(state) {
 	return {
-		articleActive: state.articleActive,
-		articleLatest: state.articleLatest
+		articleActive: state.articleActive
 	};
 }
 
 Entry.prefetchData = [
 	function(params) {
-		return articleActions.getArticleById(params.id);
-	},
-	articleActions.getArticleLatest
+		return articleActions.getArticleContentById(params.id);
+	}
 ];
 
 export default connect(mapStateToProps, articleActions)(Entry);

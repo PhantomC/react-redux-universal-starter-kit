@@ -21,3 +21,20 @@ export function getArticleById(id) {
 		promise: fetch(`http://localhost:3004/articles/${id}`)
 	}
 }
+
+export function getArticleContentById(id) {
+	return {
+		...getArticleById(id),
+
+		onPromiseResolve: result => {
+			return getRelatedArticles(result.tags[0], id);
+		}
+	}
+}
+
+export function getRelatedArticles(keyword) {
+	return {
+		...getSearchResults(keyword),
+		type: 'GET_ARTICLE_RELATED'
+	}
+}
