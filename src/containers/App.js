@@ -6,6 +6,8 @@ import Header from '../components/Header';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
+import style from '../scss/App.css';
+
 export default class App extends Component {
 
 	constructor(props) {
@@ -17,16 +19,13 @@ export default class App extends Component {
 			<div className="container">
 				<Helmet
 				    title="React Redux Universal Starter Kit"
-				    link={[
-				        {
-				        	"rel": "stylesheet", 
-				        	"href": "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-				        }
-				    ]}
 				/>
 				<Header />
 				<Nav />
 				<div className="row">
+					<div className={style.test}>
+						555
+					</div>
 					{ this.props.children }
 				</div>
 				<Footer />

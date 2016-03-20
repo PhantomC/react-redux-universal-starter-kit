@@ -1,6 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var AssetsPlugin = require('assets-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var autoprefixer = require('autoprefixer');
+var nested = require('postcss-nested');
+
 module.exports = {
 
     devtool: 'source-map',
@@ -8,13 +13,17 @@ module.exports = {
     entry: path.join(__dirname, 'src/client.js'),
 
     output: {
-        path: path.join(__dirname, 'static/dist'),
-        filename: 'bundle.js'
+        filename: '[name].[hash].js',
+        path: path.join(__dirname, 'build')
     },
 
     module: {
         loaders: [
             {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('style', `css?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss`),
+                exclude: /node_modules/
+            }, {
                 test: /\.js?$/,
                 loader: 'babel',
                 exclude: /node_modules/
@@ -23,6 +32,11 @@ module.exports = {
     },
 
     plugins: [
+        new AssetsPlugin({
+            filename: 'assets.json',
+            path: 'build'
+        }),
+        new ExtractTextPlugin('[name].[hash].css'),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
@@ -35,5 +49,10 @@ module.exports = {
             warnings: false
           }
         })
+    ],
+
+    postcss: [
+        nested(),
+        autoprefixer()
     ]
 };

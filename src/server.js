@@ -5,8 +5,6 @@ import serverRendering from './serverRendering';
 
 const app = express();
 
-app.use(express.static('static'));
-
 if (process.env.NODE_ENV !== 'production') {
   	const compiler = webpack(webpackConfig);
   	app.use(require('webpack-dev-middleware')(compiler, {
@@ -14,6 +12,8 @@ if (process.env.NODE_ENV !== 'production') {
 	  	publicPath: webpackConfig.output.publicPath
 	}));
 	app.use(require('webpack-hot-middleware')(compiler));
+} else {
+    app.use(express.static('build'));
 }
 
 app.use(serverRendering);

@@ -41,6 +41,8 @@ export default function(req, res) {
 
       let head = Helmet.rewind();
 
+      const assets = require('../build/assets.json');
+
       const HTML = `
         <!DOCTYPE html>
         <html lang="en">
@@ -49,6 +51,7 @@ export default function(req, res) {
             <meta name="viewport" content="width=device-width, initial-scale=1">
             ${head.title.toString()}
             ${head.meta.toString()}
+            <link rel="stylesheet" href="${assets.main.css}" />
             ${head.link.toString()}
           </head>
           <body>
@@ -56,7 +59,7 @@ export default function(req, res) {
             <script type="application/javascript">
               window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
             </script>
-            <script src="/dist/bundle.js"></script>
+            <script src="${assets.main.js}"></script>
           </body>
         </html>    
       `;
