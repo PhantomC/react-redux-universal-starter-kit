@@ -17,8 +17,21 @@ class Entry extends Component {
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.params.id !== this.props.params.id) {
 			this.props.getArticleById(nextProps.params.id);
-			this.props.getArticleLatest();
 		}
+	}
+
+	renderArticle() {
+		if (this.props.articleActive.error) {
+			return (
+				<div>{ this.props.articleActive.error }</div>
+			);
+		}
+		return (
+			<article>
+				<h1>{ this.props.articleActive.title }</h1>
+				<div dangerouslySetInnerHTML={{ __html: this.props.articleActive.body }} />
+			</article>
+		);
 	}
 
 	render() {
@@ -34,10 +47,7 @@ class Entry extends Component {
 				    ]} 
 			    />
 				<div className="col-md-8">
-					<article>
-						<h1>{ this.props.articleActive.title }</h1>
-						<div dangerouslySetInnerHTML={{ __html: this.props.articleActive.body }} />
-					</article>
+					{ this.renderArticle() }
 				</div>
 				<div className="col-md-4">
 					<ArticleList articles={this.props.articleLatest} />
