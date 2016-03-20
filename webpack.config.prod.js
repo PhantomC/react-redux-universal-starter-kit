@@ -23,7 +23,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', `css?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]!postcss`),
+                loader: ExtractTextPlugin.extract('style', `css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss`),
                 exclude: /node_modules/
             }, {
                 test: /\.js?$/,
@@ -50,7 +50,9 @@ module.exports = {
             filename: 'assets.json',
             path: 'build'
         }),
-        new ExtractTextPlugin('[name].[hash].css')
+        new ExtractTextPlugin('[name].[hash].css', {
+            allChunks: true
+        })
     ],
 
     postcss: [ 

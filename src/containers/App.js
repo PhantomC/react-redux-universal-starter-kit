@@ -6,9 +6,10 @@ import Header from '../components/Header';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
+import CSSModules from 'react-css-modules';
 import styles from '../css/App.css';
 
-export default class App extends Component {
+class App extends Component {
 
 	constructor(props) {
 		super(props);
@@ -16,7 +17,7 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div className={ styles.container }>
+			<div styleName="container">
 				<Helmet
 				    title="React Redux Universal Starter Kit"
 				/>
@@ -30,3 +31,5 @@ export default class App extends Component {
 		);
 	}
 }
+
+export default CSSModules(App, styles);
