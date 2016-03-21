@@ -12,11 +12,12 @@ import LoginSuccess from './containers/LoginSuccess';
 import Member from './containers/Member';
 
 export default ({ dispatch, getState }) => {
-  	const checkAuth = (nextState, replace) => {
+  	const checkAuth = (nextState, replace, callback) => {
     	const { member: { auth } } = getState();
   		if (!auth) {
     		replace('/login');
   		}
+  		callback();
   	};
 
   	return (
