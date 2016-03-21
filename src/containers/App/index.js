@@ -32,4 +32,4 @@ class App extends Component {
 	}
 }
 
-export default CSSModules(App, styles);
+module.exports = CSSModules(App, styles);

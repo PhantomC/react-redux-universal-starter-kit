@@ -70,4 +70,4 @@ Entry.prefetchData = [
 	}
 ];
 
-export default connect(mapStateToProps, articleActions)(Entry);
+module.exports = connect(mapStateToProps, articleActions)(Entry);
