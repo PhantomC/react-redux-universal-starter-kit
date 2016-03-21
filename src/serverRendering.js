@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/server';
 import Helmet from "react-helmet";
 
 import { match, RouterContext } from 'react-router';
-import routes from './routes';
+import getRoutes from './routes';
 
 import prefetchComponentData from './utils/prefetchComponentData';
 
@@ -16,7 +16,7 @@ export default function(req, res) {
 
   const store = createStore();
 
-  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+  match({ routes: getRoutes(store), location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).end(error.message);
     } else if (redirectLocation) {
