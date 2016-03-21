@@ -21,12 +21,15 @@ export default function(req, res) {
       res.status(500).end(error.message);
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-    } else if (!renderProps) {
-      res.status(404).end('Not found');
+    }
+
+    const routeStatus = renderProps.routes.reduce((prev, cur) => cur.status || prev, null);
+    if (routeStatus) {
+      res.status(routeStatus);
     }
     
     prefetchComponentData(store.dispatch, renderProps.components, renderProps.params)
-      .then(() => res.status(200).end(renderHTML()))
+      .then(() => res.end(renderHTML()))
       .catch(err => res.end(err.message));
     
     function renderHTML() {

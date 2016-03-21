@@ -29,7 +29,7 @@ export default ({ dispatch, getState }) => {
 		        <Route path="member" component={Member}/>
 		        <Route path="loginSuccess" component={LoginSuccess}/>
 	      	</Route>
-			<Route path="*" component={NotFound} />
+			<Route path="*" component={NotFound} status={404} />
 		</Route>
 	);
 };
