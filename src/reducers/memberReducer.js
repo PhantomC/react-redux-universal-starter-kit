@@ -4,10 +4,11 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
-	console.log(action.type)
 	switch(action.type) {
 		case 'MEMBER_LOGIN':
-			return {...initialState, auth: true }
+			return {...initialState, auth: true, data: action.data };
+		case 'MEMBER_LOGOUT':
+			return initialState;
 		default:
 			return state;
 	}
