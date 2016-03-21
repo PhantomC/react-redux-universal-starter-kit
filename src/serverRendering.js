@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/server';
 import Helmet from "react-helmet";
 
 import { match, RouterContext } from 'react-router';
-import routes from './routes';
+import getRoutes from './routes';
 
 import prefetchComponentData from './utils/prefetchComponentData';
 
@@ -16,17 +16,20 @@ export default function(req, res) {
 
   const store = createStore();
 
-  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+  match({ routes: getRoutes(store), location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
       res.status(500).end(error.message);
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-    } else if (!renderProps) {
-      res.status(404).end('Not found');
+    }
+
+    const routeStatus = renderProps.routes.reduce((prev, cur) => cur.status || prev, null);
+    if (routeStatus) {
+      res.status(routeStatus);
     }
     
     prefetchComponentData(store.dispatch, renderProps.components, renderProps.params)
-      .then(() => res.status(200).end(renderHTML()))
+      .then(() => res.end(renderHTML()))
       .catch(err => res.end(err.message));
     
     function renderHTML() {

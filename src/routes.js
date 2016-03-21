@@ -7,11 +7,29 @@ import Entry from './containers/Entry';
 import About from './containers/About';
 import NotFound from './containers/NotFound';
 
-export default (
-	<Route path="/" component={App}>
-		<IndexRoute component={Home} />
-		<Route path="/about" component={About} />
-		<Route path="/articles/:id" component={Entry} />
-		<Route path="*" component={NotFound} />
-	</Route>
-);
+import Login from './containers/Login';
+import LoginSuccess from './containers/LoginSuccess';
+import Member from './containers/Member';
+
+export default ({ dispatch, getState }) => {
+  	const checkAuth = (nextState, replace) => {
+    	const { member: { auth } } = getState();
+  		if (!auth) {
+    		replace('/login');
+  		}
+  	};
+
+  	return (
+		<Route path="/" component={App}>
+			<IndexRoute component={Home} />
+			<Route path="about" component={About} />
+			<Route path="articles/:id" component={Entry} />
+	      	<Route path="login" component={Login}/>
+			<Route onEnter={checkAuth}>
+		        <Route path="member" component={Member}/>
+		        <Route path="loginSuccess" component={LoginSuccess}/>
+	      	</Route>
+			<Route path="*" component={NotFound} status={404} />
+		</Route>
+	);
+};
