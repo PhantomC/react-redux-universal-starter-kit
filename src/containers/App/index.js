@@ -7,6 +7,8 @@ import Nav from '../../components/Nav';
 import Footer from '../../components/Footer';
 
 import CSSModules from 'react-css-modules';
+
+import bootstrap from './bootstrap.custom.css';
 import styles from './styles.css';
 
 class App extends Component {
@@ -17,7 +19,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div styleName="container">
+			<div styleName="container" className="container">
 				<Helmet
 				    title="React Redux Universal Starter Kit"
 				/>
