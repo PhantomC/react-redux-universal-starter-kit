@@ -19,7 +19,8 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: path.join(__dirname, 'build'),
-        publicPath: '/'
+        publicPath: '/',
+        chunkFilename: "[name].js"
     },
     
     module: {

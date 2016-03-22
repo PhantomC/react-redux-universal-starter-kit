@@ -36,7 +36,7 @@ export default ({ dispatch, getState }) => {
 				    getComponent: (location, cb) => {
 				        require.ensure([], (require) => {
 				          	cb(null, require('../containers/Home'))
-				        })
+				        }, 'home')
 			      	}      		
       			},
       			childRoutes: [
@@ -45,21 +45,21 @@ export default ({ dispatch, getState }) => {
 						getComponent: (location, cb) => {
 					        require.ensure([], (require) => {
 					          	cb(null, require('../containers/About'))
-					        })
+					        }, 'about')
 				      	}      					
       				}, {
       					path: 'login',
       					getComponent: (location, cb) => {
 					        require.ensure([], (require) => {
 					          	cb(null, require('../containers/Login'))
-					        })
+					        }, 'login')
 				      	}
       				}, {
       					path: 'articles/:id',
       					getComponent: (location, cb) => {
 					        require.ensure([], (require) => {
 					          	cb(null, require('../containers/Entry'))
-					        })
+					        }, 'entry')
 				      	}
       				}, {
 						onEnter: checkAuth,
@@ -69,7 +69,7 @@ export default ({ dispatch, getState }) => {
 					      		getComponent: (location, cb) => {
 							        require.ensure([], (require) => {
 							          	cb(null, require('../containers/Member'))
-							        })
+							        }, 'member')
 						      	}
 						    }
 						]
@@ -78,7 +78,7 @@ export default ({ dispatch, getState }) => {
       					getComponent: (location, cb) => {
 					        require.ensure([], (require) => {
 					          	cb(null, require('../containers/NotFound'))
-					        })
+					        }, 'notfound')
 				      	},
       					status: 404
       				}
