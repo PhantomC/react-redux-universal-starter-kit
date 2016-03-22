@@ -48,4 +48,4 @@ Login.contextTypes = {
 	router: PropTypes.object
 }
 
-export default connect(mapStateToProps, memberActions)(Login);
+module.exports = connect(mapStateToProps, memberActions)(Login);

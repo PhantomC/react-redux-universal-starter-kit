@@ -37,4 +37,4 @@ Home.prefetchData = [
 	articleActions.getArticleLatest
 ];
 
-export default connect(mapStateToProps, articleActions)(Home);
+module.exports = connect(mapStateToProps, articleActions)(Home);

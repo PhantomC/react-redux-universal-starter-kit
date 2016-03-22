@@ -16,7 +16,8 @@ module.exports = {
 
     output: {
         filename: '[name].[hash].js',
-        path: path.join(__dirname, 'build')
+        path: path.join(__dirname, 'build'),
+        chunkFilename: "[name].[chunkhash].js"
     },
 
     module: {

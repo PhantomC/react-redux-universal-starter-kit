@@ -43,4 +43,4 @@ Member.contextTypes = {
 	router: PropTypes.object
 }
 
-export default connect(mapStateToProps, memberActions)(Member);
+module.exports = connect(mapStateToProps, memberActions)(Member);

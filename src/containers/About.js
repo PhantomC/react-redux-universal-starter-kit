@@ -2,7 +2,7 @@ import React from 'react';
 
 import Helmet from 'react-helmet';
 
-export default function() {
+const About = function() {
 	return (
 		<div>
 			<Helmet title="About" />
@@ -15,3 +15,5 @@ export default function() {
 		</div>
 	);
 }
+
+module.exports = About;
