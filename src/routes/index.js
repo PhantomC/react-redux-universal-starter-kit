@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
+if (typeof require.ensure !== "function") require.ensure = function(d, c) { c(require) };
+
 export default ({ dispatch, getState }) => {
   	const checkAuth = (nextState, replace, callback) => {
     	const { member: { auth } } = getState();
@@ -31,7 +33,11 @@ export default ({ dispatch, getState }) => {
 			    path: '/',
 			    component: require('../containers/App'),
       			indexRoute: {
-				    component: require('../containers/Home'),
+				    getComponent: (location, cb) => {
+				        require.ensure([], (require) => {
+				          	cb(null, require('../containers/Home'))
+				        })
+			      	}      		
       			},
       			childRoutes: [
       				{
