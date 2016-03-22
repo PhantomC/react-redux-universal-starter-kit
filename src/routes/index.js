@@ -48,6 +48,13 @@ export default ({ dispatch, getState }) => {
 					        }, 'about')
 				      	}      					
       				}, {
+      					path: 'gallery',
+						getComponent: (location, cb) => {
+					        require.ensure([], (require) => {
+					          	cb(null, require('../containers/Gallery'))
+					        }, 'gallery')
+				      	}      					
+      				}, {
       					path: 'login',
       					getComponent: (location, cb) => {
 					        require.ensure([], (require) => {
