@@ -10,7 +10,7 @@ const Article = function(props) {
 		<article styleName="container" className={props.addClass}>
 			<div className="image" styleName="image">
 				<Link to={`/articles/${props.article.id}`}>
-					<img src="http://lorempixel.com/g/400/200/" alt="" />
+					<img src="http://placehold.it/400x200" alt="" />
 				</Link>
 			</div>
 			<div className="caption">
