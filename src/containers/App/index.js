@@ -3,12 +3,10 @@ import React, { Component } from 'react';
 import Helmet from "react-helmet";
 
 import Header from '../../components/Header';
-import Nav from '../../components/Nav';
 import Footer from '../../components/Footer';
 
+require('./global.css');
 import CSSModules from 'react-css-modules';
-
-import bootstrap from './bootstrap.custom.css';
 import styles from './styles.css';
 
 class App extends Component {
@@ -19,14 +17,15 @@ class App extends Component {
 
 	render() {
 		return (
-			<div styleName="container" className="container">
+			<div>
 				<Helmet
 				    title="React Redux Universal Starter Kit"
 				/>
 				<Header />
-				<Nav />
-				<div className="row">
-					{ this.props.children }
+				<div styleName="body" className="container">
+					<div className="row">
+						{ this.props.children }
+					</div>
 				</div>
 				<Footer />
 			</div>

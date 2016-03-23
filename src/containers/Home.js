@@ -17,7 +17,7 @@ class Home extends Component {
 			<div>
 				<div className="col-md-8">
 					<Search getSearchResults={this.props.getSearchResults} />
-					<ArticleList articles={ this.props.articleLatest } />
+					<ArticleList articles={ this.props.articleLatest } addClass="col-sm-4" />
 				</div>
 				<div className="col-md-4">
 					Sidebar
