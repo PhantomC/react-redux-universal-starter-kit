@@ -8,7 +8,7 @@ import styles from './styles.css';
 const Article = function(props) {
 	return (
 		<article styleName="container" className={props.addClass}>
-			<div className="image" styleName="image">
+			<div className="image">
 				<Link to={`/articles/${props.article.id}`}>
 					<img src="http://placehold.it/400x200" alt="" />
 				</Link>
