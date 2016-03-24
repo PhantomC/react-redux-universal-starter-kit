@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import Helmet from "react-helmet";
 
@@ -15,6 +16,27 @@ class App extends Component {
 		super(props);
 	}
 
+	handlePageTransition() {
+		const transitionName = this.props.location.state ? this.props.location.state.transition : false;
+		if (transitionName) {
+			return (
+				<ReactCSSTransitionGroup
+		          	component="div"
+		          	transitionAppear={true}
+		          	transitionName={this.props.location.state ? this.props.location.state.transition : 'default'}
+		          	transitionAppearTimeout={500}
+		          	transitionEnterTimeout={1000}
+		          	transitionLeaveTimeout={1000}
+		        >
+		          	{React.cloneElement(this.props.children, {
+		            	key: this.props.location.pathname
+		          	})}
+		        </ReactCSSTransitionGroup>
+			);
+		}
+		return this.props.children;
+	}
+
 	render() {
 		return (
 			<div>
@@ -24,7 +46,7 @@ class App extends Component {
 				<Header />
 				<div styleName="body" className="container">
 					<div className="row">
-						{ this.props.children }
+						{ this.handlePageTransition() }
 					</div>
 				</div>
 				<Footer />

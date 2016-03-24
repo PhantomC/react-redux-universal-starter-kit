@@ -9,13 +9,13 @@ const Article = function(props) {
 	return (
 		<article styleName="container" className={props.addClass}>
 			<div className="image">
-				<Link to={`/articles/${props.article.id}`}>
+				<Link to={{pathname: `/articles/${props.article.id}`, state: {transition: 'slideUp'}}}>
 					<img src="http://placehold.it/400x200" alt="" />
 				</Link>
 			</div>
 			<div className="caption">
 				<h2 styleName="title">
-					<Link to={`/articles/${props.article.id}`}>{ props.article.title }</Link>
+					<Link to={{pathname: `/articles/${props.article.id}`, state: {transition: 'slideUp'}}}>{ props.article.title }</Link>
 				</h2>
 				<p>Description ...</p>
 			</div>
