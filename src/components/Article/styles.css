@@ -1,0 +1,14 @@
+.container {
+	padding: 15px;
+}
+
+.title {
+	font-size: 1.2em;
+	margin: 10px 0;
+}
+
+@media screen and (min-width: 768px) {
+	.container:nth-child(3n+1) {
+		clear: left;
+	}
+}

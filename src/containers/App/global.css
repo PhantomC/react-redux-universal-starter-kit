@@ -1,0 +1,17 @@
+@import './bootstrap.custom.css';
+
+:global {
+	html {
+		font-size: 62.5%;
+	}
+	body {
+		font-size: 1.5rem;
+	}
+	a {
+		color: #777;
+	}
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}

@@ -6,6 +6,7 @@ import * as articleActions from '../actions/articleActions';
 import { connect } from 'react-redux';
 
 import ArticleList from '../components/ArticleList';
+import ArticleContent from '../components/ArticleContent';
 
 class Entry extends Component {
 
@@ -28,10 +29,7 @@ class Entry extends Component {
 			);
 		}
 		return (
-			<article>
-				<h1>{ this.props.articleActive.data.title }</h1>
-				<div dangerouslySetInnerHTML={{ __html: this.props.articleActive.data.body }} />
-			</article>
+			<ArticleContent article={this.props.articleActive.data} />
 		);
 	}
 
