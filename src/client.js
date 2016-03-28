@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
 
 import { match, Router, browserHistory, useRouterHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux'
 import getRoutes from './routes';
 
 import createBrowserHistory from 'history/lib/createBrowserHistory';
@@ -14,12 +15,13 @@ import { Provider } from 'react-redux';
 import createStore from './store/createStore';
 
 const store = createStore(window.__INITIAL_STATE__);
+const history = syncHistoryWithStore(appHistory, store);
 
 const routes = getRoutes(store);
 const { pathname, search, hash } = window.location;
 const location = `${pathname}${search}${hash}`;
 
-const Root = <Router routes={routes} history={appHistory} />;
+const Root = <Router routes={routes} history={history} />;
 const dest = document.getElementById('app');
 
 match({ routes, location }, () => {
