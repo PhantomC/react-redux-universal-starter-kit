@@ -10,7 +10,7 @@ import prefetchComponentData from './utils/prefetchComponentData';
 
 import { Provider } from 'react-redux';
 
-import createStore from './createStore';
+import createStore from './store/createStore';
 
 export default function(req, res) {
 
