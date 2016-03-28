@@ -4,6 +4,7 @@ import webpackConfig from '../webpack.config.js';
 import serverRendering from './serverRendering';
 
 const app = express();
+app.use(express.static('static'));
 
 if (process.env.NODE_ENV !== 'production') {
   	const compiler = webpack(webpackConfig);
@@ -12,17 +13,15 @@ if (process.env.NODE_ENV !== 'production') {
 	  	publicPath: webpackConfig.output.publicPath
 	}));
 	app.use(require('webpack-hot-middleware')(compiler));
-} else {
-    app.use(express.static('build'));
 }
 
 app.use(serverRendering);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function (err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  console.log('Server listening on', PORT);
+    if (err) {
+        console.log(err);
+        return;
+    }
+    console.log('Server listening on', PORT);
 });

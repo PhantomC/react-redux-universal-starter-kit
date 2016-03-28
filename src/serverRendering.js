@@ -46,7 +46,7 @@ export default function(req, res) {
 
             let head = Helmet.rewind();
 
-            const assets = require('../build/assets.json');
+            const assets = require('../static/build/assets.json');
 
             const HTML = `
                 <!DOCTYPE html>

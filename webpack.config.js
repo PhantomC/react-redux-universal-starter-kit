@@ -18,8 +18,8 @@ module.exports = {
     
     output: {
         filename: '[name].js',
-        path: path.join(__dirname, 'build'),
-        publicPath: '/',
+        path: path.join(__dirname, 'static', 'build'),
+        publicPath: '/build/',
         chunkFilename: "[name].js"
     },
     
@@ -43,13 +43,15 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                'NODE_ENV': JSON.stringify('development')
+                'NODE_ENV': JSON.stringify('development'),
+                'BROWSER': true
             }       
         }),
         new webpack.HotModuleReplacementPlugin(),
         new AssetsPlugin({
             filename: 'assets.json',
-            path: 'build'
+            path: path.join(__dirname, 'static', 'build'),
+            prettyPrint: true
         }),
         new ExtractTextPlugin('[name].css', {
             allChunks: true

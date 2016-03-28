@@ -16,8 +16,9 @@ module.exports = {
 
     output: {
         filename: '[name].[hash].js',
-        path: path.join(__dirname, 'build'),
-        chunkFilename: "[name].[chunkhash].js"
+        path: path.join(__dirname, 'static', 'build'),
+        chunkFilename: "[name].[chunkhash].js",
+        publicPath: "/build/"
     },
 
     module: {
@@ -49,7 +50,8 @@ module.exports = {
         }),
         new AssetsPlugin({
             filename: 'assets.json',
-            path: 'build'
+            path: path.join(__dirname, 'static', 'build'),
+            prettyPrint: true
         }),
         new ExtractTextPlugin('[name].[hash].css', {
             allChunks: true
