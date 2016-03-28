@@ -27,10 +27,27 @@ class Gallery extends Component {
 			<div>
 				<Helmet title="Gallery" />
 				<div className="col-md-8">
-					<div ref="galleryContainer">
-					  	<a href="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQRPwiVwYaAfhkwry3hhQVaCe_OPiCs5T8myA-p9Z-oCJ6qjdeheA">Image 1</a>
-					  	<a href="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSlrS3-Cp3fLrtSofirrkfOm_wS2fT3xw1_dA01_UQhGFQIuVgp">Image 2</a>
-					  	<a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJrwYqYKJaeSokzbHnmfYMKh_QLcd6Aj-Bjj15bDYIs2Ec2GCO">Image 3</a>
+					<div ref="galleryContainer" className="row">
+					  	<div className="col-xs-6 col-md-3">
+					    	<a href="/images/gallery/1.jpg" className="thumbnail">
+					      		<img src="/images/gallery/1.jpg" alt="..." />
+					    	</a>
+					  	</div>
+					  	<div className="col-xs-6 col-md-3">
+					    	<a href="/images/gallery/2.jpg" className="thumbnail">
+					      		<img src="/images/gallery/2.jpg" alt="..." />
+					    	</a>
+					  	</div>
+					  	<div className="col-xs-6 col-md-3">
+					    	<a href="/images/gallery/3.jpg" className="thumbnail">
+					      		<img src="/images/gallery/3.jpg" alt="..." />
+					    	</a>
+					  	</div>
+					  	<div className="col-xs-6 col-md-3">
+					    	<a href="/images/gallery/4.jpg" className="thumbnail">
+					      		<img src="/images/gallery/4.jpg" alt="..." />
+					    	</a>
+					  	</div>
 					</div>
 				</div>
 				<div className="col-md-4">
