@@ -1,4 +1,9 @@
 .container {
+	position: fixed;
+	top: 0;
+	z-index: 10;
+	width: 100%;
+	height: 41px;
 	background: #eee;
 	border-bottom: 1px solid #ddd;
 }

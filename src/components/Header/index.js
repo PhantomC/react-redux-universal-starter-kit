@@ -7,11 +7,13 @@ import styles from './styles.css';
 
 const Header = function() {
 	return (
-		<header styleName="container">
-			<div className="container">
-				<Nav />
-			</div>
-		</header>
+		<div styleName="container">
+			<header>
+				<div className="container">
+					<Nav />
+				</div>
+			</header>
+		</div>
 	);
 }
 

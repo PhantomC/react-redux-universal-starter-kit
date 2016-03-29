@@ -5,7 +5,7 @@ import Helmet from "react-helmet";
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-require('./global.css');
+import './global.css';
 import CSSModules from 'react-css-modules';
 import styles from './styles.css';
 
