@@ -22,21 +22,30 @@ class Contact extends Component {
 			<div>
 				<Helmet title="Contact" />
 				<div className="col-md-8">
-					This is contact page.
-					<form onSubmit={ this.handleSubmit }>
-				        <div>
-				          	<label>First Name</label>
-				          	<input type="text" placeholder="First Name" {...firstName}/>
+					<form className="form-horizontal" onSubmit={ this.handleSubmit }>
+				        <div className="form-group">
+				          	<label className="col-md-2 control-label">First Name</label>
+				          	<div className="col-md-4">
+				          		<input type="text" className="form-control" placeholder="First Name" {...firstName}/>
+			          		</div>
 				        </div>
-				        <div>
-				          	<label>Last Name</label>
-				          	<input type="text" placeholder="Last Name" {...lastName}/>
+				        <div className="form-group">
+				          	<label className="col-md-2 control-label">Last Name</label>
+				          	<div className="col-md-4">
+				          		<input type="text" className="form-control" placeholder="Last Name" {...lastName}/>
+			          		</div>
 				        </div>
-				        <div>
-				          	<label>Email</label>
-				          	<input type="email" placeholder="Email" {...email}/>
+				        <div className="form-group">
+				          	<label className="col-md-2 control-label">Email</label>
+				          	<div className="col-md-4">
+				          		<input type="email" className="form-control" placeholder="Email" {...email}/>
+			          		</div>
 				        </div>
-				        <button type="submit">Submit</button>
+				        <div className="form-group">
+					        <div className="col-sm-12 col-md-offset-2">
+					        	<button type="submit" className="btn btn-default">Submit</button>
+				        	</div>
+			        	</div>
 			      	</form>
 				</div>
 				<div className="col-md-4">
