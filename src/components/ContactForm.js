@@ -3,25 +3,25 @@ import { reduxForm } from 'redux-form';
 
 class ContactForm extends Component {
 	render() {
-		const { fields: { firstName, lastName, email }, handleSubmit } = this.props;
+		const { fields: { name, email, message }, handleSubmit } = this.props;
 		return (
 			<form className="form-horizontal" onSubmit={ handleSubmit }>
 		        <div className="form-group">
-		          	<label className="col-md-2 control-label">First Name</label>
+		          	<label className="col-md-2 control-label">Name</label>
 		          	<div className="col-md-4">
-		          		<input type="text" className="form-control" placeholder="First Name" {...firstName}/>
-	          		</div>
-		        </div>
-		        <div className="form-group">
-		          	<label className="col-md-2 control-label">Last Name</label>
-		          	<div className="col-md-4">
-		          		<input type="text" className="form-control" placeholder="Last Name" {...lastName}/>
+		          		<input type="text" className="form-control" placeholder="Name" {...name} />
 	          		</div>
 		        </div>
 		        <div className="form-group">
 		          	<label className="col-md-2 control-label">Email</label>
 		          	<div className="col-md-4">
-		          		<input type="email" className="form-control" placeholder="Email" {...email}/>
+		          		<input type="email" className="form-control" placeholder="Email" {...email} />
+	          		</div>
+		        </div>
+		        <div className="form-group">
+		          	<label className="col-md-2 control-label">Message</label>
+		          	<div className="col-md-4">
+		          		<textarea className="form-control" rows="3" placeholder="Message" {...message} />
 	          		</div>
 		        </div>
 		        <div className="form-group">
@@ -36,5 +36,5 @@ class ContactForm extends Component {
 
 export default reduxForm({
 	form: 'contactForm',
-  	fields: ['firstName', 'lastName', 'email'] 
+  	fields: ['name', 'email', 'message'] 
 })(ContactForm);

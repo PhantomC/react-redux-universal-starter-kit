@@ -3,16 +3,25 @@ import Helmet from 'react-helmet';
 
 import { connect } from 'react-redux';
 
+import * as contactActions from '../actions/contactActions';
+
 import ContactForm from '../components/ContactForm';
 
 class Contact extends Component {
 	
 	constructor(props) {
 		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.state = {
+			sent: false
+		}
 	}
 
 	handleSubmit(data) {
-		console.log(data);
+		this.props.saveContactFormData(data);
+		this.setState({
+			sent: true
+		});
 	}
 
 	render() {
@@ -21,6 +30,11 @@ class Contact extends Component {
 				<Helmet title="Contact" />
 				<div className="col-md-8">
 					<ContactForm onSubmit={ this.handleSubmit } />
+					{ this.state.sent ? (
+						<div className="alert alert-success">
+							<strong>Success!</strong> Your message was sent successfully.
+						</div>
+					) : null }
 				</div>
 				<div className="col-md-4">
 					Sidebar		
@@ -36,4 +50,4 @@ function mapStateToProps(state) {
 	}
 }
 
-module.exports = connect(mapStateToProps)(Contact);
+module.exports = connect(mapStateToProps, contactActions)(Contact);
