@@ -9,8 +9,7 @@ import { connect } from 'react-redux';
 import ArticleList from '../../components/ArticleList';
 import ArticleContent from '../../components/ArticleContent';
 
-import CSSModules from 'react-css-modules';
-import styles from './styles.css';
+import './styles.css';
 
 class Entry extends Component {
 
