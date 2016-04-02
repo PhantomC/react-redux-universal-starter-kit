@@ -15,14 +15,14 @@
       "command": "node .",
       "env": {
         "NODE_ENV": "production",
-        "HOSTNAME": "react-redux.herokuapp.com"
+        "HOSTNAME": "react-universal-starter-kit.herokuapp.com"
       }
     },
     "build": {
       "command": "webpack --config ./webpack.config.prod.js",
       "env": {
         "NODE_ENV": "production",
-        "HOSTNAME": "react-redux.herokuapp.com"
+        "HOSTNAME": "react-universal-starter-kit.herokuapp.com"
       }
     },
     "dev": {
