@@ -6,8 +6,7 @@ import webpack from 'webpack';
 import webpackConfig from '../webpack.config.js';
 import serverRendering from './serverRendering';
 
-// const app = express();
-const app = jsonServer.create();
+const app = express();
 const router = jsonServer.router(db());
 
 app.use(express.static('static'));
