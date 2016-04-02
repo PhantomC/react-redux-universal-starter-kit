@@ -1,3 +1,5 @@
-node_modules
-static/build
-*.log
+/node_modules
+/static/build
+/*.env
+/*.log
+.DS_Store
