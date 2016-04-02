@@ -5,14 +5,21 @@
   "main": "app.js",
   "scripts": {
     "dev": "better-npm-run dev",
-    "postinstall": "webpack --config ./webpack.config.prod.js",
-    "build": "webpack --config ./webpack.config.prod.js",
+    "postinstall": "npm run build",
+    "build": "better-npm-run build",
     "start": "better-npm-run start",
     "lint": "eslint src/*"
   },
   "betterScripts": {
     "start": {
       "command": "node .",
+      "env": {
+        "NODE_ENV": "production",
+        "HOSTNAME": "react-redux.herokuapp.com"
+      }
+    },
+    "build": {
+      "command": "webpack --config ./webpack.config.prod.js",
       "env": {
         "NODE_ENV": "production",
         "HOSTNAME": "react-redux.herokuapp.com"
