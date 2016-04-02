@@ -1,7 +1,7 @@
 import jsonServer from 'json-server';
 import db from './db';
 
-const port = 3004;
+const port = process.env.APIPORT || '3004';
 
 const server = jsonServer.create();
 const router = jsonServer.router(db());
