@@ -15,21 +15,21 @@
       "command": "node .",
       "env": {
         "NODE_ENV": "production",
-        "HOSTNAME": "react-universal-starter-kit.herokuapp.com"
+        "HOSTNAME": "https://react-universal-starter-kit.herokuapp.com"
       }
     },
     "build": {
       "command": "webpack --config ./webpack.config.prod.js",
       "env": {
         "NODE_ENV": "production",
-        "HOSTNAME": "react-universal-starter-kit.herokuapp.com"
+        "HOSTNAME": "https://react-universal-starter-kit.herokuapp.com"
       }
     },
     "dev": {
       "command": "node .",
       "env": {
         "NODE_ENV": "development",
-        "HOSTNAME": "localhost",
+        "HOSTNAME": "http://localhost",
         "PORT": 3000
       }
     }
