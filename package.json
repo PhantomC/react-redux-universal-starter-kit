@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node .",
     "build": "webpack --config webpack.config.prod.js",
-    "deploy": "NODE_ENV=production node .",
+    "start": "NODE_ENV=production node .",
     "lint": "eslint src/*"
   },
   "repository": {
