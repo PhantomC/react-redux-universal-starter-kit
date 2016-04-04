@@ -7,7 +7,7 @@ const ArticleContent = function(props) {
 	return (
 		<article styleName="container">
 			<h1 styleName="title">{ props.article.title }</h1>
-			<div styleName="body" dangerouslySetInnerHTML={{ __html: props.article.body }} />
+			<div dangerouslySetInnerHTML={{ __html: props.article.body }} />
 		</article>
 	);
 }

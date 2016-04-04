@@ -1,10 +1,21 @@
 import express from 'express';
+import jsonServer from 'json-server';
+import db from '../api/db';
+
 import webpack from 'webpack';
 import webpackConfig from '../webpack.config.js';
 import serverRendering from './serverRendering';
 
 const app = express();
+const router = jsonServer.router(db());
+
 app.use(express.static('static'));
+
+app.use('/api', jsonServer.defaults());
+app.use('/api/articles', function(req, res, next) {
+  setTimeout(next, 50)
+})
+app.use('/api', router);
 
 if (process.env.NODE_ENV !== 'production') {
   	const compiler = webpack(webpackConfig);
@@ -17,7 +28,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(serverRendering);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, function (err) {
     if (err) {
         console.log(err);

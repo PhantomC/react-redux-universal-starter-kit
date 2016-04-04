@@ -38,7 +38,9 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                'NODE_ENV': JSON.stringify('production')
+                'NODE_ENV': JSON.stringify('production'),
+                'HOSTNAME': JSON.stringify(process.env.HOSTNAME),
+                'BROWSER': true
             }
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
