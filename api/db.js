@@ -3,7 +3,7 @@ import faker from 'faker';
 const generateArticles = () => {
 	let articles = [];
 
-	for (let i = 0; i < 20; ++i) {
+	for (let i = 0; i < 500; ++i) {
 		const title = faker.lorem.sentence();
 
 		articles.push({

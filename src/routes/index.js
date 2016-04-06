@@ -12,20 +12,6 @@ export default ({ dispatch, getState }) => {
   		callback();
   	};
 
-    //  return (
-	// 	<Route path="/" component={App}>
-	// 		<IndexRoute component={Home} />
-	// 		<Route path="about" component={About} />
-	// 		<Route path="articles/:id" component={Entry} />
-	//      <Route path="login" component={Login}/>
-	// 		<Route onEnter={checkAuth}>
-	// 	        <Route path="member" component={Member}/>
-	// 	        <Route path="loginSuccess" component={LoginSuccess}/>
-	//      </Route>
-	// 		<Route path="*" component={NotFound} status={404} />
-	// 	</Route>
-	// );
-
 	return {
   		component: 'div',
 	  	childRoutes: [
@@ -60,6 +46,13 @@ export default ({ dispatch, getState }) => {
 					        require.ensure([], (require) => {
 					          	cb(null, require('../containers/Gallery'))
 					        }, 'gallery')
+				      	}
+			      	}, {
+      					path: 'performance',
+						getComponent: (location, cb) => {
+					        require.ensure([], (require) => {
+					          	cb(null, require('../containers/Performance'))
+					        }, 'performance')
 				      	}      					
       				}, {
       					path: 'login',
