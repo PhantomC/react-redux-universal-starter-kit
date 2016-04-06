@@ -17,12 +17,11 @@ class Article extends Component {
 	render() {
 		const { article } = this.props;
 		return (
-			<article className="col-xs-6 col-sm-4">
+			<article className="col-xs-6 col-sm-4 col-md-3 col-lg-2">
 				<div>
 					<img src="http://placehold.it/400x200" alt="" />
 				</div>
-				<span>{ article.id }</span>
-				<button onClick={ this.onDeleteArticle.bind(this, article.id) }>Delete</button>
+				<button onClick={ this.onDeleteArticle.bind(this, article.id) }>Delete #{ article.id }</button>
 			</article>
 		);
 	}
