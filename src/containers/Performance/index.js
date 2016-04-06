@@ -38,6 +38,7 @@ class Performance extends Component {
 		});
 		Perf.stop();
 		Perf.printDOM();
+		Perf.printWasted();
 	}
 
 	handleDeleteArticle(id) {
