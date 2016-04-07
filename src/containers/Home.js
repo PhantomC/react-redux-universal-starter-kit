@@ -34,7 +34,9 @@ function mapStateToProps(state) {
 }
 
 Home.prefetchData = [
-	articleActions.getArticleLatest
+	function(params) {
+		return articleActions.getArticleLatest();
+	}
 ];
 
 module.exports = connect(mapStateToProps, articleActions)(Home);
