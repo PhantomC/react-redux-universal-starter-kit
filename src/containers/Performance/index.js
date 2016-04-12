@@ -37,7 +37,7 @@ class Performance extends Component {
 			idle: true
 		});
 		Perf.stop();
-		Perf.printDOM();
+		Perf.printOperations();
 		Perf.printWasted();
 	}
 
