@@ -73,4 +73,4 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps, {...articleActions, ...performanceActions})(Performance);
+module.exports = connect(mapStateToProps, {...articleActions, ...performanceActions})(Performance);
