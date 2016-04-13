@@ -5,11 +5,13 @@ import { expect } from 'chai';
 import ArticleList from '../../src/components/ArticleList';
 import Article from '../../src/components/Article';
 
-describe('Article List', () => {
+describe('<ArticleList />', () => {
 	
   let articles = [];
+  let wrapper = {};
 
   beforeEach(() => {
+    
     articles = [
       {
         id: '1',
@@ -19,16 +21,15 @@ describe('Article List', () => {
         title: 'Title 2'    
       }
     ];
+    
+    wrapper = shallow(<ArticleList articles={articles} />)
   });
 
   it('should render the correct count of data', () => {
-    const list = shallow(<ArticleList articles={articles} />)
-    expect(list.find(Article)).to.have.length.of(2);	
+    expect(wrapper.find(Article)).to.have.length(2);	
 	});
 
   it('should render the correct data', () => {
-    const list = shallow(<ArticleList articles={articles} />)
-    const article = list.find(Article).at(1);
-    expect(article.prop('article').id).to.eql(articles[1].id); 
+    expect(wrapper.find(Article).at(1).props().article.id).to.eql(articles[1].id); 
   });
 });
