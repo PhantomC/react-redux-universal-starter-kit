@@ -8,7 +8,7 @@ import Article from '../../src/containers/Performance/Article';
 
 chai.use(spies);
 
-function getProps() {
+function setup(Component) {
 
   const articles = [
     {
@@ -20,28 +20,36 @@ function getProps() {
     }
   ];
 
-  return {
-    articles,
+  const actions = {
     getArticleLatest: chai.spy(),
     deleteArticle: chai.spy()
+  }
+  
+  const props = {
+    articles,
+    ...actions
+  }
+
+  const wrapper = mount(<Component {...props} />);
+
+  return {
+    wrapper,
+    articles,
+    actions 
   };
 }
 
 describe('<Performance />', () => {
 
 	it('should render correct amount of <Article />', () => {
-    const props = getProps();
-    const wrapper = mount(<Performance {...props} />);
-		expect(wrapper.find(Article)).to.have.length(2);
+    const { wrapper, articles } = setup(Performance);
+		expect(wrapper.find(Article)).to.have.length(articles.length);
 	});
 
-
   it('should call delete action if delete button has been clicked', () => {
-    const props = getProps();
-    const wrapper = mount(<Performance {...props} />);
+    const { wrapper, actions } = setup(Performance);
     wrapper.find('button').at(1).simulate('click');
-    expect(props.deleteArticle).to.have.been.called();
+    expect(actions.deleteArticle).to.have.been.called();
   });
-
 
 });
