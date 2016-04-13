@@ -6,8 +6,11 @@ import ArticleList from '../../src/components/ArticleList';
 import Article from '../../src/components/Article';
 
 describe('Article List', () => {
-	it('should render the correct count of articles', () => {
-    const articles = [
+	
+  let articles = [];
+
+  beforeEach(() => {
+    articles = [
       {
         id: '1',
         title: 'Title 1'    
@@ -16,8 +19,16 @@ describe('Article List', () => {
         title: 'Title 2'    
       }
     ];
+  });
+
+  it('should render the correct count of data', () => {
     const list = shallow(<ArticleList articles={articles} />)
-    const items = list.find(Article);
-    expect(items).to.have.length.of(2);	
+    expect(list.find(Article)).to.have.length.of(2);	
 	});
+
+  it('should render the correct data', () => {
+    const list = shallow(<ArticleList articles={articles} />)
+    const article = list.find(Article).at(1);
+    expect(article.prop('article').id).to.eql(articles[1].id); 
+  });
 });
