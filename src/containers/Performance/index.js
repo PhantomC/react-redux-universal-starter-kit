@@ -7,7 +7,7 @@ import * as articleActions from '../../actions/articleActions';
 import * as performanceActions from '../../actions/performanceActions';
 import Article from './Article';
 
-class Performance extends Component {
+export class Performance extends Component {
 	
 	constructor(props) {
 		super(props);
@@ -73,4 +73,4 @@ function mapStateToProps(state) {
 	}
 }
 
-module.exports = connect(mapStateToProps, {...articleActions, ...performanceActions})(Performance);
+export default connect(mapStateToProps, {...articleActions, ...performanceActions})(Performance);
