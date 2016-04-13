@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import sinon from 'sinon';
 import { expect } from 'chai';
 
-import { Performance } from '../../src/containers/Performance';
+import Performance from '../../src/containers/Performance/Performance';
 import Article from '../../src/containers/Performance/Article';
 
 function getProps() {
