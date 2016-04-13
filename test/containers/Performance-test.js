@@ -1,10 +1,12 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import sinon from 'sinon';
-import { expect } from 'chai';
+import chai, { expect } from 'chai';
+import spies from 'chai-spies';
 
 import Performance from '../../src/containers/Performance/Performance';
 import Article from '../../src/containers/Performance/Article';
+
+chai.use(spies);
 
 function getProps() {
 
@@ -20,7 +22,8 @@ function getProps() {
 
   return {
     articles,
-    getArticleLatest: sinon.spy()
+    getArticleLatest: chai.spy(),
+    deleteArticle: chai.spy()
   };
 }
 
@@ -31,5 +34,14 @@ describe('<Performance />', () => {
     const wrapper = mount(<Performance {...props} />);
 		expect(wrapper.find(Article)).to.have.length(2);
 	});
+
+
+  it('should call delete action if delete button has been clicked', () => {
+    const props = getProps();
+    const wrapper = mount(<Performance {...props} />);
+    wrapper.find('button').at(1).simulate('click');
+    expect(props.deleteArticle).to.have.been.called();
+  });
+
 
 });
