@@ -49,7 +49,7 @@ class Performance extends Component {
 		
 		return (
 			<div>
-				<Helmet title="Gallery" />
+				<Helmet title="Performance Tool" />
 				<div className="col-xs-12">
 					<div className="row">
 						<div className="col-xs-12">

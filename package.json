@@ -9,7 +9,7 @@
     "build": "better-npm-run build",
     "start": "better-npm-run start",
     "lint": "eslint src/*",
-    "test": "mocha --compilers js:babel-register --recursive test",
+    "test": "mocha --compilers js:babel-register --require test/utils/css-null-compiler --recursive test",
     "test:watch": "npm run test -- --watch"
   },
   "betterScripts": {
