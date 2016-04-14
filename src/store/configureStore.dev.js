@@ -1,12 +1,15 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from '../reducers';
-import promiseResolver from '../middlewares/promiseResolver';
+import rootSaga from '../sagas';
 
 import DevTools from '../containers/DevTools';
 
 const enhancer = compose(
-  applyMiddleware(promiseResolver),
+  applyMiddleware(
+    createSagaMiddleware(rootSaga)
+  ),
   DevTools.instrument()
 );
 
