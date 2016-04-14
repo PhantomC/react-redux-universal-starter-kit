@@ -37,7 +37,7 @@ class ContactForm extends Component {
 ContactForm.propTypes = {
   fields: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired
-}
+};
 
 export default reduxForm({
   form: 'contactForm',
