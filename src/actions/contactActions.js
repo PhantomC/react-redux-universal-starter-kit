@@ -6,13 +6,16 @@ const apiURL = `${process.env.HOSTNAME}${process.env.NODE_ENV === 'production' ?
 export function saveContactFormData(data) {
   return {
     type: 'SAVE_CONTACT_FORM_DATA',
-    promise: fetch(`${apiURL}/contact`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
+    request: {
+      url: `${apiURL}/contact`,
+      options: {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+    }
   };
 }

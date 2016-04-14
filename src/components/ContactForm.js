@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 
 class ContactForm extends Component {
@@ -32,6 +32,11 @@ class ContactForm extends Component {
       </form>
     );
   }
+}
+
+ContactForm.propTypes = {
+  fields: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 }
 
 export default reduxForm({
