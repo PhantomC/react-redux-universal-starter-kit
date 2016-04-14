@@ -13,7 +13,6 @@ module.exports = {
     devtool: 'source-map',
     
     entry: [
-        'babel-polyfill',
         path.join(__dirname, 'src/client.js')
     ],
 
