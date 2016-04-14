@@ -25,23 +25,23 @@ const Root = <Router routes={routes} history={history} />;
 const dest = document.getElementById('app');
 
 match({ routes, location }, () => {
-	ReactDOM.render(
-		<Provider store={store} key="provider">
-			{ Root }
-		</Provider>
-		, dest);
+  ReactDOM.render(
+    <Provider store={store} key="provider">
+      { Root }
+    </Provider>
+    , dest);
 });
 
 if (process.env.NODE_ENV !== 'production') {
-  	const DevTools = require('./containers/DevTools');
-	match({ routes, location }, () => {
-		ReactDOM.render(
-			<Provider store={store} key="provider">
-				<div>
-					{ Root }
-					<DevTools />
-				</div>
-			</Provider>
-			, dest);
-	});
+  const DevTools = require('./containers/DevTools');
+  match({ routes, location }, () => {
+    ReactDOM.render(
+      <Provider store={store} key="provider">
+        <div>
+          { Root }
+          <DevTools />
+        </div>
+      </Provider>
+      , dest);
+  });
 }

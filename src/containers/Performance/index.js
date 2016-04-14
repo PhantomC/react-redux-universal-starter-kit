@@ -4,9 +4,9 @@ import * as performanceActions from '../../actions/performanceActions';
 import Performance from './Performance';
 
 function mapStateToProps(state) {
-	return {
-		articles: state.articleLatest
-	}
+  return {
+    articles: state.articleLatest
+  }
 }
 
 module.exports = connect(mapStateToProps, {...articleActions, ...performanceActions})(Performance);
