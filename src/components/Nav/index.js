@@ -5,18 +5,18 @@ import CSSModules from 'react-css-modules';
 import styles from './styles.css';
 
 const Nav = function() {
-	return (
-		<div>
-			<ul className="nav nav-pills">
-				<li><Link to="/">React Redux Universal Starter Kit</Link></li>
-				<li><Link to="/gallery">Gallery</Link></li>
-				<li><Link to="/member">Member</Link></li>
-				<li><Link to="/about">About</Link></li>
-				<li><Link to="/contact">Contact</Link></li>
-				<li><Link to="/performance">Performance Tools</Link></li>
-			</ul>
-		</div>
-	);
-}
+  return (
+    <div>
+      <ul className="nav nav-pills">
+        <li><Link to="/">React Redux Universal Starter Kit</Link></li>
+        <li><Link to="/gallery">Gallery</Link></li>
+        <li><Link to="/member">Member</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/performance">Performance Tools</Link></li>
+      </ul>
+    </div>
+  );
+};
 
 export default CSSModules(Nav, styles);

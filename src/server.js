@@ -13,26 +13,26 @@ app.use(express.static('static'));
 
 app.use('/api', jsonServer.defaults());
 app.use('/api/articles', function(req, res, next) {
-  setTimeout(next, 50)
-})
+  setTimeout(next, 50);
+});
 app.use('/api', router);
 
 if (process.env.NODE_ENV !== 'production') {
-  	const compiler = webpack(webpackConfig);
-  	app.use(require('webpack-dev-middleware')(compiler, {
-	  	noInfo: true, 
-	  	publicPath: webpackConfig.output.publicPath
-	}));
-	app.use(require('webpack-hot-middleware')(compiler));
+  const compiler = webpack(webpackConfig);
+  app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true, 
+    publicPath: webpackConfig.output.publicPath
+  }));
+  app.use(require('webpack-hot-middleware')(compiler));
 }
 
 app.use(serverRendering);
 
 const PORT = process.env.PORT;
 app.listen(PORT, function (err) {
-    if (err) {
-        console.log(err);
-        return;
-    }
-    console.log('Server listening on', PORT);
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log('Server listening on', PORT);
 });

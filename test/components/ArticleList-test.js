@@ -6,7 +6,7 @@ import ArticleList from '../../src/components/ArticleList';
 import Article from '../../src/components/Article';
 
 describe('<ArticleList />', () => {
-	
+  
   let articles = [];
   let wrapper = {};
 
@@ -22,12 +22,12 @@ describe('<ArticleList />', () => {
       }
     ];
     
-    wrapper = shallow(<ArticleList articles={articles} />)
+    wrapper = shallow(<ArticleList articles={articles} />);
   });
 
   it('should render the correct count of data', () => {
-    expect(wrapper.find(Article)).to.have.length(2);	
-	});
+    expect(wrapper.find(Article)).to.have.length(2);  
+  });
 
   it('should render the correct data', () => {
     expect(wrapper.find(Article).at(1).props().article.id).to.eql(articles[1].id); 

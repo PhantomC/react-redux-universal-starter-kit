@@ -4,9 +4,9 @@ import rootReducer from '../reducers';
 import promiseResolver from '../middlewares/promiseResolver';
 
 const enhancer = compose(
-  	applyMiddleware(promiseResolver)
+  applyMiddleware(promiseResolver)
 );
 
 export default function(initialState) {
-	return createStore(rootReducer, initialState, enhancer);
+  return createStore(rootReducer, initialState, enhancer);
 }

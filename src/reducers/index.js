@@ -7,12 +7,11 @@ import articleLatestReducer from './articleLatestReducer';
 import articleActiveReducer from './articleActiveReducer';
 
 const rootReducer = combineReducers({
-  	routing: routerReducer,
-  	form: formReducer,
-	member: memberReducer,
-	articleLatest: articleLatestReducer,
-	articleActive: articleActiveReducer,
+  routing: routerReducer,
+  form: formReducer,
+  member: memberReducer,
+  articleLatest: articleLatestReducer,
+  articleActive: articleActiveReducer,
 });
-
 
 export default rootReducer;

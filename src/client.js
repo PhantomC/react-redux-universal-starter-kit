@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
 
 import { match, Router, browserHistory, useRouterHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux'
+import { syncHistoryWithStore } from 'react-router-redux';
 import getRoutes from './routes';
 
 import createBrowserHistory from 'history/lib/createBrowserHistory';
@@ -25,23 +25,23 @@ const Root = <Router routes={routes} history={history} />;
 const dest = document.getElementById('app');
 
 match({ routes, location }, () => {
-	ReactDOM.render(
-		<Provider store={store} key="provider">
-			{ Root }
-		</Provider>
-		, dest);
+  ReactDOM.render(
+    <Provider store={store} key="provider">
+      { Root }
+    </Provider>
+    , dest);
 });
 
 if (process.env.NODE_ENV !== 'production') {
-  	const DevTools = require('./containers/DevTools');
-	match({ routes, location }, () => {
-		ReactDOM.render(
-			<Provider store={store} key="provider">
-				<div>
-					{ Root }
-					<DevTools />
-				</div>
-			</Provider>
-			, dest);
-	});
+  const DevTools = require('./containers/DevTools');
+  match({ routes, location }, () => {
+    ReactDOM.render(
+      <Provider store={store} key="provider">
+        <div>
+          { Root }
+          <DevTools />
+        </div>
+      </Provider>
+      , dest);
+  });
 }
