@@ -13,8 +13,8 @@ app.use(express.static('static'));
 
 app.use('/api', jsonServer.defaults());
 app.use('/api/articles', function(req, res, next) {
-  setTimeout(next, 50)
-})
+  setTimeout(next, 50);
+});
 app.use('/api', router);
 
 if (process.env.NODE_ENV !== 'production') {

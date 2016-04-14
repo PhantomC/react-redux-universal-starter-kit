@@ -36,11 +36,11 @@ class Member extends Component {
 function mapStateToProps(state) {
   return {
     member: state.member
-  }
+  };
 }
 
 Member.contextTypes = {
   router: PropTypes.object
-}
+};
 
 module.exports = connect(mapStateToProps, memberActions)(Member);

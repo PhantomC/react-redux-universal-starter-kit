@@ -14,7 +14,7 @@ class Contact extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       sent: false
-    }
+    };
   }
 
   handleSubmit(data) {
@@ -47,7 +47,7 @@ class Contact extends Component {
 function mapStateToProps(state) {
   return {
     form: state.form
-  }
+  };
 }
 
 module.exports = connect(mapStateToProps, contactActions)(Contact);

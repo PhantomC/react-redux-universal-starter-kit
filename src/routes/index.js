@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-if (typeof require.ensure !== 'function') require.ensure = function(d, c) { c(require) };
+if (typeof require.ensure !== 'function') require.ensure = function(d, c) { c(require); };
 
 export default ({ dispatch, getState }) => {
   const checkAuth = (nextState, replace, callback) => {
@@ -21,8 +21,8 @@ export default ({ dispatch, getState }) => {
         indexRoute: {
           getComponent: (location, cb) => {
             require.ensure([], (require) => {
-              cb(null, require('../containers/Home'))
-            }, 'home')
+              cb(null, require('../containers/Home'));
+            }, 'home');
           }         
         },
         childRoutes: [
@@ -30,43 +30,43 @@ export default ({ dispatch, getState }) => {
             path: 'about',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/About'))
-              }, 'about')
+                cb(null, require('../containers/About'));
+              }, 'about');
             }               
           }, {
             path: 'contact',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/Contact'))
-              }, 'contact')
+                cb(null, require('../containers/Contact'));
+              }, 'contact');
             }               
           }, {
             path: 'gallery',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/Gallery'))
-              }, 'gallery')
+                cb(null, require('../containers/Gallery'));
+              }, 'gallery');
             }
           }, {
             path: 'performance',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/Performance'))
-              }, 'performance')
+                cb(null, require('../containers/Performance'));
+              }, 'performance');
             }               
           }, {
             path: 'login',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/Login'))
-              }, 'login')
+                cb(null, require('../containers/Login'));
+              }, 'login');
             }
           }, {
             path: 'articles/:id',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/Entry'))
-              }, 'entry')
+                cb(null, require('../containers/Entry'));
+              }, 'entry');
             }
           }, {
             onEnter: checkAuth,
@@ -75,8 +75,8 @@ export default ({ dispatch, getState }) => {
                 path: 'member',
                 getComponent: (location, cb) => {
                   require.ensure([], (require) => {
-                    cb(null, require('../containers/Member'))
-                  }, 'member')
+                    cb(null, require('../containers/Member'));
+                  }, 'member');
                 }
               }
             ]
@@ -84,13 +84,13 @@ export default ({ dispatch, getState }) => {
             path: '*',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/NotFound'))
-              }, 'notfound')
+                cb(null, require('../containers/NotFound'));
+              }, 'notfound');
             },
             status: 404
           }
         ]
       }
     ]
-  }
+  };
 };

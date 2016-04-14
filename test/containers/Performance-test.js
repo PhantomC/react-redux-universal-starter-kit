@@ -23,12 +23,12 @@ function setup(Component) {
   const actions = {
     getArticleLatest: chai.spy(),
     deleteArticle: chai.spy()
-  }
+  };
   
   const props = {
     articles,
     ...actions
-  }
+  };
 
   const wrapper = mount(<Component {...props} />);
 
@@ -41,10 +41,10 @@ function setup(Component) {
 
 describe('<Performance />', () => {
 
-	it('should render correct amount of <Article />', () => {
+  it('should render correct amount of <Article />', () => {
     const { wrapper, articles } = setup(Performance);
-		expect(wrapper.find(Article)).to.have.length(articles.length);
-	});
+    expect(wrapper.find(Article)).to.have.length(articles.length);
+  });
 
   it('should call delete action if delete button has been clicked', () => {
     const { wrapper, actions } = setup(Performance);

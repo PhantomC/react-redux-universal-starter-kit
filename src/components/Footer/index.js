@@ -11,6 +11,6 @@ const Footer = function() {
       </div>
     </footer>
   );
-}
+};
 
 export default CSSModules(Footer, styles);

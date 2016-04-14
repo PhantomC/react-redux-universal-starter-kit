@@ -15,6 +15,6 @@ const Header = function() {
       </header>
     </div>
   );
-}
+};
 
 export default CSSModules(Header, styles);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import CSSModules from 'react-css-modules';
-import styles from './styles.css'
+import styles from './styles.css';
 
 class Search extends Component {
   

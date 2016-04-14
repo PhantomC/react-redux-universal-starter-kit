@@ -14,6 +14,6 @@ const NotFound = function() {
       </div>
     </div>
   );
-}
+};
 
 module.exports = NotFound;

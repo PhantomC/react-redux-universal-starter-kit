@@ -21,6 +21,6 @@ const Article = function(props) {
       </div>
     </article>
   );
-}
+};
 
 export default CSSModules(Article, styles);

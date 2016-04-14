@@ -14,6 +14,6 @@ const About = function() {
       </div>
     </div>
   );
-}
+};
 
 module.exports = About;

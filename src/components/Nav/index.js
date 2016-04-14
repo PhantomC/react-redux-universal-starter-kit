@@ -17,6 +17,6 @@ const Nav = function() {
       </ul>
     </div>
   );
-}
+};
 
 export default CSSModules(Nav, styles);

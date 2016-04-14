@@ -41,11 +41,11 @@ class Login extends Component {
 function mapStateToProps(state) {
   return {
 
-  }
+  };
 }
 
 Login.contextTypes = {
   router: PropTypes.object
-}
+};
 
 module.exports = connect(mapStateToProps, memberActions)(Login);

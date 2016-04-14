@@ -14,5 +14,5 @@ export function saveContactFormData(data) {
       },
       body: JSON.stringify(data)
     })
-  }
+  };
 }

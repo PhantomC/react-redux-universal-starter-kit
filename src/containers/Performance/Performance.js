@@ -11,7 +11,7 @@ export default class Performance extends Component {
 
     this.state = {
       idle: true
-    }
+    };
 
     this.startPerf = this.startPerf.bind(this);
     this.stopPerf = this.stopPerf.bind(this);
@@ -55,7 +55,7 @@ export default class Performance extends Component {
           </div>
           <div className="row">
             { this.props.articles.map((article, index) => {
-              return <Article key={ article.id } article={article} handleDeleteArticle={ this.handleDeleteArticle } />
+              return <Article key={ article.id } article={article} handleDeleteArticle={ this.handleDeleteArticle } />;
             }) }
           </div>
         </div>

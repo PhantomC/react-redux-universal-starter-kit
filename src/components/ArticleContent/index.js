@@ -10,6 +10,6 @@ const ArticleContent = function(props) {
       <div dangerouslySetInnerHTML={{ __html: props.article.body }} />
     </article>
   );
-}
+};
 
 export default CSSModules(ArticleContent, styles);
