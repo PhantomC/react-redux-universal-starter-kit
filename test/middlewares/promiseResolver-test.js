@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import nock from 'nock';
 
 import { applyMiddleware } from 'redux';
-import promiseResolver from '../../src/middlewares/promiseResolver';
+import promiseResolver, { apiURL } from '../../src/middlewares/promiseResolver';
 import * as articleActions from '../../src/actions/articleActions';
 
 const middlewares = [promiseResolver];
@@ -48,17 +48,19 @@ describe('Promise Resolver Middleware', () => {
     nock.cleanAll();
   });
 
-  it('should dispatch correct action type ahd payload', (done) => {
+  it('should dispatch correct action type and payload', (done) => {
     
+    const testedAction = articleActions.getArticleLatest(20);
+
     const expectedPayload = [
       { 
         id: 1,
         title: 'Title 1'
       }
-    ] 
+    ];
 
-    nock('http://localhost:3000/')
-      .get('/api/articles?_limit=20')
+    nock(apiURL)
+      .get(testedAction.request.path)
       .reply(200, expectedPayload);
 
     const expectedActions = [
@@ -73,7 +75,7 @@ describe('Promise Resolver Middleware', () => {
     const mockState = {};
     const mockStore = createMockStore(mockState, expectedActions, done);
 
-    mockStore.dispatch(articleActions.getArticleLatest(20));
+    mockStore.dispatch(testedAction);
 
   });
 

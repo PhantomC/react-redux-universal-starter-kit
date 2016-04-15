@@ -1,19 +1,21 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
+export const apiURL = `${process.env.HOSTNAME || 'http://localhost'}${process.env.NODE_ENV === 'production' ? '' : ':' + (process.env.PORT || '3000')}/api`;
+
 export default store => next => action => {
 
   const { type, request, callback, ...rest } = action;
   if (!request) return next(action);
 
-  const { url, options = {} } = request;
-  if (!url) return next(action);
+  const { path, options = {} } = request;
+  if (!path) return next(action);
 
   const DONE = type;
   const REQUEST = `${type}_REQUEST`;
   next({...rest, type: REQUEST });
 
-  return fetch(url, options)
+  return fetch(`${apiURL}${path}`, options)
     .then(function(response) {
       if (response.status >= 400) {
         return false;
