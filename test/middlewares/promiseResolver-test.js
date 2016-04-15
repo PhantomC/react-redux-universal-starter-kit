@@ -1,46 +1,13 @@
 import { expect } from 'chai';
+
+import configureMockStore from 'redux-mock-store';
 import nock from 'nock';
 
-import { applyMiddleware } from 'redux';
 import promiseResolver, { apiURL } from '../../src/middlewares/promiseResolver';
 import * as articleActions from '../../src/actions/articleActions';
 
 const middlewares = [promiseResolver];
-
-function createMockStore(getState, expectedActions, onLastAction) {
-  
-  if (!Array.isArray(expectedActions)) {
-    throw new Error('expectedActions should be an array of expected actions.');
-  }
-  if (typeof onLastAction !== 'undefined' && typeof onLastAction !== 'function') {
-    throw new Error('onLastAction should either be undefined or function.');
-  }
-
-  function mockStoreWithoutMiddleware() {
-    return {
-      getState() {
-        return typeof getState === 'function' ?
-          getState() :
-          getState;
-      },
-
-      dispatch(action) {
-        const expectedAction = expectedActions.shift();
-        expect(action).to.eql(expectedAction);
-        if (onLastAction && !expectedActions.length) {
-          onLastAction();
-        }
-        return action;
-      }
-    };
-  }
-
-  const mockStoreWithMiddleware = applyMiddleware(
-    ...middlewares
-  )(mockStoreWithoutMiddleware);
-
-  return mockStoreWithMiddleware();
-}
+const mockStore = configureMockStore(middlewares);
 
 describe('Promise Resolver Middleware', () => {
 
@@ -50,7 +17,8 @@ describe('Promise Resolver Middleware', () => {
 
   it('should dispatch correct action type and payload', (done) => {
     
-    const testedAction = articleActions.getArticleLatest(20);
+    const store = mockStore({});
+    const mockAction = articleActions.getArticleLatest(20);
 
     const expectedPayload = [
       { 
@@ -58,11 +26,6 @@ describe('Promise Resolver Middleware', () => {
         title: 'Title 1'
       }
     ];
-
-    nock(apiURL)
-      .get(testedAction.request.path)
-      .reply(200, expectedPayload);
-
     const expectedActions = [
       { 
         type: 'GET_ARTICLE_LATEST_REQUEST' 
@@ -72,11 +35,59 @@ describe('Promise Resolver Middleware', () => {
       }
     ];
 
-    const mockState = {};
-    const mockStore = createMockStore(mockState, expectedActions, done);
+    nock(apiURL)
+      .get(mockAction.request.path)
+      .reply(200, expectedPayload);
 
-    mockStore.dispatch(testedAction);
+    store.dispatch(mockAction)
+      .then(() => {
+        expect(store.getActions()).to.eql(expectedActions);
+      })
+      .then(done)
+      .catch(done);
+    
+  });
 
+  it('should dispatch the callback action if it present', (done) => {
+    
+    const store = mockStore({});
+    const mockAction = articleActions.getArticleContentById(1);
+
+    const expectedPayload = { 
+      id: 1,
+      title: 'Title 1',
+      body: 'Body 1',
+      tags: ['react']
+    };
+    const expectedActions = [
+      { 
+        type: 'GET_ARTICLE_BY_ID_REQUEST' 
+      }, { 
+        type: 'GET_ARTICLE_BY_ID', 
+        data: expectedPayload
+      }, { 
+        type: 'GET_ARTICLE_RELATED_REQUEST', 
+      }, { 
+        type: 'GET_ARTICLE_RELATED', 
+        data: [expectedPayload]
+      }
+    ];
+
+    nock(apiURL)
+      .get(mockAction.request.path)
+      .reply(200, expectedPayload);
+
+    nock(apiURL)
+      .get(mockAction.callback(expectedPayload).request.path)
+      .reply(200, [expectedPayload]);
+
+    store.dispatch(mockAction)
+      .then(() => {
+        expect(store.getActions()).to.eql(expectedActions);
+      })
+      .then(done)
+      .catch(done);
+    
   });
 
 });
