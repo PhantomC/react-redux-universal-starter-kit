@@ -3,8 +3,8 @@ import { mount } from 'enzyme';
 import chai, { expect } from 'chai';
 import spies from 'chai-spies';
 
-import Performance from '../../src/containers/Performance/Performance';
-import Article from '../../src/containers/Performance/Article';
+import Performance from '../../src/shared/redux/containers/Performance/Performance';
+import Article from '../../src/shared/redux/containers/Performance/Article';
 
 chai.use(spies);
 

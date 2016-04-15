@@ -1,24 +1,24 @@
 import faker from 'faker';
 
 const generateArticles = () => {
-	let articles = [];
+  let articles = [];
 
-	for (let i = 0; i < 500; ++i) {
-		const title = faker.lorem.sentence();
+  for (let i = 0; i < 500; ++i) {
+    const title = faker.lorem.sentence();
 
-		articles.push({
-			id: i + 1,
-			title: title,
-			body: faker.lorem.paragraphs(),
-			tags: title.replace('.', '').split(' ')
-		});
-	}
+    articles.push({
+      id: i + 1,
+      title: title,
+      body: faker.lorem.paragraphs(),
+      tags: title.replace('.', '').split(' ')
+    });
+  }
 
-	return articles;
+  return articles;
 };
 
 export default () => {
-	return {
-		articles: generateArticles()
-	};
+  return {
+    articles: generateArticles()
+  };
 };
