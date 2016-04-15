@@ -6,8 +6,8 @@ import Helmet from 'react-helmet';
 import * as articleActions from '../../actions/articleActions';
 import { connect } from 'react-redux';
 
-import ArticleList from '../../components/ArticleList';
-import ArticleContent from '../../components/ArticleContent';
+import ArticleList from '../../../components/ArticleList';
+import ArticleContent from '../../../components/ArticleContent';
 
 import './styles.css';
 

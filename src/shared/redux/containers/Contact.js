@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import * as contactActions from '../actions/contactActions';
 
-import ContactForm from '../components/ContactForm';
+import ContactForm from '../../components/ContactForm';
 
 class Contact extends Component {
   

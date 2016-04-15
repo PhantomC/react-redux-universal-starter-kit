@@ -12,7 +12,7 @@ const createScrollHistory = useScroll(createBrowserHistory);
 const appHistory = useRouterHistory(createScrollHistory)();
 
 import { Provider } from 'react-redux';
-import createStore from './shared/store/createStore';
+import createStore from './shared/redux/store/createStore';
 
 const store = createStore(window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(appHistory, store);
@@ -33,7 +33,7 @@ match({ routes, location }, () => {
 });
 
 if (process.env.NODE_ENV !== 'production') {
-  const DevTools = require('./shared/containers/DevTools');
+  const DevTools = require('./shared/redux/containers/DevTools');
   match({ routes, location }, () => {
     ReactDOM.render(
       <Provider store={store} key="provider">

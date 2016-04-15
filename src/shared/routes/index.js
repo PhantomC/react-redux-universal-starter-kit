@@ -17,11 +17,11 @@ export default ({ dispatch, getState }) => {
     childRoutes: [
       {
         path: '/',
-        component: require('../containers/App'),
+        component: require('../redux/containers/App'),
         indexRoute: {
           getComponent: (location, cb) => {
             require.ensure([], (require) => {
-              cb(null, require('../containers/Home'));
+              cb(null, require('../redux/containers/Home'));
             }, 'home');
           }         
         },
@@ -30,42 +30,42 @@ export default ({ dispatch, getState }) => {
             path: 'about',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/About'));
+                cb(null, require('../redux/containers/About'));
               }, 'about');
             }               
           }, {
             path: 'contact',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/Contact'));
+                cb(null, require('../redux/containers/Contact'));
               }, 'contact');
             }               
           }, {
             path: 'gallery',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/Gallery'));
+                cb(null, require('../redux/containers/Gallery'));
               }, 'gallery');
             }
           }, {
             path: 'performance',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/Performance'));
+                cb(null, require('../redux/containers/Performance'));
               }, 'performance');
             }               
           }, {
             path: 'login',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/Login'));
+                cb(null, require('../redux/containers/Login'));
               }, 'login');
             }
           }, {
             path: 'articles/:id',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/Entry'));
+                cb(null, require('../redux/containers/Entry'));
               }, 'entry');
             }
           }, {
@@ -75,7 +75,7 @@ export default ({ dispatch, getState }) => {
                 path: 'member',
                 getComponent: (location, cb) => {
                   require.ensure([], (require) => {
-                    cb(null, require('../containers/Member'));
+                    cb(null, require('../redux/containers/Member'));
                   }, 'member');
                 }
               }
@@ -84,7 +84,7 @@ export default ({ dispatch, getState }) => {
             path: '*',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../containers/NotFound'));
+                cb(null, require('../redux/containers/NotFound'));
               }, 'notfound');
             },
             status: 404

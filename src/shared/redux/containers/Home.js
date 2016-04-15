@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import * as articleActions from '../actions/articleActions';
 import { connect } from 'react-redux';
 
-import Search from '../components/Search';
-import ArticleList from '../components/ArticleList';
+import Search from '../../components/Search';
+import ArticleList from '../../components/ArticleList';
 
 class Home extends Component {
 
