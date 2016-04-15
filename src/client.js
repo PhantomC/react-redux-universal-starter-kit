@@ -5,14 +5,14 @@ import useScroll from 'scroll-behavior/lib/useStandardScroll';
 
 import { match, Router, browserHistory, useRouterHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import getRoutes from './routes';
+import getRoutes from './shared/routes';
 
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 const createScrollHistory = useScroll(createBrowserHistory);
 const appHistory = useRouterHistory(createScrollHistory)();
 
 import { Provider } from 'react-redux';
-import createStore from './store/createStore';
+import createStore from './shared/store/createStore';
 
 const store = createStore(window.__INITIAL_STATE__);
 const history = syncHistoryWithStore(appHistory, store);
@@ -33,7 +33,7 @@ match({ routes, location }, () => {
 });
 
 if (process.env.NODE_ENV !== 'production') {
-  const DevTools = require('./containers/DevTools');
+  const DevTools = require('./shared/containers/DevTools');
   match({ routes, location }, () => {
     ReactDOM.render(
       <Provider store={store} key="provider">
