@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 
+import { ARTICLE_DELETE_BY_ID } from '../../src/constants/actionTypes';
 import * as performanceActions from '../../src/actions/performanceActions';
 
 describe('Performance actions', () => {
@@ -13,7 +14,7 @@ describe('Performance actions', () => {
     });
 
     it('should have the correct type', () => {
-      expect(action.type).to.equal('DELETE_ARTICLE');
+      expect(action.type).to.equal(ARTICLE_DELETE_BY_ID);
     });
 
     it('should have the correct payload', () => {

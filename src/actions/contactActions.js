@@ -1,6 +1,8 @@
+import { CONTACT_SAVE } from '../constants/actionTypes';
+
 export function saveContactFormData(data) {
   return {
-    type: 'SAVE_CONTACT_FORM_DATA',
+    type: CONTACT_SAVE,
     request: {
       path: '/contact',
       options: {

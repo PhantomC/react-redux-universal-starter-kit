@@ -1,5 +1,11 @@
 import u from 'updeep';
 
+import { 
+  ARTICLE_GET_LATEST, 
+  ARTICLE_GET_BY_ID,
+  ARTICLE_GET_RELATED_ARTICLES
+} from '../constants/actionTypes';
+
 const initialState = {
   error: false,
   data: {},
@@ -8,7 +14,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case 'GET_ARTICLE_BY_ID':
+    case ARTICLE_GET_BY_ID:
       if (action.error) {
         return u({
           error: action.error
@@ -18,11 +24,11 @@ export default function(state = initialState, action) {
         data: action.data,
         error: false
       }, initialState);
-    case 'GET_ARTICLE_RELATED':
+    case ARTICLE_GET_RELATED_ARTICLES:
       return u({
         related: action.data
       }, state);
-    case 'GET_ARTICLE_LATEST':
+    case ARTICLE_GET_LATEST:
       return initialState;
     default:
       return state;

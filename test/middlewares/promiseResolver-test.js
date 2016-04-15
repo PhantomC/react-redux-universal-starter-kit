@@ -4,6 +4,13 @@ import configureMockStore from 'redux-mock-store';
 import nock from 'nock';
 
 import promiseResolver, { apiURL } from '../../src/middlewares/promiseResolver';
+
+import { 
+  ARTICLE_GET_LATEST, 
+  ARTICLE_GET_BY_ID, 
+  ARTICLE_GET_RELATED_ARTICLES 
+} from '../../src/constants/actionTypes';
+
 import * as articleActions from '../../src/actions/articleActions';
 
 const middlewares = [promiseResolver];
@@ -28,9 +35,9 @@ describe('Promise Resolver Middleware', () => {
     ];
     const expectedActions = [
       { 
-        type: 'GET_ARTICLE_LATEST_REQUEST' 
+        type: `${ARTICLE_GET_LATEST}_REQUEST` 
       }, { 
-        type: 'GET_ARTICLE_LATEST', 
+        type: ARTICLE_GET_LATEST, 
         data: expectedPayload
       }
     ];
@@ -61,14 +68,14 @@ describe('Promise Resolver Middleware', () => {
     };
     const expectedActions = [
       { 
-        type: 'GET_ARTICLE_BY_ID_REQUEST' 
+        type: `${ARTICLE_GET_BY_ID}_REQUEST` 
       }, { 
-        type: 'GET_ARTICLE_BY_ID', 
+        type: ARTICLE_GET_BY_ID, 
         data: expectedPayload
       }, { 
-        type: 'GET_ARTICLE_RELATED_REQUEST', 
+        type: `${ARTICLE_GET_RELATED_ARTICLES}_REQUEST`, 
       }, { 
-        type: 'GET_ARTICLE_RELATED', 
+        type: ARTICLE_GET_RELATED_ARTICLES, 
         data: [expectedPayload]
       }
     ];
