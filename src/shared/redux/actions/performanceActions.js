@@ -1,4 +1,4 @@
-import { ARTICLE_DELETE_BY_ID } from '../constants/actionTypes';
+import { ARTICLE_DELETE_BY_ID } from '../../constants/actionTypes';
 
 export function deleteArticle(id) {
   return {

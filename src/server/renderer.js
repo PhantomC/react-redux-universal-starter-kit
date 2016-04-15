@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom/server';
 import Helmet from 'react-helmet';
 
 import { match, RouterContext } from 'react-router';
-import getRoutes from './routes';
+import getRoutes from '../shared/routes';
 
-import prefetchComponentData from './utils/prefetchComponentData';
+import prefetchComponentData from '../shared/utils/prefetchComponentData';
 
 import { Provider } from 'react-redux';
 
-import createStore from './store/createStore';
+import createStore from '../shared/redux/store/createStore';
 
 export default function(req, res) {
 
@@ -46,7 +46,7 @@ export default function(req, res) {
 
       let head = Helmet.rewind();
 
-      const assets = require('../static/build/assets.json');
+      const assets = require('../../static/build/assets.json');
 
       const HTML = `
         <!DOCTYPE html>

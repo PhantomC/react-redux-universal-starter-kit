@@ -1,4 +1,4 @@
-import { MEMBER_LOGIN, MEMBER_LOGOUT } from '../constants/actionTypes';
+import { MEMBER_LOGIN, MEMBER_LOGOUT } from '../../constants/actionTypes';
 
 export function memberLogin(response) {
   return {

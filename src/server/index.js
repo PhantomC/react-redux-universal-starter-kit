@@ -1,13 +1,13 @@
 import express from 'express';
 import jsonServer from 'json-server';
-import db from '../api/db';
+import mockData from './mockData';
 
 import webpack from 'webpack';
-import webpackConfig from '../webpack.config.js';
-import serverRendering from './serverRendering';
+import webpackConfig from '../../webpack.config.js';
+import serverRendering from './renderer';
 
 const app = express();
-const router = jsonServer.router(db());
+const router = jsonServer.router(mockData());
 
 app.use(express.static('static'));
 
