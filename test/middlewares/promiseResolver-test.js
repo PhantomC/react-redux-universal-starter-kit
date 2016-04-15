@@ -19,7 +19,7 @@ describe('Promise Resolver Middleware', () => {
     
     const store = mockStore({});
     const mockAction = articleActions.getArticleLatest(20);
-    
+
     const expectedPayload = [
       { 
         id: 1,
@@ -41,7 +41,7 @@ describe('Promise Resolver Middleware', () => {
 
     store.dispatch(mockAction)
       .then(() => {
-        expect(store.getActions()).to.eql(expectedActions)
+        expect(store.getActions()).to.eql(expectedActions);
       })
       .then(done)
       .catch(done);
@@ -58,7 +58,7 @@ describe('Promise Resolver Middleware', () => {
       title: 'Title 1',
       body: 'Body 1',
       tags: ['react']
-    } 
+    };
     const expectedActions = [
       { 
         type: 'GET_ARTICLE_BY_ID_REQUEST' 
@@ -83,7 +83,7 @@ describe('Promise Resolver Middleware', () => {
 
     store.dispatch(mockAction)
       .then(() => {
-        expect(store.getActions()).to.eql(expectedActions)
+        expect(store.getActions()).to.eql(expectedActions);
       })
       .then(done)
       .catch(done);
