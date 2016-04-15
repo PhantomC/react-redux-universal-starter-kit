@@ -1,10 +1,8 @@
-const apiURL = `${process.env.HOSTNAME}${process.env.NODE_ENV === 'production' ? '' : ':' + process.env.PORT}/api`;
-
 export function getArticleLatest(limit = 20) {
   return {
     type: 'GET_ARTICLE_LATEST',
     request: {
-      url: `${apiURL}/articles?_limit=${limit}`
+      path: `/articles?_limit=${limit}`
     }
   };
 }
@@ -13,7 +11,7 @@ export function getSearchResults(keyword, limit = 20) {
   return {
     type: 'GET_SEARCH_RESULTS',
     request: {
-      url: `${apiURL}/articles?q=${keyword}&_limit=${limit}`
+      path: `/articles?q=${keyword}&_limit=${limit}`
     }
   };
 }
@@ -22,7 +20,7 @@ export function getArticleById(id) {
   return {
     type: 'GET_ARTICLE_BY_ID',
     request: {
-      url: `${apiURL}/articles/${id}`
+      path: `/articles/${id}`
     }
   };
 }
