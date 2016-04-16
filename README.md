@@ -1,7 +1,7 @@
-# A simple Universal Starter Kit using React and Redux
+# React Redux Universal Starter Kit
 
 ## About
-A starter kit for a universal web app using react, redux
+A simple Universal Starter Kit using React, Redux and ECMAScript 2015
 
 ## Key Features
  - Universal (aka Isomorphic)
