@@ -17,7 +17,7 @@ export default ({ dispatch, getState }) => {
     childRoutes: [
       {
         path: '/',
-        component: require('../redux/containers/App'),
+        component: require('../components/layouts/App'),
         indexRoute: {
           getComponent: (location, cb) => {
             require.ensure([], (require) => {
@@ -30,7 +30,7 @@ export default ({ dispatch, getState }) => {
             path: 'about',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../redux/containers/About'));
+                cb(null, require('../components/pages/About'));
               }, 'about');
             }               
           }, {
@@ -44,7 +44,7 @@ export default ({ dispatch, getState }) => {
             path: 'gallery',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../redux/containers/Gallery'));
+                cb(null, require('../components/pages/Gallery'));
               }, 'gallery');
             }
           }, {
@@ -84,7 +84,7 @@ export default ({ dispatch, getState }) => {
             path: '*',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('../redux/containers/NotFound'));
+                cb(null, require('../components/pages/NotFound'));
               }, 'notfound');
             },
             status: 404

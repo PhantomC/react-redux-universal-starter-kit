@@ -33,7 +33,7 @@ match({ routes, location }, () => {
 });
 
 if (process.env.NODE_ENV !== 'production') {
-  const DevTools = require('./shared/redux/containers/DevTools');
+  const DevTools = require('./shared/components/partials/DevTools');
   match({ routes, location }, () => {
     ReactDOM.render(
       <Provider store={store} key="provider">
