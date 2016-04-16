@@ -3,15 +3,12 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Helmet from 'react-helmet';
 
-import * as articleActions from '../../actions/articleActions';
-import { connect } from 'react-redux';
-
-import ArticleList from '../../../components/ArticleList';
-import ArticleContent from '../../../components/ArticleContent';
+import ArticleList from '../../partials/ArticleList';
+import ArticleContent from '../../partials/ArticleContent';
 
 import './styles.css';
 
-class Entry extends Component {
+export default class Entry extends Component {
 
   componentDidMount() {
     if (this.props.articleActive.data.id != this.props.params.id) {
@@ -68,17 +65,3 @@ class Entry extends Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    articleActive: state.articleActive
-  };
-}
-
-Entry.prefetchData = [
-  function(params) {
-    return articleActions.getArticleContentById(params.id);
-  }
-];
-
-module.exports = connect(mapStateToProps, articleActions)(Entry);
