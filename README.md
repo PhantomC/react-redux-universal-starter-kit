@@ -71,3 +71,19 @@ heroku create
 git push heroku master
 heroku open
 ```
+
+## Quickstart
+coming soon...
+
+## Roadmap
+ - Add more prop validations
+ - Add more tests
+ - Flow
+ - Jest
+ - GraphQL / Relay
+
+## Contributing
+Contributions, questions and comments are all welcome. 
+
+Please check your code using `npm run lint` before submitting your pull requests.
+
