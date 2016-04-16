@@ -34,3 +34,7 @@ export default class Login extends Component {
     );
   }
 }
+
+Login.contextTypes = {
+  router: PropTypes.object
+};

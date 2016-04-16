@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-import ContactForm from '../partials/ContactForm';
+import ContactForm from '../../partials/ContactForm';
 
 export default class Contact extends Component {
   

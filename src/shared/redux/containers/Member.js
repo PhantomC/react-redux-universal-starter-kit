@@ -3,10 +3,8 @@ import * as memberActions from '../actions/memberActions';
 
 import Member from '../../components/pages/Member';
 
-function mapStateToProps(state) {
-  return {
-    member: state.member
-  };
+function mapStateToProps({member}) {
+  return {member};
 }
 
 
