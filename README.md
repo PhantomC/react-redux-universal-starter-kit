@@ -11,7 +11,6 @@ A simple Universal Starter Kit using React, Redux and ECMAScript 2015. As you ca
  - Code Splitting
  - CSS Modules
  - Fake REST API
- - Testing
  
 ## Examples Included
  - Authentication
@@ -19,6 +18,7 @@ A simple Universal Starter Kit using React, Redux and ECMAScript 2015. As you ca
  - Page Transition
  - jQuery Usage (if it is needed)
  - Performance Tools Usage
+ - Testing
 
 ## Libraries used
  - React
