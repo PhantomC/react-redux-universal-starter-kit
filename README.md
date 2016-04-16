@@ -17,3 +17,13 @@ npm run dev
 npm run build
 npm run start
 ```
+
+## Deployment on Heroku
+
+```bash
+heroku login
+heroku create
+git push heroku master
+heroku open
+```
+
