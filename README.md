@@ -1,4 +1,4 @@
-# react-redux-universal-starter-kit
+# A simple Universal Starter Kit using React and Redux
 
 ## About
 A starter kit for a universal web app using react, redux
