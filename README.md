@@ -1,7 +1,7 @@
 # React Redux Universal Starter Kit
 
-## About
-A simple Universal Starter Kit using React, Redux and ECMAScript 2015
+## Overview
+A simple Universal Starter Kit using React, Redux and ECMAScript 2015. As you can see, there are so many starter kits and boilerplates about React out there. But sometimes we've just needed a tool to get thing done quickly and easy to understand! If you don't have much time to do some researches about React and its companies, this starter kit is a good start.
 
 ## Key Features
  - Universal (aka Isomorphic)
@@ -34,7 +34,7 @@ A simple Universal Starter Kit using React, Redux and ECMAScript 2015
    - Mocha
    - Chai
    - Enzyme
- - Tools
+ - More Tools
    - Babel
    - ESLint
    - JSON Server
