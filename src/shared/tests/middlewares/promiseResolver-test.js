@@ -3,15 +3,15 @@ import { expect } from 'chai';
 import configureMockStore from 'redux-mock-store';
 import nock from 'nock';
 
-import promiseResolver, { apiURL } from '../../src/shared/redux/middlewares/promiseResolver';
+import promiseResolver, { apiURL } from '../../redux/middlewares/promiseResolver';
 
 import { 
   ARTICLE_GET_LATEST, 
   ARTICLE_GET_BY_ID, 
   ARTICLE_GET_RELATED_ARTICLES 
-} from '../../src/shared/constants/actionTypes';
+} from '../../constants/actionTypes';
 
-import * as articleActions from '../../src/shared/redux/actions/articleActions';
+import * as articleActions from '../../redux/actions/articleActions';
 
 const middlewares = [promiseResolver];
 const mockStore = configureMockStore(middlewares);

@@ -9,7 +9,7 @@
     "build": "better-npm-run build",
     "start": "better-npm-run start",
     "lint": "eslint src/* test/*",
-    "test": "mocha --compilers js:babel-register --require test/setup.js test/**/*-test.js",
+    "test": "mocha --compilers js:babel-register --require src/shared/tests/setup.js src/shared/tests/**/*-test.js",
     "test:watch": "npm run test -- --watch"
   },
   "betterScripts": {
