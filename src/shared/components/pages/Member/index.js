@@ -18,7 +18,7 @@ export default class Member extends Component {
       <div>
         <Helmet title="Member" />
         <div className="col-md-8">
-          <p>Hello! {this.props.member.data.name}</p>
+          <p>Hello! {this.props.member.data.username}</p>
           <button onClick={this.handleLogoutButton}>Logout</button>
         </div>
         <div className="col-md-4">

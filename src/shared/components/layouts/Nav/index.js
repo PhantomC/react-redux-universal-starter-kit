@@ -10,10 +10,10 @@ const Nav = function() {
       <ul className="nav nav-pills">
         <li><Link to="/">React Redux Universal Starter Kit</Link></li>
         <li><Link to="/gallery">Gallery</Link></li>
-        <li><Link to="/member">Member</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
         <li><Link to="/performance">Performance Tools</Link></li>
+        <li><Link to="/login">Login</Link></li>
       </ul>
     </div>
   );

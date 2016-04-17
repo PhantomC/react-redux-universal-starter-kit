@@ -4,7 +4,8 @@ import { Route, IndexRoute } from 'react-router';
 if (typeof require.ensure !== 'function') require.ensure = function(d, c) { c(require); };
 
 export default ({ dispatch, getState }) => {
-  const checkAuth = (nextState, replace, callback) => {
+  
+  const isAllowed = (nextState, replace, callback) => {
     const { member: { auth } } = getState();
     if (!auth) {
       replace('/login');
@@ -69,7 +70,7 @@ export default ({ dispatch, getState }) => {
               }, 'entry');
             }
           }, {
-            onEnter: checkAuth,
+            onEnter: isAllowed,
             childRoutes: [
               { 
                 path: 'member',

@@ -1,9 +1,9 @@
 import { MEMBER_LOGIN, MEMBER_LOGOUT } from '../../constants/actionTypes';
 
-export function memberLogin(response) {
+export function memberLogin(data) {
   return {
     type: MEMBER_LOGIN,
-    data: response
+    data
   };
 }
 
