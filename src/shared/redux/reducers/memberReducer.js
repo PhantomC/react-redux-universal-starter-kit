@@ -1,14 +1,30 @@
-import { MEMBER_LOGIN, MEMBER_LOGOUT } from '../../constants/actionTypes';
+import { 
+  MEMBER_LOGIN, 
+  MEMBER_LOGOUT
+} from '../../constants/actionTypes';
 
 const initialState = {
-  auth: false,
-  data: {}
+  isAuthenticated: false,
+  user: {}
 };
 
 export default function(state = initialState, action) {
   switch(action.type) {
+    case `${MEMBER_LOGIN}_REQUEST`:
+      return { 
+        ...state, 
+        isAuthenticated: false, 
+        user: action.data 
+      };
     case MEMBER_LOGIN:
-      return { ...initialState, auth: true, data: action.data };
+      console.log(action.data);
+      if (action.data.token) {
+        return { 
+          ...state, 
+          isAuthenticated: true
+        };
+      }
+      return state;
     case MEMBER_LOGOUT:
       return initialState;
     default:

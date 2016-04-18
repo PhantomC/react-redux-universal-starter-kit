@@ -6,8 +6,8 @@ if (typeof require.ensure !== 'function') require.ensure = function(d, c) { c(re
 export default ({ dispatch, getState }) => {
   
   const isAllowed = (nextState, replace, callback) => {
-    const { member: { auth } } = getState();
-    if (!auth) {
+    const { member: { isAuthenticated } } = getState();
+    if (!isAuthenticated) {
       replace('/login');
     }
     callback();
