@@ -9,8 +9,8 @@
     "build": "better-npm-run build",
     "start": "better-npm-run start",
     "lint": "eslint src/* test/*",
-    "test": "mocha --compilers js:babel-register --require src/shared/tests/setup.js src/shared/tests/**/*-test.js",
-    "test:watch": "npm run test -- --watch"
+    "test": "better-npm-run test",
+    "test:watch": "better-npm-run test --watch"
   },
   "betterScripts": {
     "start": {
@@ -33,6 +33,12 @@
         "NODE_ENV": "development",
         "HOSTNAME": "http://localhost",
         "PORT": 3000
+      }
+    },
+    "test": {
+      "command": "mocha --compilers js:babel-register --require src/shared/tests/setup.js src/shared/tests/**/*-test.js",
+      "env": {
+        "HOSTNAME": "http://localhost"
       }
     }
   },
