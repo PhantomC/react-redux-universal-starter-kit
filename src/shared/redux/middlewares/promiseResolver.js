@@ -20,29 +20,19 @@ export default store => next => action => {
   return fetch(`${apiURL}${path}`, options)
     .then(function(response) {
       if (response.status >= 400) {
-        const error = new Error(response.statusText);
-        error.response = response;
-        throw error;
+        next({ ...rest, type: FAIL, error: response.status });
+        return false;
       }
-
       return response.json();
     })
     .then(data => {
-      if (!data) {
-        next({...rest, type: FAIL, error: 'Error 404 - Not Found'});
-        return false;
+      if (data) {
+        let result = next({...rest, type: DONE, data});
+        if (typeof callback === 'function') {
+          return store.dispatch(callback(data));
+        }
+        return result;
       }
-      let result = next({...rest, type: DONE, data});
-
-      if (typeof callback === 'function') {
-        return store.dispatch(callback(data));
-      }
-
-      return result;
+      return false;
     })
-    .catch(e => {
-      return e.response.json().then(data => {
-        return next({ ...rest, type: FAIL, ...data });
-      });
-    });
 };

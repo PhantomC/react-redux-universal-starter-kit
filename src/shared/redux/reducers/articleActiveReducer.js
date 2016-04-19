@@ -15,14 +15,13 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
     case ARTICLE_GET_BY_ID:
-      if (action.error) {
-        return u({
-          error: action.error
-        }, initialState);
-      }
       return u({
         data: action.data,
         error: false
+      }, initialState);
+    case `${ARTICLE_GET_BY_ID}_FAIL`:
+      return u({
+        error: action.error
       }, initialState);
     case ARTICLE_GET_RELATED_ARTICLES:
       return u({
