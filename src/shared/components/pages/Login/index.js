@@ -20,12 +20,25 @@ export default class Login extends Component {
     }
   }
 
+  renderErrorMessage() {
+    return (
+      <div className="row">
+        <div className="col-md-12">
+          <p className="text-danger">{this.props.member.error}</p>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div>
         <Helmet title="Member Login" />
         <div className="col-md-8">
           <LoginForm onSubmit={ this.handleSubmit } />
+
+          {this.props.member.error && this.renderErrorMessage()}
+
         </div>
         <div className="col-md-4">
           Sidebar   

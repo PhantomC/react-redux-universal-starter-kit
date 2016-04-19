@@ -5,28 +5,41 @@ import {
 
 const initialState = {
   isAuthenticated: false,
-  user: {}
+  user: {},
+  error: null
 };
 
 export default function(state = initialState, action) {
   switch(action.type) {
     case `${MEMBER_LOGIN}_REQUEST`:
       return { 
-        ...state, 
+        ...state,
         isAuthenticated: false, 
-        user: action.data 
+        user: {},
+        error: null
       };
+
     case MEMBER_LOGIN:
-      console.log(action.data);
       if (action.data.token) {
         return { 
           ...state, 
-          isAuthenticated: true
+          isAuthenticated: true,
+          error: null
         };
       }
       return state;
+
+    case `${MEMBER_LOGIN}_FAIL`:
+      return {
+        ...state,
+        isAuthenticated: false,
+        error: action.error,
+        user: {}
+      };
+
     case MEMBER_LOGOUT:
       return initialState;
+
     default:
       return state;
   }
