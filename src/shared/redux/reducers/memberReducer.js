@@ -20,14 +20,12 @@ export default function(state = initialState, action) {
       };
 
     case MEMBER_LOGIN:
-      if (action.data.token) {
-        return { 
-          ...state, 
-          isAuthenticated: true,
-          error: null
-        };
-      }
-      return state;
+      return { 
+        ...state, 
+        isAuthenticated: true,
+        error: null,
+        user: action.data.user
+      };
 
     case `${MEMBER_LOGIN}_FAIL`:
       return {

@@ -9,6 +9,11 @@ export default store => next => action => {
 
 	if (type === MEMBER_LOGIN) {
 		reactCookie.save(authTokenCookieName, action.data.token);
+
+		const user = jwt.decode(action.data.token);
+		user.token = action.data.token;
+		action.data.user = user;
+		
 	} else if (type === MEMBER_LOGOUT) {
 		reactCookie.remove(authTokenCookieName);
 	}
