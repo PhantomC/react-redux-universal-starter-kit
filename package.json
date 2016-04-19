@@ -77,6 +77,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^2.2.2",
     "json-server": "^0.8.8",
+    "jsonwebtoken": "^5.7.0",
     "postcss-loader": "^0.8.2",
     "precss": "^1.4.0",
     "react": "^15.0.1",
