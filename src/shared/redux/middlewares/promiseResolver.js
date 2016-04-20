@@ -29,7 +29,7 @@ export default store => next => action => {
       if (data) {
         let result = next({...rest, type: DONE, data});
         if (typeof callback === 'function') {
-          return store.dispatch(callback(data));
+          return callback(data, store.dispatch);
         }
         return result;
       }

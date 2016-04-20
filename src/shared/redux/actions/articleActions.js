@@ -36,8 +36,8 @@ export function getArticleContentById(id) {
   return {
     ...getArticleById(id),
 
-    callback: result => {
-      return getRelatedArticles(result.tags[0], id);
+    callback: (response, dispatch) => {
+      return dispatch(getRelatedArticles(response.tags[0]));
     }
   };
 }
