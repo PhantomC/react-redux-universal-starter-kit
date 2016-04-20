@@ -6,5 +6,7 @@ export const ARTICLE_DELETE_BY_ID = 'ARTICLE_DELETE_BY_ID';
 
 export const MEMBER_LOGIN = 'MEMBER_LOGIN';
 export const MEMBER_LOGOUT = 'MEMBER_LOGOUT';
+export const MEMBER_LOAD_AUTH = 'MEMBER_LOAD_AUTH';
+
 
 export const CONTACT_SAVE = 'CONTACT_SAVE';

@@ -1,22 +1,45 @@
-import { MEMBER_LOGIN, MEMBER_LOGOUT } from '../../constants/actionTypes';
+import { 
+  MEMBER_LOGIN, 
+  MEMBER_LOAD_AUTH, 
+  MEMBER_LOGOUT 
+} from '../../constants/actionTypes';
+
 import jwt from 'jsonwebtoken';
 import reactCookie from 'react-cookie';
 
 const authTokenCookieName = 'authToken';
 
 export default store => next => action => {
-  const { type } = action;
+  const { type, callback } = action;
 
-  if (type === MEMBER_LOGIN) {
-    reactCookie.save(authTokenCookieName, action.data.token);
+  switch (type) {
 
-    const user = jwt.decode(action.data.token);
-    user.token = action.data.token;
-    action.data.user = user;
-    
-  } else if (type === MEMBER_LOGOUT) {
-    reactCookie.remove(authTokenCookieName);
+    case MEMBER_LOGIN:
+      reactCookie.save(authTokenCookieName, action.data.token);
+      const user = jwt.decode(action.data.token);
+      user.token = action.data.token;
+      action.data.user = user;
+      return next(action);
+
+    case MEMBER_LOGOUT:
+      reactCookie.remove(authTokenCookieName); 
+      return next(action);  
+
+    case MEMBER_LOAD_AUTH:
+      let result = false;
+      const token = reactCookie.load(authTokenCookieName);
+      if (token) {
+        const user = jwt.decode(token);
+        user.token = token;
+        action.data = {user};
+        next({ ...action, type: MEMBER_LOGIN});
+      }
+      if (typeof callback === 'function') {
+        return callback(!!token);
+      }
+      return result;
+      
+    default:
+      return next(action);
   }
-
-  return next(action);
 };
