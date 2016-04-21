@@ -10,14 +10,20 @@ export default class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(data) {
-    this.props.memberLogin(data);
+  componentWillMount() {
+    if (this.props.member.isAuthenticated) {
+      this.context.router.push('/member');
+    }
   }
 
   componentWillUpdate(nextProps) {
     if (nextProps.member.isAuthenticated) {
       this.context.router.push('/member');
     }
+  }
+
+  handleSubmit(data) {
+    this.props.memberLogin(data);
   }
 
   renderErrorMessage() {
