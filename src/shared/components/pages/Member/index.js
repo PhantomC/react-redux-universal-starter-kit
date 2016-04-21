@@ -18,7 +18,12 @@ export default class Member extends Component {
       <div>
         <Helmet title="Member" />
         <div className="col-md-8">
-          <p>Hello! {this.props.member.data.name}</p>
+          <div className="row">
+            <div className="col-md-2">
+              <img src={this.props.member.user.profile_pic} alt={this.props.member.user.username}/>
+            </div>
+          </div>
+          <p>Hello! {this.props.member.user.username} ({this.props.member.user.email})</p>
           <button onClick={this.handleLogoutButton}>Logout</button>
         </div>
         <div className="col-md-4">

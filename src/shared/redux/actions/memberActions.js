@@ -1,9 +1,23 @@
-import { MEMBER_LOGIN, MEMBER_LOGOUT } from '../../constants/actionTypes';
+import { 
+  MEMBER_LOGIN, 
+  MEMBER_LOGOUT
+} from '../../constants/actionTypes';
 
-export function memberLogin(response) {
+export function memberLogin(data) {
   return {
     type: MEMBER_LOGIN,
-    data: response
+    data,
+    request: {
+      path: '/login',
+      options: {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+    }
   };
 }
 

@@ -13,26 +13,26 @@ export default store => next => action => {
 
   const DONE = type;
   const REQUEST = `${type}_REQUEST`;
+  const FAIL = `${type}_FAIL`;
+
   next({...rest, type: REQUEST });
 
   return fetch(`${apiURL}${path}`, options)
     .then(function(response) {
       if (response.status >= 400) {
+        next({ ...rest, type: FAIL, error: response.status });
         return false;
       }
       return response.json();
     })
     .then(data => {
-      if (!data) {
-        next({...rest, type: DONE, error: 'Error 404 - Not Found'});
-        return false;
+      if (data) {
+        let result = next({...rest, type: DONE, data});
+        if (typeof callback === 'function') {
+          return callback(data, store.dispatch);
+        }
+        return result;
       }
-      let result = next({...rest, type: DONE, data});
-
-      if (typeof callback === 'function') {
-        return store.dispatch(callback(data));
-      }
-
-      return result;
-    });
+      return false;
+    })
 };

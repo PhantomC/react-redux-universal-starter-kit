@@ -3,13 +3,32 @@ import { Route, IndexRoute } from 'react-router';
 
 if (typeof require.ensure !== 'function') require.ensure = function(d, c) { c(require); };
 
+import { MEMBER_LOAD_AUTH } from '../constants/actionTypes';
+
 export default ({ dispatch, getState }) => {
-  const checkAuth = (nextState, replace, callback) => {
-    const { member: { auth } } = getState();
-    if (!auth) {
-      replace('/login');
+  
+  const isAuthenticated = (nextState, replace, callback) => {
+    
+    let { member: { isAuthenticated } } = getState();
+
+    function checkAuth(isAuthenticated) {
+      if (!isAuthenticated) {
+        replace('/login');
+      }
+      callback();
     }
-    callback();
+    
+    if (!isAuthenticated) {
+      dispatch({
+        type: MEMBER_LOAD_AUTH,
+        callback: (isAuthenticated) => {
+          checkAuth(isAuthenticated);
+        }
+      });
+    } else {
+      checkAuth(isAuthenticated);
+    }
+
   };
 
   return {
@@ -69,17 +88,13 @@ export default ({ dispatch, getState }) => {
               }, 'entry');
             }
           }, {
-            onEnter: checkAuth,
-            childRoutes: [
-              { 
-                path: 'member',
-                getComponent: (location, cb) => {
-                  require.ensure([], (require) => {
-                    cb(null, require('../redux/containers/Member'));
-                  }, 'member');
-                }
-              }
-            ]
+            onEnter: isAuthenticated,     
+            path: 'member',
+            getComponent: (location, cb) => {
+              require.ensure([], (require) => {
+                cb(null, require('../redux/containers/Member'));
+              }, 'member');
+            }
           }, {
             path: '*',
             getComponent: (location, cb) => {

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 
 import Helmet from 'react-helmet';
+import cookie from 'react-cookie';
 
 import { match, RouterContext } from 'react-router';
 import getRoutes from '../shared/routes';
@@ -13,7 +14,8 @@ import { Provider } from 'react-redux';
 import createStore from '../shared/redux/store/createStore';
 
 export default function(req, res) {
-
+  
+  cookie.plugToRequest(req, res);
   const store = createStore();
 
   match({ routes: getRoutes(store), location: req.url }, (error, redirectLocation, renderProps) => {
