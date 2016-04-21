@@ -88,17 +88,13 @@ export default ({ dispatch, getState }) => {
               }, 'entry');
             }
           }, {
-            onEnter: isAuthenticated,
-            childRoutes: [
-              { 
-                path: 'member',
-                getComponent: (location, cb) => {
-                  require.ensure([], (require) => {
-                    cb(null, require('../redux/containers/Member'));
-                  }, 'member');
-                }
-              }
-            ]
+            onEnter: isAuthenticated,     
+            path: 'member',
+            getComponent: (location, cb) => {
+              require.ensure([], (require) => {
+                cb(null, require('../redux/containers/Member'));
+              }, 'member');
+            }
           }, {
             path: '*',
             getComponent: (location, cb) => {
