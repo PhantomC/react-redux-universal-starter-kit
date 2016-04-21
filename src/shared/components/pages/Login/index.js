@@ -14,8 +14,8 @@ export default class Login extends Component {
     this.props.memberLogin(data);
   }
 
-  componentDidUpdate() {
-    if (this.props.member.isAuthenticated) {
+  componentWillUpdate(nextProps) {
+    if (nextProps.member.isAuthenticated) {
       this.context.router.push('/member');
     }
   }

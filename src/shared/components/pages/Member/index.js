@@ -10,7 +10,7 @@ export default class Member extends Component {
 
   handleLogoutButton() {
     this.props.memberLogout();
-    this.context.router.push('/');
+    this.props.history.push('/');
   }
 
   render() {
@@ -33,7 +33,3 @@ export default class Member extends Component {
     );
   }
 }
-
-Member.contextTypes = {
-  router: PropTypes.object
-};
