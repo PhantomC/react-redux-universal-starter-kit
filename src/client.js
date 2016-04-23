@@ -13,8 +13,10 @@ const appHistory = useRouterHistory(createScrollHistory)();
 
 import { Provider } from 'react-redux';
 import createStore from './shared/redux/store/createStore';
+import { MEMBER_LOAD_AUTH } from './shared/constants/actionTypes';
 
 const store = createStore(window.__INITIAL_STATE__);
+
 const history = syncHistoryWithStore(appHistory, store);
 
 const routes = getRoutes(store);

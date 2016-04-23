@@ -7,7 +7,7 @@ import { MEMBER_LOAD_AUTH } from '../constants/actionTypes';
 
 export default ({ dispatch, getState }) => {
   
-  const isAuthenticated = (nextState, replace, callback) => {
+  const isAuthenticated = (nextState, replace) => {
     
     let { member: { isAuthenticated } } = getState();
 
@@ -15,7 +15,6 @@ export default ({ dispatch, getState }) => {
       if (!isAuthenticated) {
         replace('/login');
       }
-      callback();
     }
     
     if (!isAuthenticated) {
@@ -30,6 +29,14 @@ export default ({ dispatch, getState }) => {
     }
 
   };
+
+  const hasAlreadyLoggedIn = (nextState, replace) => {
+    let { member: { isAuthenticated } } = getState();
+
+    if (isAuthenticated) {
+      replace('/member');
+    }
+  }
 
   return {
     component: 'div',
@@ -74,18 +81,19 @@ export default ({ dispatch, getState }) => {
               }, 'performance');
             }               
           }, {
-            path: 'login',
-            getComponent: (location, cb) => {
-              require.ensure([], (require) => {
-                cb(null, require('../redux/containers/Login'));
-              }, 'login');
-            }
-          }, {
             path: 'articles/:id',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
                 cb(null, require('../redux/containers/Entry'));
               }, 'entry');
+            }
+          }, {
+            onEnter: hasAlreadyLoggedIn,     
+            path: 'login',
+            getComponent: (location, cb) => {
+              require.ensure([], (require) => {
+                cb(null, require('../redux/containers/Login'));
+              }, 'login');
             }
           }, {
             onEnter: isAuthenticated,     
