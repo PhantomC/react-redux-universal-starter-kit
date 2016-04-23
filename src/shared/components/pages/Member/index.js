@@ -14,7 +14,7 @@ export default class Member extends Component {
 
   componentWillUpdate(nextProps) {
     if (!nextProps.member.isAuthenticated) {
-      this.context.router.push('/');
+      this.context.router.push('/login');
     }
   }
 
