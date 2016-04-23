@@ -9,13 +9,13 @@ class LoginForm extends Component {
         <div className="form-group">
           <label className="col-md-2 control-label">Username</label>
           <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Username" {...username} />
+            <input type="text" placeholder="Username" className="form-control" {...username} />
           </div>
         </div>
         <div className="form-group">
           <label className="col-md-2 control-label">Password</label>
           <div className="col-md-4">
-            <input type="password" className="form-control" placeholder="Password" {...password} />
+            <input type="password" placeholder="Password" className="form-control" {...password} />
           </div>
         </div>
         <div className="form-group">

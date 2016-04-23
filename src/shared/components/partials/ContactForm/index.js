@@ -9,19 +9,19 @@ class ContactForm extends Component {
         <div className="form-group">
           <label className="col-md-2 control-label">Name</label>
           <div className="col-md-4">
-            <input type="text" className="form-control" placeholder="Name" {...name} />
+            <input type="text" placeholder="Name" className="form-control" {...name} />
           </div>
         </div>
         <div className="form-group">
           <label className="col-md-2 control-label">Email</label>
           <div className="col-md-4">
-            <input type="email" className="form-control" placeholder="Email" {...email} />
+            <input type="email" placeholder="Email" className="form-control" {...email} />
           </div>
         </div>
         <div className="form-group">
           <label className="col-md-2 control-label">Message</label>
           <div className="col-md-4">
-            <textarea className="form-control" rows="3" placeholder="Message" {...message} />
+            <textarea placeholder="Message" rows="3" className="form-control" {...message} />
           </div>
         </div>
         <div className="form-group">
