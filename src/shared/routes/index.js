@@ -7,7 +7,7 @@ import { MEMBER_LOAD_AUTH } from '../constants/actionTypes';
 
 export default ({ dispatch, getState }) => {
   
-  const isAuthenticated = (nextState, replace, callback) => {
+  const isAuthenticated = (nextState, replace) => {
     
     let { member: { isAuthenticated } } = getState();
 
@@ -15,7 +15,6 @@ export default ({ dispatch, getState }) => {
       if (!isAuthenticated) {
         replace('/login');
       }
-      callback();
     }
     
     if (!isAuthenticated) {
@@ -31,13 +30,11 @@ export default ({ dispatch, getState }) => {
 
   };
 
-  const hasAlreadyLoggedIn = (nextState, replace, callback) => {
+  const hasAlreadyLoggedIn = (nextState, replace) => {
     let { member: { isAuthenticated } } = getState();
 
     if (isAuthenticated) {
       replace('/member');
-    } else {
-      callback();
     }
   }
 

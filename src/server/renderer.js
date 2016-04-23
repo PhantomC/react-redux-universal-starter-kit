@@ -12,11 +12,15 @@ import prefetchComponentData from '../shared/utils/prefetchComponentData';
 import { Provider } from 'react-redux';
 
 import createStore from '../shared/redux/store/createStore';
+import { MEMBER_LOAD_AUTH } from '../shared/constants/actionTypes';
 
 export default function(req, res) {
   
   cookie.plugToRequest(req, res);
   const store = createStore();
+  store.dispatch({
+    type: MEMBER_LOAD_AUTH
+  });
 
   match({ routes: getRoutes(store), location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
