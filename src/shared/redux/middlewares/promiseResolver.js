@@ -24,7 +24,7 @@ export default store => next => action => {
   if (token) {
     options.headers = {
       'Authorization': `Bearer ${token}`
-    }
+    };
   }
 
   return fetch(`${apiURL}${path}`, options)
@@ -44,5 +44,5 @@ export default store => next => action => {
         return result;
       }
       return false;
-    })
+    });
 };

@@ -36,7 +36,7 @@ export default ({ dispatch, getState }) => {
     if (isAuthenticated) {
       replace('/member');
     }
-  }
+  };
 
   return {
     component: 'div',

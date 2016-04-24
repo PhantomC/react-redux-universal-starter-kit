@@ -85,7 +85,7 @@ describe('Promise Resolver Middleware', () => {
       .reply(200, expectedPayload);
 
     nock(apiURL)
-      .get(mockAction.callback(expectedPayload).request.path)
+    .get(articleActions.getRelatedArticles(expectedPayload.tags[0]).request.path)
       .reply(200, [expectedPayload]);
 
     store.dispatch(mockAction)
