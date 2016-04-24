@@ -1,6 +1,7 @@
 import { 
   MEMBER_LOGIN, 
-  MEMBER_LOGOUT
+  MEMBER_LOGOUT,
+  MEMBER_VIEW_PROFILE
 } from '../../constants/actionTypes';
 
 export function memberLogin(data) {
@@ -24,5 +25,14 @@ export function memberLogin(data) {
 export function memberLogout() {
   return {
     type: MEMBER_LOGOUT
+  };
+}
+
+export function memberViewProfile() {
+  return {
+    type: MEMBER_VIEW_PROFILE,
+    request: {
+      path: '/member/profile'
+    }
   };
 }

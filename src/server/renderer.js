@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 
 import Helmet from 'react-helmet';
-import cookie from 'react-cookie';
+import reactCookie from 'react-cookie';
 
 import { match, RouterContext } from 'react-router';
 import getRoutes from '../shared/routes';
@@ -16,7 +16,7 @@ import { MEMBER_LOAD_AUTH } from '../shared/constants/actionTypes';
 
 export default function(req, res) {
   
-  cookie.plugToRequest(req, res);
+  reactCookie.plugToRequest(req, res);
   const store = createStore();
   store.dispatch({
     type: MEMBER_LOAD_AUTH

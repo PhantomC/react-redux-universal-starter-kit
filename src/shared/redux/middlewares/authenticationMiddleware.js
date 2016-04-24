@@ -6,8 +6,7 @@ import {
 
 import jwt from 'jsonwebtoken';
 import reactCookie from 'react-cookie';
-
-const authTokenCookieName = 'authToken';
+import AUTH_TOKEN from '../../constants/cookieNames';
 
 export default store => next => action => {
   const { type, callback } = action;
@@ -15,19 +14,19 @@ export default store => next => action => {
   switch (type) {
 
     case MEMBER_LOGIN:
-      reactCookie.save(authTokenCookieName, action.data.token);
+      reactCookie.save(AUTH_TOKEN, action.data.token);
       const user = jwt.decode(action.data.token);
       user.token = action.data.token;
       action.data.user = user;
       return next(action);
 
     case MEMBER_LOGOUT:
-      reactCookie.remove(authTokenCookieName); 
+      reactCookie.remove(AUTH_TOKEN); 
       return next(action);  
 
     case MEMBER_LOAD_AUTH:
       let result = false;
-      const token = reactCookie.load(authTokenCookieName);
+      const token = reactCookie.load(AUTH_TOKEN);
       if (token) {
         const user = jwt.decode(token);
         user.token = token;

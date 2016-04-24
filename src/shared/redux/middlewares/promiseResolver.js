@@ -1,6 +1,9 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
+import reactCookie from 'react-cookie';
+import AUTH_TOKEN from '../../constants/cookieNames';
+
 export const apiURL = `${process.env.HOSTNAME || 'http://localhost'}${process.env.NODE_ENV === 'production' ? '' : ':' + (process.env.PORT || '3000')}/api`;
 
 export default store => next => action => {
@@ -16,6 +19,13 @@ export default store => next => action => {
   const FAIL = `${type}_FAIL`;
 
   next({...rest, type: REQUEST });
+
+  const token = reactCookie.load(AUTH_TOKEN);
+  if (token) {
+    options.headers = {
+      'Authorization': `Bearer ${token}`
+    }
+  }
 
   return fetch(`${apiURL}${path}`, options)
     .then(function(response) {

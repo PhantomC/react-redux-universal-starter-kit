@@ -6,16 +6,21 @@ export default class Member extends Component {
   constructor(props, context) {
     super(props, context);
     this.handleLogoutButton = this.handleLogoutButton.bind(this);
-  }
-
-  handleLogoutButton() {
-    this.props.memberLogout();
+    this.handleProfileLinkClick = this.handleProfileLinkClick.bind(this);
   }
 
   componentWillUpdate(nextProps) {
     if (!nextProps.member.isAuthenticated) {
       this.context.router.push('/login');
     }
+  }
+
+  handleLogoutButton() {
+    this.props.memberLogout();
+  }
+
+  handleProfileLinkClick() {
+    this.props.memberViewProfile();
   }
 
   renderMemberProfile() {
@@ -32,6 +37,7 @@ export default class Member extends Component {
           </div>
         </div>
         <p>Hello! {this.props.member.user.username} ({this.props.member.user.email})</p>
+        <p><a href="#" onClick={this.handleProfileLinkClick}>View Profile</a></p>
         <button onClick={this.handleLogoutButton}>Logout</button>
       </div>
     );
