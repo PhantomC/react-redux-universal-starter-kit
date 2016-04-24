@@ -73,6 +73,7 @@
     "cssnano": "^3.5.2",
     "es6-promise": "^3.1.2",
     "express": "^4.13.4",
+    "express-jwt": "^3.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "faker": "^3.0.1",
     "isomorphic-fetch": "^2.2.1",
