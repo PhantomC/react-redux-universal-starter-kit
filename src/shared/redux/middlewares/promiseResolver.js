@@ -2,7 +2,7 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 import reactCookie from 'react-cookie';
-import AUTH_TOKEN from '../../constants/cookieNames';
+import { AUTH_TOKEN } from '../../constants/cookieNames';
 
 export const apiURL = `${process.env.HOSTNAME || 'http://localhost'}${process.env.NODE_ENV === 'production' ? '' : ':' + (process.env.PORT || '3000')}/api`;
 

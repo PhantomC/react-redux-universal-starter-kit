@@ -6,7 +6,7 @@ import {
 
 import jwt from 'jsonwebtoken';
 import reactCookie from 'react-cookie';
-import AUTH_TOKEN from '../../constants/cookieNames';
+import { AUTH_TOKEN } from '../../constants/cookieNames';
 
 export default store => next => action => {
   const { type, callback } = action;
