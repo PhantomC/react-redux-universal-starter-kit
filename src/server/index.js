@@ -37,7 +37,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(serverRendering);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, function (err) {
   if (err) {
     console.log(err);
