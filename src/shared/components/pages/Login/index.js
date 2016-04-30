@@ -4,20 +4,11 @@ import Helmet from 'react-helmet';
 import LoginForm from '../../partials/LoginForm';
 
 export default class Login extends Component {
-  
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
 
   componentWillUpdate(nextProps) {
     if (nextProps.member.isAuthenticated) {
       this.context.router.push('/member');
     }
-  }
-
-  handleSubmit(data) {
-    this.props.memberLogin(data);
   }
 
   renderErrorMessage() {
@@ -35,7 +26,7 @@ export default class Login extends Component {
       <div>
         <Helmet title="Member Login" />
         <div className="col-md-8">
-          <LoginForm onSubmit={ this.handleSubmit } />
+          <LoginForm memberLogin={ this.props.memberLogin } />
 
           {this.props.member.error && this.renderErrorMessage()}
 
