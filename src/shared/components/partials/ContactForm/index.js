@@ -5,7 +5,7 @@ class ContactForm extends Component {
   render() {
     const { fields: { name, email, message }, handleSubmit } = this.props;
     return (
-      <form className="form-horizontal" onSubmit={ handleSubmit }>
+      <form className="form-horizontal" onSubmit={ handleSubmit(this.props.onContactFormSubmit) }>
         <div className="form-group">
           <label className="col-md-2 control-label">Name</label>
           <div className="col-md-4">

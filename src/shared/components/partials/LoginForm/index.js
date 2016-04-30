@@ -5,7 +5,7 @@ class LoginForm extends Component {
   render() {
     const { fields: { username, password }, handleSubmit } = this.props;
     return (
-      <form className="form-horizontal" onSubmit={ handleSubmit }>
+      <form className="form-horizontal" onSubmit={ handleSubmit(this.props.memberLogin) }>
         <div className="form-group">
           <label className="col-md-2 control-label">Username</label>
           <div className="col-md-4">

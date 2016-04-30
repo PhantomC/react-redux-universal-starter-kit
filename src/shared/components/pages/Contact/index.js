@@ -7,13 +7,13 @@ export default class Contact extends Component {
   
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onContactFormSubmit = this.onContactFormSubmit.bind(this);
     this.state = {
       sent: false
     };
   }
 
-  handleSubmit(data) {
+  onContactFormSubmit(data) {
     this.props.saveContactFormData(data);
     this.setState({
       sent: true
@@ -25,7 +25,7 @@ export default class Contact extends Component {
       <div>
         <Helmet title="Contact" />
         <div className="col-md-8">
-          <ContactForm onSubmit={ this.handleSubmit } />
+          <ContactForm onContactFormSubmit={ this.onContactFormSubmit } />
           { this.state.sent ? (
             <div className="alert alert-success">
               <strong>Success!</strong> Your message was sent successfully.
