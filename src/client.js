@@ -29,21 +29,20 @@ const dest = document.getElementById('app');
 match({ routes, location }, () => {
   ReactDOM.render(
     <Provider store={store} key="provider">
-      { Root }
+      {
+        (() => {
+          if (process.env.NODE_ENV !== 'production') {
+            const DevTools = require('./shared/components/partials/DevTools');
+            return (
+              <div>
+                { Root }
+                <DevTools />
+              </div>
+            );
+          }
+          return Root;
+        })()
+      }
     </Provider>
     , dest);
 });
-
-if (process.env.NODE_ENV !== 'production') {
-  const DevTools = require('./shared/components/partials/DevTools');
-  match({ routes, location }, () => {
-    ReactDOM.render(
-      <Provider store={store} key="provider">
-        <div>
-          { Root }
-          <DevTools />
-        </div>
-      </Provider>
-      , dest);
-  });
-}
