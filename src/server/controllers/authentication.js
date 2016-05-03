@@ -17,7 +17,7 @@ export function login(req, res, next) {
   if (! username || ! password) {
     return res.status(400)
       .json({
-        error: 'You must provide username and password'
+        message: 'You must provide username and password'
       });
   }
 
@@ -32,6 +32,6 @@ export function login(req, res, next) {
 
   return res.status(401)
     .json({
-      error: 'Your username or password incorrect'
+      message: 'Your username or password incorrect'
     });
 }

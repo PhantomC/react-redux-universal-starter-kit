@@ -5,6 +5,7 @@ import {reducer as formReducer} from 'redux-form';
 import memberReducer from './memberReducer';
 import articleLatestReducer from './articleLatestReducer';
 import articleActiveReducer from './articleActiveReducer';
+import errorMessageReducer from './errorMessageReducer';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   member: memberReducer,
   articleLatest: articleLatestReducer,
   articleActive: articleActiveReducer,
+  errorMessage: errorMessageReducer
 });
 
 export default rootReducer;

@@ -1,10 +1,31 @@
 require('es6-promise').polyfill();
-require('isomorphic-fetch');
+import 'isomorphic-fetch';
 
 import reactCookie from 'react-cookie';
 import { AUTH_TOKEN } from '../../constants/cookieNames';
 
-export const apiURL = `${process.env.HOSTNAME || 'http://localhost'}${process.env.NODE_ENV === 'production' ? '' : ':' + (process.env.PORT || '3000')}/api`;
+export const apiURL = getAPIUrl();
+
+function getAPIUrl() {
+  return `${process.env.HOSTNAME || 'http://localhost'}${process.env.NODE_ENV === 'production' ? '' : ':' + (process.env.PORT || '3000')}/api`;
+}
+
+function callApi(url, options) {
+  return fetch(url, options)
+    .then(response =>
+      response.json().then(json => ({ json, response }))
+    )
+    .then(({ json, response }) => {
+      if (!response.ok) {
+        const { status, statusText } = response;
+        return Promise.reject({
+          status, 
+          statusText
+        });
+      }
+      return json;
+    });
+}
 
 export default store => next => action => {
 
@@ -27,22 +48,25 @@ export default store => next => action => {
     };
   }
 
-  return fetch(`${apiURL}${path}`, options)
-    .then(function(response) {
-      if (response.status >= 400) {
-        next({ ...rest, type: FAIL, error: response.status });
-        return false;
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data) {
-        let result = next({...rest, type: DONE, data});
+  return callApi(`${apiURL}${path}`, options)
+    .then(
+      data => {
+        let result = next({
+          ...rest,
+          type: DONE,
+          data
+        });
         if (typeof callback === 'function') {
           return callback(data, store.dispatch);
         }
         return result;
+      },
+      error => {
+        return next({
+          ...rest,
+          type: FAIL,
+          error
+        })
       }
-      return false;
-    });
+    );
 };

@@ -15,7 +15,7 @@ export default class Login extends Component {
     return (
       <div className="row">
         <div className="col-md-12">
-          <p className="text-danger">{this.props.member.error}</p>
+          <p className="text-danger">{this.props.member.error.statusText}</p>
         </div>
       </div>
     );
