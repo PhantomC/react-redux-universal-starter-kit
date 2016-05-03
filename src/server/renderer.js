@@ -36,7 +36,13 @@ export default function(req, res) {
       }
 
       prefetchComponentData(store.dispatch, renderProps.components, renderProps.params)
-        .then(() => res.end(renderHTML()))
+        .then(() => {
+          const currentState = store.getState();
+          if (currentState.errorMessage.status !== undefined) {
+            res.status(currentState.errorMessage.status);
+          }
+          res.end(renderHTML());
+        })
         .catch(err => res.end(err.message));
     }
 
