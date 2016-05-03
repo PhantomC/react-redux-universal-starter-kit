@@ -31,20 +31,21 @@ const dest = document.getElementById('app');
 match({ routes, location }, () => {
   ReactDOM.render(
     <Provider store={store} key="provider">
-      {
-        (() => {
-          if (!config.isProduction) {
-            const DevTools = require('./shared/components/partials/DevTools');
-            return (
-              <div>
-                { Root }
-                <DevTools />
-              </div>
-            );
-          }
-          return Root;
-        })()
-      }
+      { Root }
     </Provider>
     , dest);
 });
+
+if (!config.isProduction) {
+  const DevTools = require('./shared/components/partials/DevTools');
+  match({ routes, location }, () => {
+    ReactDOM.render(
+      <Provider store={store} key="provider">
+        <div>
+          { Root }
+          <DevTools />
+        </div>
+      </Provider>
+      , dest);
+  });
+}
