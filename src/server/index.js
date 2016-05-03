@@ -1,3 +1,5 @@
+import config from '../shared/configs';
+
 import express from 'express';
 import jsonServer from 'json-server';
 import mockData from './mockData';
@@ -26,7 +28,7 @@ app.use('/api/articles', function(req, res, next) {
 });
 app.use('/api', router);
 
-if (process.env.NODE_ENV !== 'production') {
+if (!config.isProduction) {
   const compiler = webpack(webpackConfig);
   app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true, 
@@ -37,11 +39,10 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(serverRendering);
 
-const PORT = process.env.PORT || 80;
-app.listen(PORT, function (err) {
+app.listen(config.port, function (err) {
   if (err) {
     console.log(err);
     return;
   }
-  console.log('Server listening on', PORT);
+  console.log('Server listening on', config.port);
 });

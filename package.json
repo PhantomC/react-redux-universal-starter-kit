@@ -16,30 +16,23 @@
     "start": {
       "command": "node .",
       "env": {
-        "NODE_ENV": "production",
-        "HOSTNAME": "https://react-universal-starter-kit.herokuapp.com"
+        "NODE_ENV": "production"
       }
     },
     "build": {
       "command": "webpack --config ./webpack.config.prod.js",
       "env": {
-        "NODE_ENV": "production",
-        "HOSTNAME": "https://react-universal-starter-kit.herokuapp.com"
+        "NODE_ENV": "production"
       }
     },
     "dev": {
       "command": "node .",
       "env": {
-        "NODE_ENV": "development",
-        "HOSTNAME": "http://localhost",
-        "PORT": 3000
+        "NODE_ENV": "development"
       }
     },
     "test": {
-      "command": "mocha --compilers js:babel-register --require src/shared/tests/setup.js src/shared/tests/**/*-test.js",
-      "env": {
-        "HOSTNAME": "http://localhost"
-      }
+      "command": "mocha --compilers js:babel-register --require src/shared/tests/setup.js src/shared/tests/**/*-test.js"
     }
   },
   "repository": {
