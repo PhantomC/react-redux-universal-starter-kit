@@ -25,7 +25,7 @@ export default class Entry extends Component {
   renderArticle() {
     if (this.props.articleActive.error) {
       return (
-        <div>{ this.props.articleActive.error }</div>
+        <div>{ this.props.articleActive.error.statusText }</div>
       );
     }
     return (
