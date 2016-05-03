@@ -1,3 +1,5 @@
+import config from './shared/configs';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -31,7 +33,7 @@ match({ routes, location }, () => {
     <Provider store={store} key="provider">
       {
         (() => {
-          if (process.env.NODE_ENV !== 'production') {
+          if (!config.isProduction) {
             const DevTools = require('./shared/components/partials/DevTools');
             return (
               <div>
