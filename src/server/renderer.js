@@ -37,16 +37,15 @@ export default function(req, res) {
 
       prefetchComponentData(store.dispatch, renderProps.components, renderProps.params)
         .then(() => {
-          const currentState = store.getState();
-          if (currentState.errorMessage.status !== undefined) {
-            res.status(currentState.errorMessage.status);
-          }
-          res.end(renderHTML());
+          const { HTML, status } = renderHTML();
+          res.status(status).end(HTML);
         })
         .catch(err => res.end(err.message));
     }
 
     function renderHTML() {
+
+      let status = 200;
 
       const renderedComponent = ReactDOM.renderToString(
         <Provider store={ store }>
@@ -55,6 +54,9 @@ export default function(req, res) {
       );
 
       const initialState = store.getState();
+      if (initialState.errorMessage.status !== undefined) {
+        status = initialState.errorMessage.status;
+      }
 
       let head = Helmet.rewind();
 
@@ -81,7 +83,10 @@ export default function(req, res) {
         </html>    
       `;
 
-      return HTML;
+      return {
+        HTML,
+        status
+      };
     }
 
   });
