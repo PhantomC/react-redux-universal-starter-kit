@@ -19,12 +19,12 @@ styleLoaders:
 # It depends on value of NODE_ENV environment variable
 # This param can also be set in webpack config:
 #   entry: 'bootstrap-loader/extractStyles'
-extractStyles: true
-# env:
-#   development:
-#     extractStyles: false
-#   production:
-#     extractStyles: true
+# extractStyles: false
+env:
+  development:
+    extractStyles: false
+  production:
+    extractStyles: true
 
 # Customize Bootstrap variables that get imported before the original Bootstrap variables.
 # Thus original Bootstrap variables can depend on values from here.
@@ -46,7 +46,7 @@ styles:
   # Reset and dependencies
   normalize: true
   print: true
-  glyphicons: true
+  glyphicons: false
 
   # Core CSS
   scaffolding: true
@@ -58,33 +58,33 @@ styles:
   buttons: true
 
   # Components
-  component-animations: true
-  dropdowns: true
-  button-groups: true
-  input-groups: true
+  component-animations: false
+  dropdowns: false
+  button-groups: false
+  input-groups: false
   navs: true
-  navbar: true
-  breadcrumbs: true
-  pagination: true
-  pager: true
-  labels: true
-  badges: true
-  jumbotron: true
-  thumbnails: true
-  alerts: true
-  progress-bars: true
-  media: true
-  list-group: true
-  panels: true
-  wells: true
-  responsive-embed: true
-  close: true
+  navbar: false
+  breadcrumbs: false
+  pagination: false
+  pager: false
+  labels: false
+  badges: false
+  jumbotron: false
+  thumbnails: false
+  alerts: false
+  progress-bars: false
+  media: false
+  list-group: false
+  panels: false
+  wells: false
+  responsive-embed: false
+  close: false
 
   # Components w/ JavaScript
-  modals: true
-  tooltip: true
-  popovers: true
-  carousel: true
+  modals: false
+  tooltip: false
+  popovers: false
+  carousel: false
 
   # Utility classes
   utilities: true

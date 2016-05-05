@@ -6,7 +6,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 
 import CSSModules from 'react-css-modules';
-import styles from './styles.css';
+import styles from './styles.scss';
 
 class App extends Component {
 
