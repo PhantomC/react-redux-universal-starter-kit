@@ -34,10 +34,10 @@ module.exports = {
         }
       }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss')
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss')
       }, {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap')
       }, {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "url?limit=10000"
