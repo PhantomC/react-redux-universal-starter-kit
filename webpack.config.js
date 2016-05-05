@@ -33,7 +33,7 @@ module.exports = {
         }
       }, {
         test: /\.css$/,
-        loader: 'style!css?modules&importLoaders=1&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
+        loader: 'style!css'
       }, {
         test: /\.scss$/,
         loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap'

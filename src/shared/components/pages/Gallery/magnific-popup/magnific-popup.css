@@ -1,5 +1,4 @@
 /* Magnific Popup CSS */
-:global {
 
 .mfp-bg {
   top: 0;
@@ -351,5 +350,3 @@ img.mfp-img {
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px; } }
-
-}
