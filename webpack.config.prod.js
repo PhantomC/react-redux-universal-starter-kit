@@ -8,8 +8,6 @@ var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
 
 module.exports = {
-
-  devtool: 'source-map',
   
   entry: [
     'bootstrap-loader',
