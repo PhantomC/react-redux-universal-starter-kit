@@ -70,7 +70,7 @@ export default function(req, res) {
             <meta name="viewport" content="width=device-width, initial-scale=1">
             ${head.title.toString()}
             ${head.meta.toString()}
-            <link rel="stylesheet" href="${assets.main.css}" />
+            ${assets.main.css ? '<link rel="stylesheet" href="' + assets.main.css + '" />' : ''}
             ${head.link.toString()}
           </head>
           <body>

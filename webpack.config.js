@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 
 var AssetsPlugin = require('assets-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var autoprefixer = require('autoprefixer');
 
@@ -34,10 +33,10 @@ module.exports = {
         }
       }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss')
+        loader: 'style!css?modules&importLoaders=1&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
       }, {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap')
+        loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap'
       }, {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "url?limit=10000"
@@ -60,9 +59,6 @@ module.exports = {
       filename: 'assets.json',
       path: path.join(__dirname, 'static', 'build'),
       prettyPrint: true
-    }),
-    new ExtractTextPlugin('[name].css', {
-      allChunks: true
     })
   ],
 
