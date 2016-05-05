@@ -6,7 +6,7 @@ import Helmet from 'react-helmet';
 import ArticleList from '../../partials/ArticleList';
 import ArticleContent from '../../partials/ArticleContent';
 
-import './styles.css';
+import './styles.scss';
 
 export default class Entry extends Component {
 

@@ -3,7 +3,7 @@ import React from 'react';
 import Nav from '../../../redux/containers/Nav';
 
 import CSSModules from 'react-css-modules';
-import styles from './styles.css';
+import styles from './styles.scss';
 
 const Header = function() {
   return (
