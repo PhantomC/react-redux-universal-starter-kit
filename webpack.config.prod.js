@@ -29,7 +29,7 @@ module.exports = {
         exclude: /node_modules/
       }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss')
+        loader: ExtractTextPlugin.extract('style', 'css')
       }, {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
