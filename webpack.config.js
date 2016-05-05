@@ -34,7 +34,7 @@ module.exports = {
         }
       }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', `css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss!sass`),
+        loader: ExtractTextPlugin.extract('style', `css?modules&importLoaders=2&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss!sass`),
         exclude: /node_modules/
       }, {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
