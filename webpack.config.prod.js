@@ -9,8 +9,6 @@ var cssnano = require('cssnano');
 
 module.exports = {
   
-  devtool: 'source-map',
-
   entry: [
     'bootstrap-loader',
     path.join(__dirname, 'src/client.js')
@@ -56,7 +54,8 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-      warnings: false
+        warnings: false,
+        sourceMap: false
       }
     }),
     new AssetsPlugin({

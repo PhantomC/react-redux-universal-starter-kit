@@ -3,8 +3,6 @@ var webpack = require('webpack');
 
 var AssetsPlugin = require('assets-webpack-plugin');
 
-var autoprefixer = require('autoprefixer');
-
 module.exports = {
 
   devtool: 'eval-cheap-module-source-map',
@@ -62,7 +60,5 @@ module.exports = {
     })
   ],
 
-  postcss: [ 
-    autoprefixer({ browsers: ['last 2 versions'] })
-  ]
+  postcss: []
 };
