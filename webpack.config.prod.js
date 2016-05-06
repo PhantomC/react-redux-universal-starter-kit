@@ -42,6 +42,11 @@ module.exports = {
       }
     ]
   },
+  
+  resolve: {
+    extensions: ['', '.json', '.js', '.jsx'],
+    root: [path.join(__dirname, 'src'), path.join(__dirname, 'node_modules')]
+  },
 
   plugins: [
     new webpack.DefinePlugin({
