@@ -9,6 +9,8 @@ var cssnano = require('cssnano');
 
 module.exports = {
   
+  devtool: 'source-map',
+
   entry: [
     'bootstrap-loader',
     path.join(__dirname, 'src/client.js')
