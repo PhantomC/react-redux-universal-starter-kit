@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import Helmet from 'react-helmet';
 
-import Header from '../Header';
-import Footer from '../Footer';
+import Header from 'shared/components/layouts/Header';
+import Footer from 'shared/components/layouts/Footer';
 
 import CSSModules from 'react-css-modules';
 import styles from './styles.scss';

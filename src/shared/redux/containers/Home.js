@@ -1,7 +1,7 @@
-import * as articleActions from '../actions/articleActions';
+import * as articleActions from 'shared/redux/actions/articleActions';
 import { connect } from 'react-redux';
 
-import Home from '../../components/pages/Home';
+import Home from 'shared/components/pages/Home';
 
 function mapStateToProps(state) {
   return {

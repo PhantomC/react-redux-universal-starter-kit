@@ -5,14 +5,14 @@ import Helmet from 'react-helmet';
 import reactCookie from 'react-cookie';
 
 import { match, RouterContext } from 'react-router';
-import getRoutes from '../shared/routes';
+import getRoutes from 'shared/routes';
 
-import prefetchComponentData from '../shared/utils/prefetchComponentData';
+import prefetchComponentData from 'shared/utils/prefetchComponentData';
 
 import { Provider } from 'react-redux';
 
-import createStore from '../shared/redux/store/createStore';
-import { MEMBER_LOAD_AUTH } from '../shared/constants/actionTypes';
+import createStore from 'shared/redux/store/createStore';
+import { MEMBER_LOAD_AUTH } from 'shared/constants/actionTypes';
 
 export default function(req, res) {
   

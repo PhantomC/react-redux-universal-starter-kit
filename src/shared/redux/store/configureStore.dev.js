@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 
-import rootReducer from '../reducers';
-import promiseResolver from '../middlewares/promiseResolver';
-import authenticationMiddleware from '../middlewares/authenticationMiddleware';
-import DevTools from '../../components/partials/DevTools';
+import rootReducer from 'shared/redux/reducers';
+import promiseResolver from 'shared/redux/middlewares/promiseResolver';
+import authenticationMiddleware from 'shared/redux/middlewares/authenticationMiddleware';
+import DevTools from 'shared/components/partials/DevTools';
 
 const enhancer = compose(
   applyMiddleware(promiseResolver, authenticationMiddleware),
@@ -13,8 +13,8 @@ const enhancer = compose(
 export default function(initialState) {
   const store = createStore(rootReducer, initialState, enhancer);
   if (module.hot) {
-    module.hot.accept('../reducers', () =>
-      store.replaceReducer(require('../reducers'))
+    module.hot.accept('shared/redux/reducers', () =>
+      store.replaceReducer(require('shared/redux/reducers'))
     );
   }
 

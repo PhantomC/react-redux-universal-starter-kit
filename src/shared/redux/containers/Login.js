@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import * as memberActions from '../actions/memberActions';
+import * as memberActions from 'shared/redux/actions/memberActions';
 
-import Login from '../../components/pages/Login';
+import Login from 'shared/components/pages/Login';
 
 function mapStateToProps(state) {
   return {

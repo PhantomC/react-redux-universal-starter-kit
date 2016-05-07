@@ -2,11 +2,11 @@ import {
   MEMBER_LOGIN, 
   MEMBER_LOAD_AUTH, 
   MEMBER_LOGOUT 
-} from '../../constants/actionTypes';
+} from 'shared/constants/actionTypes';
 
 import jwt from 'jsonwebtoken';
 import reactCookie from 'react-cookie';
-import { AUTH_TOKEN } from '../../constants/cookieNames';
+import { AUTH_TOKEN } from 'shared/constants/cookieNames';
 
 export default store => next => action => {
   const { type, callback } = action;

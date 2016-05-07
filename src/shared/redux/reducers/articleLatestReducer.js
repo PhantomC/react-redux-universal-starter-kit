@@ -2,7 +2,7 @@ import {
   ARTICLE_GET_LATEST, 
   ARTICLE_GET_SEARCH_RESULTS,
   ARTICLE_DELETE_BY_ID
-} from '../../constants/actionTypes';
+} from 'shared/constants/actionTypes';
 
 export default function(state = [], action) {
   switch (action.type) {

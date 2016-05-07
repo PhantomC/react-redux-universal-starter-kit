@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 
-import * as articleActions from '../actions/articleActions';
-import * as performanceActions from '../actions/performanceActions';
+import * as articleActions from 'shared/redux/actions/articleActions';
+import * as performanceActions from 'shared/redux/actions/performanceActions';
 
-import Performance from '../../components/pages/Performance';
+import Performance from 'shared/components/pages/Performance';
 
 function mapStateToProps(state) {
   return {

@@ -3,8 +3,8 @@ import { mount } from 'enzyme';
 import chai, { expect } from 'chai';
 import spies from 'chai-spies';
 
-import Performance from '../../components/pages/Performance';
-import Article from '../../components/pages/Performance/Article';
+import Performance from 'shared/components/pages/Performance';
+import Article from 'shared/components/pages/Performance/Article';
 
 chai.use(spies);
 

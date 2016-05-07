@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Article from '../Article';
+import Article from 'shared/components/partials/Article';
 
 export default function(props) {
   return (

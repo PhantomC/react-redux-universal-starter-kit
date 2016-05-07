@@ -1,4 +1,4 @@
-import { CONTACT_SAVE } from '../../constants/actionTypes';
+import { CONTACT_SAVE } from 'shared/constants/actionTypes';
 
 export function saveContactFormData(data) {
   return {

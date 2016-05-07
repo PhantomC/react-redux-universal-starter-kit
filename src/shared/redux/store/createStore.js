@@ -1,4 +1,4 @@
-import config from '../../configs';
+import config from 'shared/configs';
 
 if (config.isProduction) {
   module.exports = require('./configureStore.prod');

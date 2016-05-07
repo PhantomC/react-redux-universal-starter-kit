@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 
-import LoginForm from '../../partials/LoginForm';
+import LoginForm from 'shared/components/partials/LoginForm';
 
 export default class Login extends Component {
 

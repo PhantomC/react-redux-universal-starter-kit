@@ -1,13 +1,13 @@
-import config from '../shared/configs';
+import config from 'shared/configs';
 
 import express from 'express';
 import jsonServer from 'json-server';
-import mockData from './mockData';
+import mockData from 'server/mockData';
 
 import webpack from 'webpack';
 import webpackConfig from '../../webpack.config.js';
-import serverRendering from './renderer';
-import routes from './routes';
+import serverRendering from 'server/renderer';
+import routes from 'server/routes';
 
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
