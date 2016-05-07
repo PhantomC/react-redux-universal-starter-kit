@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Helmet from 'react-helmet';
+import CSSModules from 'react-css-modules';
 
 import ArticleList from 'shared/components/partials/ArticleList';
 import ArticleContent from 'shared/components/partials/ArticleContent';
 
-import './styles.scss';
+import styles from './styles.scss';
 
-export default class Entry extends Component {
+class Entry extends Component {
 
   componentDidMount() {
     if (this.props.articleActive.data.id != this.props.params.id) {
@@ -41,10 +42,10 @@ export default class Entry extends Component {
         transitionAppear={ true }
         transitionName={ this.transitionName }
         transitionAppearTimeout={ 500 }
-        transitionEnterTimeout={ 1000 }
-        transitionLeaveTimeout={ 1000 }
+        transitionEnterTimeout={ 500 }
+        transitionLeaveTimeout={ 500 }
       >
-        <div key={this.props.location.pathname}>
+        <div styleName="container" key={this.props.location.pathname}>
           <Helmet 
             title={ this.props.articleActive.data.title }
             meta={[
@@ -54,14 +55,18 @@ export default class Entry extends Component {
               }
             ]} 
           />
-          <div className="col-md-8">
-            { this.renderArticle() }
-          </div>
-          <div className="col-md-4">
-            <ArticleList articles={this.props.articleActive.related} />
+          <div styleName="body">
+            <div className="col-md-8">
+              { this.renderArticle() }
+            </div>
+            <div className="col-md-4">
+              <ArticleList articles={this.props.articleActive.related} />
+            </div>
           </div>
         </div>
       </ReactCSSTransitionGroup>
     );
   }
 }
+
+export default CSSModules(Entry, styles);

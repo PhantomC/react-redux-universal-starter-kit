@@ -1,56 +1,61 @@
+.container {
+  position: relative;
+}
+
+.body {
+  position: absolute;
+  top: 0;
+  background: white;
+}
+
 :global {
-	
-	.default-appear {
+  
+  .default-appear {
 
-	}
-	.default-appear.default-appear-active {
+  }
+  .default-appear.default-appear-active {
 
-	}
-	.default-enter {
-	  
-	}
-	.default-enter.default-enter-active {
-	  
-	}
-	.default-leave {
-	  
-	}
-	.default-leave.default-leave-active {
-	 
-	}
+  }
+  .default-enter {
+    
+  }
+  .default-enter.default-enter-active {
+    
+  }
+  .default-leave {
+    
+  }
+  .default-leave.default-leave-active {
+   
+  }
 
 
-	.slide-appear {
-	  	transition: opacity .5s ease-in;
-	  	opacity: 0;
-	}
-	.slide-appear.slide-appear-active {
-	  	opacity: 1;
-	}
-	.slide-enter {
-	  	opacity: 0;
-	    transform: translate(100vw, 0);
-	    transform: translate3d(100vw, 0, 0);
-	}
-	.slide-enter.slide-enter-active {
-	  	opacity: 1;
-		transform: translate(0, 0);
-		transform: translate3d(0, 0, 0);
-		transition-property: transform, opacity;
-		transition-duration: 1s;
-		transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
-	}
-	.slide-leave {
-	  	opacity: 1;
-		transform: translate(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-		transition-property: transform, opacity;
-		transition-duration: 1s;
-		transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
-	}
-	.slide-leave.slideUp-leave-active {
-	  	opacity: 0;
-		transform: translate(-100vw, 0);
-		transform: translate3d(-100vw, 0, 0);
-	}
+  .slide-appear {
+
+  }
+  .slide-appear.slide-appear-active {
+
+  }
+
+
+  .slide-enter {
+    z-index: 1;
+    transform: translate(0, 100vh);
+    transform: translate3d(0, 100vh, 0);
+  }
+  .slide-enter.slide-enter-active {
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+    transition-property: transform, opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+  }
+
+
+  .slide-leave {
+    
+  }
+  .slide-leave.slideUp-leave-active {
+   
+  }
 }
