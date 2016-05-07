@@ -4,7 +4,7 @@ require('es6-promise').polyfill();
 import 'isomorphic-fetch';
 
 import reactCookie from 'react-cookie';
-import { AUTH_TOKEN } from '../../constants/cookieNames';
+import { AUTH_TOKEN } from 'shared/constants/cookieNames';
 
 export const apiURL = `http://${config.apiHost}${config.apiPort !== 80 ? ':' + config.apiPort : ''}/api`;
 

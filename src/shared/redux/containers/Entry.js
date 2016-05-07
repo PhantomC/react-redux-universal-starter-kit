@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import * as articleActions from '../actions/articleActions';
+import * as articleActions from 'shared/redux/actions/articleActions';
 
-import Entry from '../../components/pages/Entry';
+import Entry from 'shared/components/pages/Entry';
 
 function mapStateToProps(state) {
   return {

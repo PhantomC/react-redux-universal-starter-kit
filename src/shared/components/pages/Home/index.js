@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Search from '../../partials/Search';
-import ArticleList from '../../partials/ArticleList';
+import Search from 'shared/components/partials/Search';
+import ArticleList from 'shared/components/partials/ArticleList';
 
 export default class Home extends Component {
 

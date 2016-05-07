@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
-import ArticleList from '../../components/partials/ArticleList';
-import Article from '../../components/partials/Article';
+import ArticleList from 'shared/components/partials/ArticleList';
+import Article from 'shared/components/partials/Article';
 
 describe('<ArticleList />', () => {
   

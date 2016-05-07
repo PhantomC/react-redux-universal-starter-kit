@@ -16,23 +16,30 @@
     "start": {
       "command": "node .",
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "NODE_PATH": "./src"
       }
     },
     "build": {
       "command": "webpack --config ./webpack.config.prod.js",
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "NODE_PATH": "./src"
       }
     },
     "dev": {
       "command": "node .",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "NODE_PATH": "./src"
       }
     },
     "test": {
-      "command": "mocha --compilers js:babel-register --require src/shared/tests/setup.js src/shared/tests/**/*-test.js"
+      "command": "mocha --compilers js:babel-register --require src/shared/tests/setup.js src/shared/tests/**/*-test.js",
+      "env": {
+        "NODE_ENV": "development",
+        "NODE_PATH": "./src"
+      }
     }
   },
   "repository": {

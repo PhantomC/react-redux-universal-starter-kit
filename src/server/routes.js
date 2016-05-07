@@ -1,8 +1,8 @@
 import express from 'express';
 import expressJwt from 'express-jwt';
 
-import * as Authentication from './controllers/authentication';
-import * as Member from './controllers/member';
+import * as Authentication from 'server/controllers/authentication';
+import * as Member from 'server/controllers/member';
 
 const router = express.Router();
 

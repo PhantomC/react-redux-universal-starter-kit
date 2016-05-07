@@ -1,7 +1,7 @@
 import { 
   MEMBER_LOGIN, 
   MEMBER_LOGOUT
-} from '../../constants/actionTypes';
+} from 'shared/constants/actionTypes';
 
 const initialState = {
   isAuthenticated: false,

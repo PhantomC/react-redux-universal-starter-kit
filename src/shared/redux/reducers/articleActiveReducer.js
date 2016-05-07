@@ -4,7 +4,7 @@ import {
   ARTICLE_GET_LATEST, 
   ARTICLE_GET_BY_ID,
   ARTICLE_GET_RELATED_ARTICLES
-} from '../../constants/actionTypes';
+} from 'shared/constants/actionTypes';
 
 const initialState = {
   error: false,

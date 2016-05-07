@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import * as contactActions from '../actions/contactActions';
+import * as contactActions from 'shared/redux/actions/contactActions';
 
-import Contact from '../../components/pages/Contact';
+import Contact from 'shared/components/pages/Contact';
 
 function mapStateToProps(state) {
   return {

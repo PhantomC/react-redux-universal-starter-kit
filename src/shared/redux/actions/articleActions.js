@@ -3,7 +3,7 @@ import {
   ARTICLE_GET_SEARCH_RESULTS, 
   ARTICLE_GET_BY_ID,
   ARTICLE_GET_RELATED_ARTICLES
-} from '../../constants/actionTypes';
+} from 'shared/constants/actionTypes';
 
 export function getArticleLatest(limit = 20) {
   return {

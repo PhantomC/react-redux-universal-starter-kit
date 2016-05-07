@@ -2,7 +2,7 @@ import {
   MEMBER_LOGIN, 
   MEMBER_LOGOUT,
   MEMBER_VIEW_PROFILE
-} from '../../constants/actionTypes';
+} from 'shared/constants/actionTypes';
 
 export function memberLogin(data) {
   return {
