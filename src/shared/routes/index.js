@@ -53,13 +53,6 @@ export default ({ dispatch, getState }) => {
         },
         childRoutes: [
           {
-            path: 'about',
-            getComponent: (location, cb) => {
-              require.ensure([], (require) => {
-                cb(null, require('shared/components/pages/About'));
-              }, 'about');
-            }               
-          }, {
             path: 'contact',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
