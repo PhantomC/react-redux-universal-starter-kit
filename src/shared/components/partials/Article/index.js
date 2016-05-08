@@ -14,7 +14,7 @@ const Article = function(props) {
           <div className="col-xs-1">
             <img styleName="avatar" src={article.author.avatar} alt=""/>
           </div>
-          <div className="col-sx-11">
+          <div className="col-xs-11">
             <span styleName="author">{article.author.name}</span>
           </div>
         </div>

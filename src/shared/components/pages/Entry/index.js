@@ -7,7 +7,7 @@ import CSSModules from 'react-css-modules';
 import ArticleList from 'shared/components/partials/ArticleList';
 import ArticleContent from 'shared/components/partials/ArticleContent';
 
-import styles from './styles.scss';
+import styles from './Entry.scss';
 
 class Entry extends Component {
 
@@ -56,10 +56,10 @@ class Entry extends Component {
             ]} 
           />
           <div styleName="body">
-            <div className="col-md-8">
+            <div styleName="content">
               { this.renderArticle() }
             </div>
-            <div className="col-md-4">
+            <div styleName="related">
               <ArticleList articles={this.props.articleActive.related} />
             </div>
           </div>
