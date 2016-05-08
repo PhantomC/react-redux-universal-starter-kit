@@ -5,7 +5,8 @@ import Home from 'shared/components/pages/Home';
 
 function mapStateToProps(state) {
   return {
-    articleLatest: state.articleLatest
+    articleLatest: state.articleLatest,
+    member: state.member
   };
 }
 
