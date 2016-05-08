@@ -24,7 +24,6 @@ class Nav extends Component {
           <li><Link to="/">React Redux Universal Starter Kit</Link></li>
           <li><Link to="/gallery">Gallery</Link></li>
           <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/performance">Performance Tools</Link></li>
 
           {this.renderMemberSection()}
 
