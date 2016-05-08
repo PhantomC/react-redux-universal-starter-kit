@@ -4,9 +4,14 @@
 	}
 	body {
 		font-size: 1.5rem;
+		background: #fafafa;
 	}
 	a {
-		color: #777;
+		color: #444;
+		text-decoration: none;
+		&:hover {
+			text-decoration: none;
+		}
 	}
 	img {
 		max-width: 100%;

@@ -14,7 +14,7 @@ export default class Home extends Component {
       <div>
         <div className="col-md-8">
           <Search getSearchResults={this.props.getSearchResults} />
-          <ArticleList articles={ this.props.articleLatest } addClass="col-xs-6 col-sm-4" />
+          <ArticleList articles={ this.props.articleLatest } addClass="col-xs-12" />
         </div>
         <div className="col-md-4">
           Sidebar

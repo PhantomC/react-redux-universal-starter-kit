@@ -3,21 +3,27 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import CSSModules from 'react-css-modules';
-import styles from './styles.scss';
+import styles from './Article.scss';
 
 const Article = function(props) {
+  const { article } = props;
   return (
     <article styleName="container" className={props.addClass}>
-      <div className="image">
-        <Link to={{pathname: `/articles/${props.article.id}`, state: {transition: 'slide'}}}>
-          <img src="http://placehold.it/400x200" alt="" />
-        </Link>
-      </div>
-      <div className="caption">
+      <header>
+        <div className="row">
+          <div className="col-xs-1">
+            <img styleName="avatar" src={article.author.avatar} alt=""/>
+          </div>
+          <div className="col-sx-11">
+            <span styleName="author">{article.author.name}</span>
+          </div>
+        </div>
         <h2 styleName="title">
-          <Link to={{pathname: `/articles/${props.article.id}`, state: {transition: 'slide'}}}>{ props.article.title }</Link>
+          <Link to={{pathname: `/articles/${article.id}`, state: {transition: 'slide'}}}>{article.title}</Link>
         </h2>
-        <p>Description ...</p>
+      </header>
+      <div styleName="excerpt">
+        <p>{article.excerpt}</p>
       </div>
     </article>
   );

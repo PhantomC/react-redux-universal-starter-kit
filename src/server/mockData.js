@@ -17,6 +17,7 @@ const generateArticles = () => {
     articles.push({
       id: i + 1,
       title: title,
+      excerpt: faker.lorem.paragraphs(1),
       body: getFakeBody(8),
       author: {
         name: faker.name.findName(),
