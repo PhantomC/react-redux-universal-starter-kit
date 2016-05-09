@@ -1,0 +1,12 @@
+@import '../../../styles/variables';
+
+.logo {
+	text-transform: uppercase;
+	font-weight: 700;
+	&, & a {
+		color: $primaryColor;
+	}
+	span {
+		color: $secondColor;
+	}
+}

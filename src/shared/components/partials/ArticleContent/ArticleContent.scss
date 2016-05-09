@@ -1,3 +1,5 @@
+@import '../../../styles/variables';
+
 .container {
 	padding: 15px;
 	font-size: 2rem;
@@ -6,4 +8,9 @@
 .title {
 	margin: 0;
 	padding: 0 0 15px;
+	color: $primaryColor;
+}
+
+.content {
+	color: $textColor;
 }

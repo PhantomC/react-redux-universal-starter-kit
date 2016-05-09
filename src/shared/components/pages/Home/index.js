@@ -23,13 +23,10 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <div className="col-md-8">
+        <div className="col-md-8 col-md-push-2">
           <Search getSearchResults={this.props.getSearchResults} />
           {this.props.member.isAuthenticated ? <PostForm onPostFormSubmit={this.onPostFormSubmit} /> : null}
           <ArticleList articles={ this.props.articleLatest } addClass="col-xs-12" />
-        </div>
-        <div className="col-md-4">
-          Sidebar
         </div>
       </div>
     );
