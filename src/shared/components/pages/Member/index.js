@@ -33,10 +33,10 @@ export default class Member extends Component {
       <div>
         <div className="row">
           <div className="col-md-2">
-            <img src={this.props.member.user.profile_pic} alt={this.props.member.user.username}/>
+            <img src={this.props.member.user.profile_pic} alt={this.props.member.user.name}/>
           </div>
         </div>
-        <p>Hello! {this.props.member.user.username} ({this.props.member.user.email})</p>
+        <p>Hello! {this.props.member.user.name} ({this.props.member.user.email})</p>
         <p><a href="#" onClick={this.handleProfileLinkClick}>View Profile</a></p>
         <button onClick={this.handleLogoutButton}>Logout</button>
       </div>

@@ -11,7 +11,7 @@ const generateArticles = () => {
     return body;
   } 
 
-  for (let i = 0; i < 500; ++i) {
+  for (let i = 0; i < 10; ++i) {
     const title = faker.lorem.sentence();
 
     articles.push({

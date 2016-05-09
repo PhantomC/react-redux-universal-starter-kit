@@ -4,6 +4,12 @@ import Search from 'shared/components/partials/Search';
 import ArticleList from 'shared/components/partials/ArticleList';
 import PostForm from 'shared/components/partials/PostForm';
 
+import jwt from 'jsonwebtoken';
+import reactCookie from 'react-cookie';
+import { AUTH_TOKEN } from 'shared/constants/cookieNames';
+
+import * as Helpers from 'shared/utils/helper';
+
 export default class Home extends Component {
 
   constructor(props) {
@@ -16,8 +22,18 @@ export default class Home extends Component {
   }
 
   onPostFormSubmit(data) {
-    console.log(data);
-    // this.props.savePostFormData(data);
+    const token = reactCookie.load(AUTH_TOKEN);
+    const user = jwt.decode(token);
+    data = {
+      ...data,
+      excerpt: data.body,
+      author: {
+        name: user.name,
+        avatar: user.profile_pic
+      },
+      date: Helpers.getCurrentUTCTime()
+    }
+    this.props.createNewArticle(data);
   }
 
   render() {

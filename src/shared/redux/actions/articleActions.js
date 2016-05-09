@@ -2,14 +2,15 @@ import {
   ARTICLE_GET_LATEST, 
   ARTICLE_GET_SEARCH_RESULTS, 
   ARTICLE_GET_BY_ID,
-  ARTICLE_GET_RELATED_ARTICLES
+  ARTICLE_GET_RELATED_ARTICLES,
+  ARTICLE_CREATE
 } from 'shared/constants/actionTypes';
 
 export function getArticleLatest(limit = 20) {
   return {
     type: ARTICLE_GET_LATEST,
     request: {
-      path: `/articles?_limit=${limit}`
+      path: `/articles?_sort=id&_order=DESC&_limit=${limit}`
     }
   };
 }
@@ -46,5 +47,22 @@ export function getRelatedArticles(keyword) {
   return {
     ...getSearchResults(keyword),
     type: ARTICLE_GET_RELATED_ARTICLES
+  };
+}
+
+export function createNewArticle(data) {
+  return {
+    type: ARTICLE_CREATE,
+    request: {
+      path: '/articles',
+      options: {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+    }
   };
 }
