@@ -10,7 +10,7 @@ export function getArticleLatest(limit = 20) {
   return {
     type: ARTICLE_GET_LATEST,
     request: {
-      path: `/articles?_limit=${limit}`
+      path: `/articles?_sort=id&_order=DESC&_limit=${limit}`
     }
   };
 }

@@ -7,6 +7,7 @@ const fakerAdmin = {
   id: 1,
   username: 'admin',
   password: 'admin',
+  name: faker.name.findName(),
   email: faker.internet.email(),
   profile_pic: faker.image.avatar()
 };

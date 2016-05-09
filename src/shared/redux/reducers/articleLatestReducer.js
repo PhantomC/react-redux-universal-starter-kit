@@ -15,7 +15,10 @@ export default function(state = [], action) {
         return article.id !== action.id;
       });
     case ARTICLE_CREATE:
-      return state.concat([action.data]);
+      return [
+        action.data,
+        ...state
+      ];
     default:
       return state;
   }
