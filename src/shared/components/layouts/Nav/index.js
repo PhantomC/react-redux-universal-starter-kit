@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import CSSModules from 'react-css-modules';
-import styles from './styles.scss';
+import styles from './Nav.scss';
 
 class Nav extends Component {
   renderMemberSection() {
@@ -24,7 +24,6 @@ class Nav extends Component {
           <li><Link to="/">React Redux Universal Starter Kit</Link></li>
           <li><Link to="/gallery">Gallery</Link></li>
           <li><Link to="/contact">Contact</Link></li>
-          <li><Link to="/performance">Performance Tools</Link></li>
 
           {this.renderMemberSection()}
 
