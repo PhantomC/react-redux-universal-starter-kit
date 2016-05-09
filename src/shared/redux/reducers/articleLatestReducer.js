@@ -1,7 +1,8 @@
 import { 
   ARTICLE_GET_LATEST, 
   ARTICLE_GET_SEARCH_RESULTS,
-  ARTICLE_DELETE_BY_ID
+  ARTICLE_DELETE_BY_ID,
+  ARTICLE_CREATE
 } from 'shared/constants/actionTypes';
 
 export default function(state = [], action) {
@@ -13,6 +14,8 @@ export default function(state = [], action) {
       return state.filter(article => {
         return article.id !== action.id;
       });
+    case ARTICLE_CREATE:
+      return state.concat([action.data]);
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import { reduxForm } from 'redux-form';
 
 class PostForm extends Component {
   render() {
-    const { fields: { title, content }, handleSubmit } = this.props;
+    const { fields: { title, body, tags }, handleSubmit } = this.props;
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit(this.props.onPostFormSubmit) }>
         <div className={`form-group${title.touched && title.invalid ? ' has-danger' : '' }`}>
@@ -15,11 +15,20 @@ class PostForm extends Component {
             </div>
           </div>
         </div>
-        <div className={`form-group${content.touched && content.invalid ? ' has-danger' : '' }`}>
-          <label className="col-md-2 control-label">Content</label>
+        <div className={`form-group${body.touched && body.invalid ? ' has-danger' : '' }`}>
+          <label className="col-md-2 control-label">Body</label>
           <div className="col-md-4">
-            <textarea placeholder="content" rows="3" className="form-control" {...content} />
-            { content.touched ? content.error : null }
+            <textarea placeholder="Body" rows="3" className="form-control" {...body} />
+            { body.touched ? body.error : null }
+          </div>
+        </div>
+        <div className={`form-group${tags.touched && tags.invalid ? ' has-danger' : '' }`}>
+          <label className="col-md-2 control-label">Tags</label>
+          <div className="col-md-4">
+            <input type="text" placeholder="Tags" className="form-control" {...tags} />
+            <div className="text-help">
+              { tags.touched ? tags.error : null }
+            </div>
           </div>
         </div>
         <div className="form-group">
@@ -44,14 +53,19 @@ function validate(values) {
     errors.title = 'Please enter title';
   }
 
-  if (!values.content) {
-    errors.content = 'Please enter content';
+  if (!values.body) {
+    errors.body = 'Please enter body';
   }
+
+  if (!values.tags) {
+    errors.tags = 'Please enter tags';
+  }
+
   return errors;
 }
 
 export default reduxForm({
   form: 'postForm',
-  fields: ['title', 'content'],
+  fields: ['title', 'body', 'tags'],
   validate
 })(PostForm);

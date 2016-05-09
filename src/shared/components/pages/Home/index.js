@@ -16,8 +16,16 @@ export default class Home extends Component {
   }
 
   onPostFormSubmit(data) {
-    console.log(data);
-    // this.props.savePostFormData(data);
+    data = {
+      ...data,
+      excerpt: '',
+      author: {
+        name: 'Suranart Niamcome',
+        avatar: ''
+      },
+      date: ''
+    }
+    this.props.createNewArticle(data);
   }
 
   render() {

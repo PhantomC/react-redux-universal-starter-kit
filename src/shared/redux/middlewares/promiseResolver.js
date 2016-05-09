@@ -42,6 +42,7 @@ export default store => next => action => {
   const token = reactCookie.load(AUTH_TOKEN);
   if (token) {
     options.headers = {
+      ...options.headers,
       'Authorization': `Bearer ${token}`
     };
   }
