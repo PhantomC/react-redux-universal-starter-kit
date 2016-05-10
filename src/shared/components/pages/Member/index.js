@@ -54,7 +54,7 @@ export default class Member extends Component {
       <div>
         <Helmet title="Member" />
         <div className="col-md-8">
-          <ArticleList articles={this.props.member.myArticles} />
+          {this.props.member.myArticles.length > 0 ? <ArticleList articles={this.props.member.myArticles} /> : <p>You haven't written yet.</p>}
         </div>
         <div className="col-md-4">
           {this.renderMemberProfile()}
