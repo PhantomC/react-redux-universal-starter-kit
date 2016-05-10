@@ -1,15 +1,13 @@
-import faker from 'faker';
 import jwt from 'jsonwebtoken';
 
 const secretKey = 'your secret key';
 
-const fakerAdmin = {
+const admin = {
   id: 1,
   username: 'admin',
   password: 'admin',
-  name: faker.name.findName(),
-  email: faker.internet.email(),
-  avatar: faker.image.avatar()
+  name: 'Suranart Niamcome',
+  avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/alxleroydeval/128.jpg'
 };
 
 export function login(req, res, next) {
@@ -22,8 +20,9 @@ export function login(req, res, next) {
       });
   }
 
-  if (username == fakerAdmin.username && password == fakerAdmin.password) {
-    const user = { ...fakerAdmin };
+  if (username == admin.username && password == admin.password) {
+    const user = { ...admin };
+    delete user.username;
     delete user.password;
 
     const token = jwt.sign(user, secretKey);

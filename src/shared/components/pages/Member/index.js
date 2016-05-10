@@ -36,7 +36,7 @@ export default class Member extends Component {
             <img src={this.props.member.user.avatar} alt={this.props.member.user.name}/>
           </div>
         </div>
-        <p>Hello! {this.props.member.user.name} ({this.props.member.user.email})</p>
+        <p>Hello! {this.props.member.user.name}</p>
         <p><a href="#" onClick={this.handleProfileLinkClick}>View Profile</a></p>
         <button onClick={this.handleLogoutButton}>Logout</button>
       </div>

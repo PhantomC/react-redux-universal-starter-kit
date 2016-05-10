@@ -15,7 +15,7 @@ export function getArticleLatest(limit = 20) {
   return {
     type: ARTICLE_GET_LATEST,
     request: {
-      path: `/articles?_sort=id&_order=DESC&_limit=${limit}`
+      path: `/articles?_expand=member&_sort=id&_order=DESC&_limit=${limit}`
     }
   };
 }
@@ -24,7 +24,7 @@ export function getSearchResults(keyword, limit = 20) {
   return {
     type: ARTICLE_GET_SEARCH_RESULTS,
     request: {
-      path: `/articles?q=${keyword}&_sort=id&_order=DESC&_limit=${limit}`
+      path: `/articles?q=${keyword}&_expand=member&_sort=id&_order=DESC&_limit=${limit}`
     }
   };
 }
@@ -33,7 +33,7 @@ export function getArticleById(id) {
   return {
     type: ARTICLE_GET_BY_ID,
     request: {
-      path: `/articles/${id}`
+      path: `/articles/${id}?_expand=member`
     }
   };
 }
@@ -57,14 +57,11 @@ export function getRelatedArticles(keyword) {
 
 export function createNewArticle(data) {
   const token = reactCookie.load(AUTH_TOKEN);
-  const user = jwt.decode(token);
+  const { memberId } = jwt.decode(token);
   data = {
     ...data,
     excerpt: data.body,
-    author: {
-      name: user.name,
-      avatar: user.avatar
-    }
+    memberId
   }
   return {
     type: ARTICLE_CREATE,
