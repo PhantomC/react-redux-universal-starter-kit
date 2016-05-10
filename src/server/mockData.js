@@ -23,8 +23,7 @@ const generateArticles = () => {
         name: faker.name.findName(),
         avatar: faker.image.avatar(),
       },
-      tags: title.replace('.', '').split(' '),
-      date: faker.date.past()
+      tags: title.replace('.', '').split(' ')
     });
   }
 

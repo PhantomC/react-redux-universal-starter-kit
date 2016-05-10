@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import configureMockStore from 'redux-mock-store';
 import nock from 'nock';
 
-import promiseResolver, { apiURL } from 'shared/redux/middlewares/promiseResolver';
+import apiMiddleware, { apiURL } from 'shared/redux/middlewares/apiMiddleware';
 
 import { 
   ARTICLE_GET_LATEST, 
@@ -13,7 +13,7 @@ import {
 
 import * as articleActions from 'shared/redux/actions/articleActions';
 
-const middlewares = [promiseResolver];
+const middlewares = [apiMiddleware];
 const mockStore = configureMockStore(middlewares);
 
 describe('Promise Resolver Middleware', () => {

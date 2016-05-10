@@ -1,4 +1,4 @@
-import config from '../../configs';
+import config from 'shared/configs';
 
 require('es6-promise').polyfill();
 import 'isomorphic-fetch';
@@ -38,6 +38,19 @@ export default store => next => action => {
   const FAIL = `${type}_FAIL`;
 
   next({...rest, type: REQUEST });
+
+  if (
+      options.method === 'POST' ||
+      options.method === 'PUT' ||
+      options.method === 'PATCH'
+    ) {
+    options.headers = {
+      ...options.headers,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+    options.body = JSON.stringify(options.body);
+  }
 
   const token = reactCookie.load(AUTH_TOKEN);
   if (token) {
