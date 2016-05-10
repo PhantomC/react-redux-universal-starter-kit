@@ -8,7 +8,7 @@ var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
 
 module.exports = {
-  
+
   entry: [
     'bootstrap-loader',
     path.join(__dirname, 'src/client.js')
@@ -32,7 +32,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style', 'css')
       }, {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass!sass-resources')
       }, {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "url?limit=10000"
@@ -42,11 +42,11 @@ module.exports = {
       }
     ]
   },
-  
+
   resolve: {
     extensions: ['', '.json', '.js', '.jsx'],
     root: [
-      path.join(__dirname, 'src'), 
+      path.join(__dirname, 'src'),
       path.join(__dirname, 'node_modules')
     ]
   },
@@ -75,8 +75,14 @@ module.exports = {
     })
   ],
 
-  postcss: [ 
+  postcss: [
     autoprefixer({ browsers: ['last 2 versions'] }),
     cssnano()
+  ],
+
+  sassResources: [
+    './src/shared/styles/variables.scss',
+    './src/shared/styles/mixins.scss'
   ]
+
 };

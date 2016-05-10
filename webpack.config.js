@@ -6,20 +6,20 @@ var AssetsPlugin = require('assets-webpack-plugin');
 module.exports = {
 
   devtool: 'eval-cheap-module-source-map',
-  
+
   entry: [
     'webpack-hot-middleware/client',
     'bootstrap-loader',
     path.join(__dirname, 'src/client.js')
   ],
-  
+
   output: {
     filename: '[name].js',
     path: path.join(__dirname, 'static', 'build'),
     publicPath: '/build/',
     chunkFilename: "[name].js"
   },
-  
+
   module: {
     loaders: [
       {
@@ -34,7 +34,7 @@ module.exports = {
         loader: 'style!css'
       }, {
         test: /\.scss$/,
-        loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap'
+        loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap!sass-resources'
       }, {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: "url?limit=10000"
@@ -48,7 +48,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.json', '.js', '.jsx'],
     root: [
-      path.join(__dirname, 'src'), 
+      path.join(__dirname, 'src'),
       path.join(__dirname, 'node_modules')
     ]
   },
@@ -58,7 +58,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('development'),
         'BROWSER': true
-      }       
+      }
     }),
     new webpack.HotModuleReplacementPlugin(),
     new AssetsPlugin({
@@ -68,5 +68,11 @@ module.exports = {
     })
   ],
 
-  postcss: []
+  postcss: [],
+
+  sassResources: [
+    './src/shared/styles/variables.scss',
+    './src/shared/styles/mixins.scss'
+  ]
+
 };

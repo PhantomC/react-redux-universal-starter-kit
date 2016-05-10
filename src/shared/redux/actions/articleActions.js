@@ -1,6 +1,6 @@
-import { 
-  ARTICLE_GET_LATEST, 
-  ARTICLE_GET_SEARCH_RESULTS, 
+import {
+  ARTICLE_GET_LATEST,
+  ARTICLE_GET_SEARCH_RESULTS,
   ARTICLE_GET_BY_ID,
   ARTICLE_GET_RELATED_ARTICLES,
   ARTICLE_CREATE
@@ -19,7 +19,7 @@ export function getSearchResults(keyword, limit = 20) {
   return {
     type: ARTICLE_GET_SEARCH_RESULTS,
     request: {
-      path: `/articles?q=${keyword}&_limit=${limit}`
+      path: `/articles?q=${keyword}&_sort=id&_order=DESC&_limit=${limit}`
     }
   };
 }
