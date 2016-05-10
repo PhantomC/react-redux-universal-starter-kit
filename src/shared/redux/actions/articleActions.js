@@ -1,3 +1,7 @@
+import jwt from 'jsonwebtoken';
+import reactCookie from 'react-cookie';
+import { AUTH_TOKEN } from 'shared/constants/cookieNames';
+
 import { 
   ARTICLE_GET_LATEST, 
   ARTICLE_GET_SEARCH_RESULTS, 
@@ -51,6 +55,16 @@ export function getRelatedArticles(keyword) {
 }
 
 export function createNewArticle(data) {
+  const token = reactCookie.load(AUTH_TOKEN);
+  const user = jwt.decode(token);
+  data = {
+    ...data,
+    excerpt: data.body,
+    author: {
+      name: user.name,
+      avatar: user.profile_pic
+    }
+  }
   return {
     type: ARTICLE_CREATE,
     request: {
