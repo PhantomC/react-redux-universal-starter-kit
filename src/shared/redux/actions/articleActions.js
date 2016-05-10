@@ -62,7 +62,7 @@ export function createNewArticle(data) {
     excerpt: data.body,
     author: {
       name: user.name,
-      avatar: user.profile_pic
+      avatar: user.avatar
     }
   }
   return {
@@ -71,11 +71,7 @@ export function createNewArticle(data) {
       path: '/articles',
       options: {
         method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        body: data
       }
     }
   };

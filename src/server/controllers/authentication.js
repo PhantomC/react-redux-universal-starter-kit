@@ -9,7 +9,7 @@ const fakerAdmin = {
   password: 'admin',
   name: faker.name.findName(),
   email: faker.internet.email(),
-  profile_pic: faker.image.avatar()
+  avatar: faker.image.avatar()
 };
 
 export function login(req, res, next) {

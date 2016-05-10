@@ -33,7 +33,7 @@ export default class Member extends Component {
       <div>
         <div className="row">
           <div className="col-md-2">
-            <img src={this.props.member.user.profile_pic} alt={this.props.member.user.name}/>
+            <img src={this.props.member.user.avatar} alt={this.props.member.user.name}/>
           </div>
         </div>
         <p>Hello! {this.props.member.user.name} ({this.props.member.user.email})</p>
