@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 
 import rootReducer from 'shared/redux/reducers';
-import apiResolver from 'shared/redux/middlewares/apiResolver';
+import apiMiddleware from 'shared/redux/middlewares/apiMiddleware';
 import authenticationMiddleware from 'shared/redux/middlewares/authenticationMiddleware';
 
 const enhancer = compose(
-  applyMiddleware(apiResolver, authenticationMiddleware)
+  applyMiddleware(apiMiddleware, authenticationMiddleware)
 );
 
 export default function(initialState) {
