@@ -1,12 +1,14 @@
 import { 
   MEMBER_LOGIN, 
-  MEMBER_LOGOUT
+  MEMBER_LOGOUT,
+  MEMBER_GET_MY_ARTICLES
 } from 'shared/constants/actionTypes';
 
 const initialState = {
   isAuthenticated: false,
   user: {},
-  error: null
+  error: null,
+  myArticles: []
 };
 
 export default function(state = initialState, action) {
@@ -37,6 +39,12 @@ export default function(state = initialState, action) {
 
     case MEMBER_LOGOUT:
       return initialState;
+
+    case MEMBER_GET_MY_ARTICLES:
+      return {
+        ...state,
+        myArticles: action.data
+      }
 
     default:
       return state;

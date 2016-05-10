@@ -1,12 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 
+import ArticleList from 'shared/components/partials/ArticleList';
+
 export default class Member extends Component {
 
   constructor(props, context) {
     super(props, context);
     this.handleLogoutButton = this.handleLogoutButton.bind(this);
     this.handleProfileLinkClick = this.handleProfileLinkClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.memberGetMyArticles(1);
   }
 
   componentWillUpdate(nextProps) {
@@ -48,10 +54,10 @@ export default class Member extends Component {
       <div>
         <Helmet title="Member" />
         <div className="col-md-8">
-          {this.renderMemberProfile()}
+          <ArticleList articles={this.props.member.myArticles} />
         </div>
         <div className="col-md-4">
-          Sidebar   
+          {this.renderMemberProfile()}
         </div>
       </div>
     );

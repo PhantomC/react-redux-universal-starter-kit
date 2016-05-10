@@ -1,7 +1,8 @@
 import { 
   MEMBER_LOGIN, 
   MEMBER_LOGOUT,
-  MEMBER_VIEW_PROFILE
+  MEMBER_VIEW_PROFILE,
+  MEMBER_GET_MY_ARTICLES
 } from 'shared/constants/actionTypes';
 
 export function memberLogin(data) {
@@ -31,4 +32,13 @@ export function memberViewProfile() {
       path: '/member/profile'
     }
   };
+}
+
+export function memberGetMyArticles(memberId, limit = 20) {
+  return {
+    type: MEMBER_GET_MY_ARTICLES,
+    request: {
+      path: `/members/${memberId}/articles?_expand=member&_sort=id&_order=DESC&_limit=${limit}`
+    }
+  }
 }

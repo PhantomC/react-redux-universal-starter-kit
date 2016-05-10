@@ -57,11 +57,12 @@ export function getRelatedArticles(keyword) {
 
 export function createNewArticle(data) {
   const token = reactCookie.load(AUTH_TOKEN);
-  const { memberId } = jwt.decode(token);
+  const user = jwt.decode(token);
   data = {
     ...data,
     excerpt: data.body,
-    memberId
+    memberId: user.id,
+    member: user
   }
   return {
     type: ARTICLE_CREATE,
