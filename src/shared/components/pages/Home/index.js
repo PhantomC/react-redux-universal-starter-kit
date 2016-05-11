@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Search from 'shared/components/partials/Search';
+import SearchForm from 'shared/components/partials/SearchForm';
 import ArticleList from 'shared/components/partials/Article/ArticleList';
 import PostForm from 'shared/components/partials/PostForm';
 
@@ -23,7 +23,7 @@ export default class Home extends Component {
     return (
       <div>
         <div className="col-md-8 col-md-push-2">
-          <Search getSearchResults={this.props.getSearchResults} />
+          <SearchForm getSearchResults={this.props.getSearchResults} />
           {this.props.member.isAuthenticated ? <PostForm onPostFormSubmit={this.onPostFormSubmit} /> : null}
           <ArticleList articles={ this.props.articleLatest } addClass="col-xs-12" />
         </div>
