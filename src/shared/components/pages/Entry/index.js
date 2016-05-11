@@ -4,8 +4,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Helmet from 'react-helmet';
 import CSSModules from 'react-css-modules';
 
-import ArticleList from 'shared/components/partials/ArticleList';
-import ArticleContent from 'shared/components/partials/ArticleContent';
+import ArticleList from 'shared/components/partials/Article/ArticleList';
+import ArticleContent from 'shared/components/partials/Article/ArticleContent';
 
 import styles from './Entry.scss';
 

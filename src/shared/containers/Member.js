@@ -7,5 +7,4 @@ function mapStateToProps({member}) {
   return {member};
 }
 
-
 module.exports = connect(mapStateToProps, memberActions)(Member);

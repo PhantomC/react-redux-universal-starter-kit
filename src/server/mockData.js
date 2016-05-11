@@ -11,7 +11,7 @@ const generateArticles = () => {
     return body;
   } 
 
-  for (let i = 0; i < 500; ++i) {
+  for (let i = 0; i < 10; ++i) {
     const title = faker.lorem.sentence();
 
     articles.push({
@@ -19,12 +19,8 @@ const generateArticles = () => {
       title: title,
       excerpt: faker.lorem.paragraphs(1),
       body: getFakeBody(8),
-      author: {
-        name: faker.name.findName(),
-        avatar: faker.image.avatar(),
-      },
       tags: title.replace('.', '').split(' '),
-      date: faker.date.past()
+      memberId: Math.floor((Math.random() * 3) + 2)
     });
   }
 
@@ -33,6 +29,25 @@ const generateArticles = () => {
 
 export default () => {
   return {
-    articles: generateArticles()
+    articles: generateArticles(),
+    members: [
+      {
+        id: 1,
+        name: 'Suranart Niamcome',
+        avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/alxleroydeval/128.jpg'
+      }, {
+        id: 2,
+        name: faker.name.findName(),
+        avatar: faker.image.avatar()
+      }, {
+        id: 3,
+        name: faker.name.findName(),
+        avatar: faker.image.avatar()
+      }, {
+        id: 4,
+        name: faker.name.findName(),
+        avatar: faker.image.avatar()
+      }
+    ]
   };
 };

@@ -21,7 +21,7 @@ class Nav extends Component {
     return (
       <div>
         <ul className="nav nav-pills">
-          <li><Link to="/">React Redux Universal Starter Kit</Link></li>
+          <li styleName="logo"><Link to="/">React Redux <span>Universal Starter Kit</span></Link></li>
           <li><Link to="/gallery">Gallery</Link></li>
           <li><Link to="/contact">Contact</Link></li>
 

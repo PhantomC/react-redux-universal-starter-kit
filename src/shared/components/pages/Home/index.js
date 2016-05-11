@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Search from 'shared/components/partials/Search';
-import ArticleList from 'shared/components/partials/ArticleList';
+import SearchForm from 'shared/components/partials/SearchForm';
+import ArticleList from 'shared/components/partials/Article/ArticleList';
 import PostForm from 'shared/components/partials/PostForm';
 
 export default class Home extends Component {
@@ -16,20 +16,16 @@ export default class Home extends Component {
   }
 
   onPostFormSubmit(data) {
-    console.log(data);
-    // this.props.savePostFormData(data);
+    this.props.createNewArticle(data);
   }
 
   render() {
     return (
       <div>
-        <div className="col-md-8">
-          <Search getSearchResults={this.props.getSearchResults} />
+        <div className="col-md-8 col-md-push-2">
+          <SearchForm getSearchResults={this.props.getSearchResults} />
           {this.props.member.isAuthenticated ? <PostForm onPostFormSubmit={this.onPostFormSubmit} /> : null}
           <ArticleList articles={ this.props.articleLatest } addClass="col-xs-12" />
-        </div>
-        <div className="col-md-4">
-          Sidebar
         </div>
       </div>
     );

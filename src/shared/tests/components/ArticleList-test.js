@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
-import ArticleList from 'shared/components/partials/ArticleList';
-import Article from 'shared/components/partials/Article';
+import ArticleList from 'shared/components/partials/Article/ArticleList';
+import ArticleItem from 'shared/components/partials/Article/ArticleItem';
 
 describe('<ArticleList />', () => {
   
@@ -26,10 +26,10 @@ describe('<ArticleList />', () => {
   });
 
   it('should render the correct count of data', () => {
-    expect(wrapper.find(Article)).to.have.length(2);  
+    expect(wrapper.find(ArticleItem)).to.have.length(2);  
   });
 
   it('should render the correct data', () => {
-    expect(wrapper.find(Article).at(1).props().article.id).to.eql(articles[1].id); 
+    expect(wrapper.find(ArticleItem).at(1).props().article.id).to.eql(articles[1].id); 
   });
 });

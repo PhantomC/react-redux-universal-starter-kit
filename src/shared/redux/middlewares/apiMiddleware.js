@@ -1,10 +1,10 @@
-import config from '../../configs';
+import config from 'shared/configs';
 
 require('es6-promise').polyfill();
 import 'isomorphic-fetch';
 
 import reactCookie from 'react-cookie';
-import { AUTH_TOKEN } from 'shared/constants/cookieNames';
+import { AUTH_TOKEN } from 'shared/redux/constants/cookieNames';
 
 export const apiURL = `http://${config.apiHost}${config.apiPort !== 80 ? ':' + config.apiPort : ''}/api`;
 
@@ -39,9 +39,23 @@ export default store => next => action => {
 
   next({...rest, type: REQUEST });
 
+  if (
+      options.method === 'POST' ||
+      options.method === 'PUT' ||
+      options.method === 'PATCH'
+    ) {
+    options.headers = {
+      ...options.headers,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+    options.body = JSON.stringify(options.body);
+  }
+
   const token = reactCookie.load(AUTH_TOKEN);
   if (token) {
     options.headers = {
+      ...options.headers,
       'Authorization': `Bearer ${token}`
     };
   }

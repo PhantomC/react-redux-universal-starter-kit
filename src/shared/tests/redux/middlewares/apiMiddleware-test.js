@@ -3,17 +3,13 @@ import { expect } from 'chai';
 import configureMockStore from 'redux-mock-store';
 import nock from 'nock';
 
-import promiseResolver, { apiURL } from 'shared/redux/middlewares/promiseResolver';
+import apiMiddleware, { apiURL } from 'shared/redux/middlewares/apiMiddleware';
 
-import { 
-  ARTICLE_GET_LATEST, 
-  ARTICLE_GET_BY_ID, 
-  ARTICLE_GET_RELATED_ARTICLES 
-} from 'shared/constants/actionTypes';
+import * as actionTypes from 'shared/redux/constants/actionTypes';
 
 import * as articleActions from 'shared/redux/actions/articleActions';
 
-const middlewares = [promiseResolver];
+const middlewares = [apiMiddleware];
 const mockStore = configureMockStore(middlewares);
 
 describe('Promise Resolver Middleware', () => {
@@ -35,9 +31,9 @@ describe('Promise Resolver Middleware', () => {
     ];
     const expectedActions = [
       { 
-        type: `${ARTICLE_GET_LATEST}_REQUEST` 
+        type: `${actionTypes.ARTICLE_GET_LATEST}_REQUEST` 
       }, { 
-        type: ARTICLE_GET_LATEST, 
+        type: actionTypes.ARTICLE_GET_LATEST, 
         data: expectedPayload
       }
     ];
@@ -68,14 +64,14 @@ describe('Promise Resolver Middleware', () => {
     };
     const expectedActions = [
       { 
-        type: `${ARTICLE_GET_BY_ID}_REQUEST` 
+        type: `${actionTypes.ARTICLE_GET_BY_ID}_REQUEST` 
       }, { 
-        type: ARTICLE_GET_BY_ID, 
+        type: actionTypes.ARTICLE_GET_BY_ID, 
         data: expectedPayload
       }, { 
-        type: `${ARTICLE_GET_RELATED_ARTICLES}_REQUEST`, 
+        type: `${actionTypes.ARTICLE_GET_RELATED_ARTICLES}_REQUEST`, 
       }, { 
-        type: ARTICLE_GET_RELATED_ARTICLES, 
+        type: actionTypes.ARTICLE_GET_RELATED_ARTICLES, 
         data: [expectedPayload]
       }
     ];

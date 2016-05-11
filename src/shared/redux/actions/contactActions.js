@@ -1,17 +1,13 @@
-import { CONTACT_SAVE } from 'shared/constants/actionTypes';
+import * as actionTypes from 'shared/redux/constants/actionTypes';
 
 export function saveContactFormData(data) {
   return {
-    type: CONTACT_SAVE,
+    type: actionTypes.CONTACT_SAVE,
     request: {
       path: '/contact',
       options: {
         method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        body: data
       }
     }
   };

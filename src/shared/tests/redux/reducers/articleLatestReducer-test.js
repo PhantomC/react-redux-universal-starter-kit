@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { ARTICLE_GET_LATEST, ARTICLE_DELETE_BY_ID } from 'shared/constants/actionTypes';
+import * as actionTypes from 'shared/redux/constants/actionTypes';
 import articleLatestReducer from 'shared/redux/reducers/articleLatestReducer';
 
 describe('Article Latest Reducer', () => {
@@ -23,7 +23,7 @@ describe('Article Latest Reducer', () => {
         }
       ];
       const state = articleLatestReducer(undefined, {
-        type: ARTICLE_GET_LATEST,
+        type: actionTypes.ARTICLE_GET_LATEST,
         data
       });
       expect(state).to.eql(data);
@@ -33,7 +33,7 @@ describe('Article Latest Reducer', () => {
       const id = 1;
       const initialState = [{id}];
       const state = articleLatestReducer(initialState, {
-        type: ARTICLE_DELETE_BY_ID,
+        type: actionTypes.ARTICLE_DELETE_BY_ID,
         id
       });
       expect(state).to.eql([]);

@@ -12,10 +12,10 @@ const Article = function(props) {
       <header>
         <div className="row">
           <div className="col-xs-1">
-            <img styleName="avatar" src={article.author.avatar} alt=""/>
+            <img styleName="avatar" src={article.member.avatar} alt=""/>
           </div>
           <div className="col-xs-11">
-            <span styleName="author">{article.author.name}</span>
+            <span styleName="author">{article.member.name}</span>
           </div>
         </div>
         <h2 styleName="title">
