@@ -2,18 +2,11 @@ import jwt from 'jsonwebtoken';
 import reactCookie from 'react-cookie';
 import { AUTH_TOKEN } from 'shared/redux/constants/cookieNames';
 
-import {
-  ARTICLE_GET_LATEST,
-  ARTICLE_GET_SEARCH_RESULTS,
-
-  ARTICLE_GET_BY_ID,
-  ARTICLE_GET_RELATED_ARTICLES,
-  ARTICLE_CREATE
-} from 'shared/redux/constants/actionTypes';
+import * as actionTypes from 'shared/redux/constants/actionTypes';
 
 export function getArticleLatest(limit = 20) {
   return {
-    type: ARTICLE_GET_LATEST,
+    type: actionTypes.ARTICLE_GET_LATEST,
     request: {
       path: `/articles?_expand=member&_sort=id&_order=DESC&_limit=${limit}`
     }
@@ -22,7 +15,7 @@ export function getArticleLatest(limit = 20) {
 
 export function getSearchResults(keyword, limit = 20) {
   return {
-    type: ARTICLE_GET_SEARCH_RESULTS,
+    type: actionTypes.ARTICLE_GET_SEARCH_RESULTS,
     request: {
       path: `/articles?q=${keyword}&_expand=member&_sort=id&_order=DESC&_limit=${limit}`
     }
@@ -31,7 +24,7 @@ export function getSearchResults(keyword, limit = 20) {
 
 export function getArticleById(id) {
   return {
-    type: ARTICLE_GET_BY_ID,
+    type: actionTypes.ARTICLE_GET_BY_ID,
     request: {
       path: `/articles/${id}?_expand=member`
     }
@@ -51,7 +44,7 @@ export function getArticleContentById(id) {
 export function getRelatedArticles(keyword) {
   return {
     ...getSearchResults(keyword),
-    type: ARTICLE_GET_RELATED_ARTICLES
+    type: actionTypes.ARTICLE_GET_RELATED_ARTICLES
   };
 }
 
@@ -65,7 +58,7 @@ export function createNewArticle(data) {
     member: user
   }
   return {
-    type: ARTICLE_CREATE,
+    type: actionTypes.ARTICLE_CREATE,
     request: {
       path: '/articles',
       options: {

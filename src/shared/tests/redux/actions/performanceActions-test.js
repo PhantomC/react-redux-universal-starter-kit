@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { ARTICLE_DELETE_BY_ID } from 'shared/redux/constants/actionTypes';
+import * as actionTypes from 'shared/redux/constants/actionTypes';
 import * as performanceActions from 'shared/redux/actions/performanceActions';
 
 describe('Performance actions', () => {
@@ -14,7 +14,7 @@ describe('Performance actions', () => {
     });
 
     it('should have the correct type', () => {
-      expect(action.type).to.equal(ARTICLE_DELETE_BY_ID);
+      expect(action.type).to.equal(actionTypes.ARTICLE_DELETE_BY_ID);
     });
 
     it('should have the correct payload', () => {

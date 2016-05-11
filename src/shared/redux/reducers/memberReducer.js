@@ -1,8 +1,4 @@
-import { 
-  MEMBER_LOGIN, 
-  MEMBER_LOGOUT,
-  MEMBER_GET_MY_ARTICLES
-} from 'shared/redux/constants/actionTypes';
+import * as actionTypes from 'shared/redux/constants/actionTypes';
 
 const initialState = {
   isAuthenticated: false,
@@ -13,7 +9,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case `${MEMBER_LOGIN}_REQUEST`:
+    case `${actionTypes.MEMBER_LOGIN}_REQUEST`:
       return { 
         ...state,
         isAuthenticated: false, 
@@ -21,7 +17,7 @@ export default function(state = initialState, action) {
         error: null
       };
 
-    case MEMBER_LOGIN:
+    case actionTypes.MEMBER_LOGIN:
       return { 
         ...state, 
         isAuthenticated: true,
@@ -29,7 +25,7 @@ export default function(state = initialState, action) {
         user: action.data.user
       };
 
-    case `${MEMBER_LOGIN}_FAIL`:
+    case `${actionTypes.MEMBER_LOGIN}_FAIL`:
       return {
         ...state,
         isAuthenticated: false,
@@ -37,10 +33,10 @@ export default function(state = initialState, action) {
         user: {}
       };
 
-    case MEMBER_LOGOUT:
+    case actionTypes.MEMBER_LOGOUT:
       return initialState;
 
-    case MEMBER_GET_MY_ARTICLES:
+    case actionTypes.MEMBER_GET_MY_ARTICLES:
       return {
         ...state,
         myArticles: action.data
