@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Search from 'shared/components/partials/Search';
-import ArticleList from 'shared/components/partials/ArticleList';
+import ArticleList from 'shared/components/partials/Article/ArticleList';
 import PostForm from 'shared/components/partials/PostForm';
 
 export default class Home extends Component {

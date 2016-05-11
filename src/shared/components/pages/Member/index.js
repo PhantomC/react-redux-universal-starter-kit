@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 
-import ArticleList from 'shared/components/partials/ArticleList';
+import ArticleList from 'shared/components/partials/Article/ArticleList';
 
 export default class Member extends Component {
 
