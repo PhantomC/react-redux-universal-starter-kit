@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Nav from 'shared/redux/containers/Nav';
+import Nav from 'shared/containers/Nav';
 
 import CSSModules from 'react-css-modules';
 import styles from './Header.scss';

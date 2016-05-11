@@ -47,7 +47,7 @@ export default ({ dispatch, getState }) => {
         indexRoute: {
           getComponent: (location, cb) => {
             require.ensure([], (require) => {
-              cb(null, require('shared/redux/containers/Home'));
+              cb(null, require('shared/containers/Home'));
             }, 'home');
           }         
         },
@@ -56,7 +56,7 @@ export default ({ dispatch, getState }) => {
             path: 'contact',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/redux/containers/Contact'));
+                cb(null, require('shared/containers/Contact'));
               }, 'contact');
             }               
           }, {
@@ -70,14 +70,14 @@ export default ({ dispatch, getState }) => {
             path: 'performance',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/redux/containers/Performance'));
+                cb(null, require('shared/containers/Performance'));
               }, 'performance');
             }               
           }, {
             path: 'articles/:id',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/redux/containers/Entry'));
+                cb(null, require('shared/containers/Entry'));
               }, 'entry');
             }
           }, {
@@ -85,7 +85,7 @@ export default ({ dispatch, getState }) => {
             path: 'login',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/redux/containers/Login'));
+                cb(null, require('shared/containers/Login'));
               }, 'login');
             }
           }, {
@@ -93,7 +93,7 @@ export default ({ dispatch, getState }) => {
             path: 'member',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/redux/containers/Member'));
+                cb(null, require('shared/containers/Member'));
               }, 'member');
             }
           }, {
