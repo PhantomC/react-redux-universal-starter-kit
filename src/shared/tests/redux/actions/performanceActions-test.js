@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { ARTICLE_DELETE_BY_ID } from 'shared/constants/actionTypes';
+import { ARTICLE_DELETE_BY_ID } from 'shared/redux/constants/actionTypes';
 import * as performanceActions from 'shared/redux/actions/performanceActions';
 
 describe('Performance actions', () => {

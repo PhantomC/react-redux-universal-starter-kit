@@ -2,7 +2,7 @@ import {
   MEMBER_LOGIN, 
   MEMBER_LOGOUT,
   MEMBER_GET_MY_ARTICLES
-} from 'shared/constants/actionTypes';
+} from 'shared/redux/constants/actionTypes';
 
 const initialState = {
   isAuthenticated: false,

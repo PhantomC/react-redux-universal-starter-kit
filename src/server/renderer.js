@@ -12,7 +12,7 @@ import prefetchComponentData from 'shared/utils/prefetchComponentData';
 import { Provider } from 'react-redux';
 
 import createStore from 'shared/redux/store/createStore';
-import { MEMBER_LOAD_AUTH } from 'shared/constants/actionTypes';
+import { MEMBER_LOAD_AUTH } from 'shared/redux/constants/actionTypes';
 
 export default function(req, res) {
   

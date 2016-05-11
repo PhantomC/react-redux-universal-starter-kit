@@ -1,4 +1,4 @@
-import { ARTICLE_DELETE_BY_ID } from 'shared/constants/actionTypes';
+import { ARTICLE_DELETE_BY_ID } from 'shared/redux/constants/actionTypes';
 
 export function deleteArticle(id) {
   return {

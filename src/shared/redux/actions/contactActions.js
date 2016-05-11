@@ -1,4 +1,4 @@
-import { CONTACT_SAVE } from 'shared/constants/actionTypes';
+import { CONTACT_SAVE } from 'shared/redux/constants/actionTypes';
 
 export function saveContactFormData(data) {
   return {

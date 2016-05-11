@@ -3,7 +3,7 @@ import {
   MEMBER_LOGOUT,
   MEMBER_VIEW_PROFILE,
   MEMBER_GET_MY_ARTICLES
-} from 'shared/constants/actionTypes';
+} from 'shared/redux/constants/actionTypes';
 
 export function memberLogin(data) {
   return {

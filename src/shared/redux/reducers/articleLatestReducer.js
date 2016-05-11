@@ -3,7 +3,7 @@ import {
   ARTICLE_GET_SEARCH_RESULTS,
   ARTICLE_DELETE_BY_ID,
   ARTICLE_CREATE
-} from 'shared/constants/actionTypes';
+} from 'shared/redux/constants/actionTypes';
 
 export default function(state = [], action) {
   switch (action.type) {

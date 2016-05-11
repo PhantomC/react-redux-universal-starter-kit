@@ -9,7 +9,7 @@ import {
   ARTICLE_GET_LATEST, 
   ARTICLE_GET_BY_ID, 
   ARTICLE_GET_RELATED_ARTICLES 
-} from 'shared/constants/actionTypes';
+} from 'shared/redux/constants/actionTypes';
 
 import * as articleActions from 'shared/redux/actions/articleActions';
 
