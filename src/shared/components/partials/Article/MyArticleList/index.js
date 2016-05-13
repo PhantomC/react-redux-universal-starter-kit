@@ -7,7 +7,7 @@ export default function(props) {
     <div className="row">
       { props.articles.map(function(article, index) {
         return (
-          <ArticleItem key={ article.id } article={ article } addClass={props.addClass} handleDelete={props.handleDelete} />
+          <ArticleItem key={ article.id } article={ article } addClass={props.addClass} handleEdit={props.handleEdit} handleDelete={props.handleDelete} />
         );
       }) }
     </div>

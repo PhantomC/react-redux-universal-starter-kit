@@ -1,11 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import * as memberActions from 'shared/redux/actions/memberActions';
-import * as articleActions from 'shared/redux/actions/articleActions';
-
-import MyArticleList from 'shared/components/partials/Article/MyArticleList';
 
 class MemberPage extends Component {
 
@@ -13,11 +11,6 @@ class MemberPage extends Component {
     super(props, context);
     this.handleLogoutButton = this.handleLogoutButton.bind(this);
     this.handleProfileLinkClick = this.handleProfileLinkClick.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.memberGetMyArticles(1);
   }
 
   componentWillUpdate(nextProps) {
@@ -49,13 +42,13 @@ class MemberPage extends Component {
         </div>
         <p>Hello! {this.props.member.user.name}</p>
         <p><a href="#" onClick={this.handleProfileLinkClick}>View Profile</a></p>
+        <ul>
+          <li><Link to={`/member`}>My Articles</Link></li>
+          <li><Link to={`/member/articles/11`}>Edit Article</Link></li>
+        </ul>
         <button onClick={this.handleLogoutButton}>Logout</button>
       </div>
     );
-  }
-
-  handleDelete(id) {
-    this.props.deleteArticle(id);
   }
 
   render() {
@@ -63,7 +56,7 @@ class MemberPage extends Component {
       <div>
         <Helmet title="Member" />
         <div className="col-md-8">
-          {this.props.member.myArticles.length > 0 ? <MyArticleList articles={this.props.member.myArticles} handleDelete={this.handleDelete} /> : <p>You haven't written yet.</p>}
+          {this.props.children}
         </div>
         <div className="col-md-4">
           {this.renderMemberProfile()}
@@ -81,4 +74,4 @@ function mapStateToProps({member}) {
   return {member};
 }
 
-module.exports = connect(mapStateToProps, {...memberActions, ...articleActions})(MemberPage);
+module.exports = connect(mapStateToProps, memberActions)(MemberPage);

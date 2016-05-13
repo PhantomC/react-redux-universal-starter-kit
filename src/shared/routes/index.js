@@ -91,11 +91,24 @@ export default ({ dispatch, getState }) => {
           }, {
             onEnter: isAuthenticated,     
             path: 'member',
-            getComponent: (location, cb) => {
-              require.ensure([], (require) => {
-                cb(null, require('shared/containers/MemberPage'));
-              }, 'member');
-            }
+            component: require('shared/containers/MemberPage'),
+            indexRoute: {
+              getComponent: (location, cb) => {
+                require.ensure([], (require) => {
+                  cb(null, require('shared/containers/MemberPage/MyArticles'));
+                }, 'myArticles');
+              }
+            },
+            childRoutes: [
+              {
+                path: 'articles/:id',
+                getComponent: (location, cb) => {
+                  require.ensure([], (require) => {
+                    cb(null, require('shared/containers/MemberPage/ArticleEdit'));
+                  }, 'articleEdit');
+                }
+              }
+            ]
           }, {
             path: '*',
             getComponent: (location, cb) => {
