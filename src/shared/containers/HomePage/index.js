@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import * as articleActions from 'shared/redux/actions/articleActions';
 
 import SearchForm from 'shared/components/partials/SearchForm';
 import ArticleList from 'shared/components/partials/Article/ArticleList';
 import PostForm from 'shared/components/partials/PostForm';
 
-export default class Home extends Component {
+class HomePage extends Component {
 
   constructor(props) {
     super(props);
@@ -31,3 +34,18 @@ export default class Home extends Component {
     );
   }
 }
+
+HomePage.prefetchData = [
+  function(params) {
+    return articleActions.getArticleLatest();
+  }
+];
+
+function mapStateToProps(state) {
+  return {
+    articleLatest: state.articleLatest,
+    member: state.member
+  };
+}
+
+module.exports = connect(mapStateToProps, articleActions)(HomePage);

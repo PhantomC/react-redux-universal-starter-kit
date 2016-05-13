@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import Perf from 'react-addons-perf';
 
+import * as articleActions from 'shared/redux/actions/articleActions';
+import * as performanceActions from 'shared/redux/actions/performanceActions';
+
 import Article from './Article';
 
-export default class Performance extends Component {
+class PerformancePage extends Component {
   
   constructor(props) {
     super(props);
@@ -63,3 +67,11 @@ export default class Performance extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    articles: state.articleLatest
+  };
+}
+
+module.exports = connect(mapStateToProps, {...articleActions, ...performanceActions})(PerformancePage);

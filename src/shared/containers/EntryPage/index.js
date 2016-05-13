@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
 import Helmet from 'react-helmet';
 import CSSModules from 'react-css-modules';
+
+import * as articleActions from 'shared/redux/actions/articleActions';
 
 import ArticleList from 'shared/components/partials/Article/ArticleList';
 import ArticleContent from 'shared/components/partials/Article/ArticleContent';
 
 import styles from './Entry.scss';
 
-class Entry extends Component {
+class EntryPage extends Component {
 
   componentDidMount() {
     if (this.props.articleActive.data.id != this.props.params.id) {
@@ -69,4 +71,16 @@ class Entry extends Component {
   }
 }
 
-export default CSSModules(Entry, styles);
+function mapStateToProps(state) {
+  return {
+    articleActive: state.articleActive
+  };
+}
+
+EntryPage.prefetchData = [
+  function(params) {
+    return articleActions.getArticleContentById(params.id);
+  }
+];
+
+module.exports = connect(mapStateToProps, articleActions)(CSSModules(EntryPage, styles));

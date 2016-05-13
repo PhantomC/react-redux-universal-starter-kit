@@ -7,4 +7,4 @@ function mapStateToProps({member}) {
   return {member};
 }
 
-module.exports = connect(mapStateToProps, memberActions)(Nav);
+export default connect(mapStateToProps, memberActions)(Nav);

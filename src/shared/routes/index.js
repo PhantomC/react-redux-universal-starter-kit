@@ -47,7 +47,7 @@ export default ({ dispatch, getState }) => {
         indexRoute: {
           getComponent: (location, cb) => {
             require.ensure([], (require) => {
-              cb(null, require('shared/containers/Home'));
+              cb(null, require('shared/containers/HomePage'));
             }, 'home');
           }         
         },
@@ -56,28 +56,28 @@ export default ({ dispatch, getState }) => {
             path: 'contact',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/containers/Contact'));
+                cb(null, require('shared/containers/ContactPage'));
               }, 'contact');
             }               
           }, {
             path: 'gallery',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/components/pages/Gallery'));
+                cb(null, require('shared/containers/GalleryPage'));
               }, 'gallery');
             }
           }, {
             path: 'performance',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/containers/Performance'));
+                cb(null, require('shared/containers/PerformancePage'));
               }, 'performance');
             }               
           }, {
             path: 'articles/:id',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/containers/Entry'));
+                cb(null, require('shared/containers/EntryPage'));
               }, 'entry');
             }
           }, {
@@ -85,7 +85,7 @@ export default ({ dispatch, getState }) => {
             path: 'login',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/containers/Login'));
+                cb(null, require('shared/containers/LoginPage'));
               }, 'login');
             }
           }, {
@@ -93,14 +93,14 @@ export default ({ dispatch, getState }) => {
             path: 'member',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/containers/Member'));
+                cb(null, require('shared/containers/MemberPage'));
               }, 'member');
             }
           }, {
             path: '*',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/components/pages/NotFound'));
+                cb(null, require('shared/containers/NotFoundPage'));
               }, 'notfound');
             },
             status: 404

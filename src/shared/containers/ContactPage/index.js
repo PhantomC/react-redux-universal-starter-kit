@@ -1,9 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+
+import * as contactActions from 'shared/redux/actions/contactActions';
 
 import ContactForm from 'shared/components/partials/ContactForm';
 
-export default class Contact extends Component {
+class ContactPage extends Component {
   
   static contextTypes = {
     router: PropTypes.object
@@ -47,4 +50,12 @@ export default class Contact extends Component {
       </div>
     );
   }
-} 
+}
+
+function mapStateToProps(state) {
+  return {
+    form: state.form
+  };
+}
+
+module.exports = connect(mapStateToProps, contactActions)(ContactPage);

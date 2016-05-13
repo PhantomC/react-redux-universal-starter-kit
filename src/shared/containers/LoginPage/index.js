@@ -1,9 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+
+import * as memberActions from 'shared/redux/actions/memberActions';
 
 import LoginForm from 'shared/components/partials/LoginForm';
 
-export default class Login extends Component {
+class LoginPage extends Component {
 
   componentWillUpdate(nextProps) {
     if (nextProps.member.isAuthenticated) {
@@ -39,6 +42,15 @@ export default class Login extends Component {
   }
 }
 
-Login.contextTypes = {
+LoginPage.contextTypes = {
   router: PropTypes.object
 };
+
+function mapStateToProps(state) {
+  return {
+    member: state.member,
+    form: state.form
+  };
+}
+
+module.exports = connect(mapStateToProps, memberActions)(LoginPage);
