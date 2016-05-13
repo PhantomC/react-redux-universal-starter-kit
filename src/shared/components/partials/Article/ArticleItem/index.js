@@ -6,7 +6,7 @@ import CSSModules from 'react-css-modules';
 import styles from './Article.scss';
 
 const Article = function(props) {
-  const { article } = props;
+  const { article, handleDelete } = props;
   return (
     <article styleName="container" className={props.addClass}>
       <header>
@@ -25,6 +25,7 @@ const Article = function(props) {
       <div styleName="excerpt">
         <p>{article.excerpt}</p>
       </div>
+      {handleDelete ? <button onClick={handleDelete.bind(null, article.id)}>Delete</button> : null}
     </article>
   );
 };

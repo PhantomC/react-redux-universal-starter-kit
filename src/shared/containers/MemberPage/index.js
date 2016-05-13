@@ -3,8 +3,9 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
 import * as memberActions from 'shared/redux/actions/memberActions';
+import * as articleActions from 'shared/redux/actions/articleActions';
 
-import ArticleList from 'shared/components/partials/Article/ArticleList';
+import MyArticleList from 'shared/components/partials/Article/MyArticleList';
 
 class MemberPage extends Component {
 
@@ -12,6 +13,7 @@ class MemberPage extends Component {
     super(props, context);
     this.handleLogoutButton = this.handleLogoutButton.bind(this);
     this.handleProfileLinkClick = this.handleProfileLinkClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -52,12 +54,16 @@ class MemberPage extends Component {
     );
   }
 
+  handleDelete(id) {
+    this.props.deleteArticle(id);
+  }
+
   render() {
     return (
       <div>
         <Helmet title="Member" />
         <div className="col-md-8">
-          {this.props.member.myArticles.length > 0 ? <ArticleList articles={this.props.member.myArticles} /> : <p>You haven't written yet.</p>}
+          {this.props.member.myArticles.length > 0 ? <MyArticleList articles={this.props.member.myArticles} handleDelete={this.handleDelete} /> : <p>You haven't written yet.</p>}
         </div>
         <div className="col-md-4">
           {this.renderMemberProfile()}
@@ -75,4 +81,4 @@ function mapStateToProps({member}) {
   return {member};
 }
 
-module.exports = connect(mapStateToProps, memberActions)(MemberPage);
+module.exports = connect(mapStateToProps, {...memberActions, ...articleActions})(MemberPage);

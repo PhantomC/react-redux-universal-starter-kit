@@ -40,7 +40,15 @@ export default function(state = initialState, action) {
       return {
         ...state,
         myArticles: action.data
-      }
+      };
+
+    case actionTypes.ARTICLE_DELETE_BY_ID:
+      return {
+        ...state,
+        myArticles: state.myArticles.filter(article => {
+          return article.id !== action.id;
+        })
+      };
 
     default:
       return state;

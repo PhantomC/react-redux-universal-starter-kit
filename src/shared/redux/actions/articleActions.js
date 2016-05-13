@@ -68,3 +68,16 @@ export function createNewArticle(data) {
     }
   };
 }
+
+export function deleteArticle(id) {
+  return {
+    type: actionTypes.ARTICLE_DELETE_BY_ID,
+    id,
+    request: {
+      path: `/articles/${id}`,
+      options: {
+        method: 'DELETE'
+      }
+    }
+  };
+}

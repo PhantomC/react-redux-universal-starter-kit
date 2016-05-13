@@ -4,7 +4,6 @@ import Helmet from 'react-helmet';
 import Perf from 'react-addons-perf';
 
 import * as articleActions from 'shared/redux/actions/articleActions';
-import * as performanceActions from 'shared/redux/actions/performanceActions';
 
 import Article from './Article';
 
@@ -68,10 +67,10 @@ class PerformancePage extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({article}) {
   return {
-    articles: state.articleLatest
+    articles: article.latest
   };
 }
 
-module.exports = connect(mapStateToProps, {...articleActions, ...performanceActions})(PerformancePage);
+module.exports = connect(mapStateToProps, articleActions)(PerformancePage);
