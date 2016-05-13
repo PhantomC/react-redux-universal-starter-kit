@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
 import Helmet from 'react-helmet';
 import CSSModules from 'react-css-modules';
+
+import * as articleActions from 'shared/redux/actions/articleActions';
 
 import ArticleList from 'shared/components/partials/Article/ArticleList';
 import ArticleContent from 'shared/components/partials/Article/ArticleContent';
 
 import styles from './Entry.scss';
 
-class Entry extends Component {
+class EntryPage extends Component {
 
   componentDidMount() {
-    if (this.props.articleActive.data.id != this.props.params.id) {
+    if (this.props.article.data.id != this.props.params.id) {
       this.props.getArticleContentById(this.props.params.id);
     }
   }
@@ -24,13 +26,13 @@ class Entry extends Component {
   }
 
   renderArticle() {
-    if (this.props.articleActive.error) {
+    if (this.props.article.error) {
       return (
-        <div>{ this.props.articleActive.error.statusText }</div>
+        <div>{ this.props.article.error.statusText }</div>
       );
     }
     return (
-      <ArticleContent article={this.props.articleActive.data} />
+      <ArticleContent article={this.props.article.data} />
     );
   }
 
@@ -47,7 +49,7 @@ class Entry extends Component {
       >
         <div styleName="container" key={this.props.location.pathname}>
           <Helmet 
-            title={ this.props.articleActive.data.title }
+            title={ this.props.article.data.title }
             meta={[
               {
                 name: 'description', 
@@ -60,7 +62,7 @@ class Entry extends Component {
               { this.renderArticle() }
             </div>
             <div styleName="related">
-              <ArticleList articles={this.props.articleActive.related} />
+              <ArticleList articles={this.props.article.related} />
             </div>
           </div>
         </div>
@@ -69,4 +71,16 @@ class Entry extends Component {
   }
 }
 
-export default CSSModules(Entry, styles);
+EntryPage.prefetchData = [
+  function(params) {
+    return articleActions.getArticleContentById(params.id);
+  }
+];
+
+function mapStateToProps({article}) {
+  return {
+    article: article.active
+  };
+}
+
+module.exports = connect(mapStateToProps, articleActions)(CSSModules(EntryPage, styles));

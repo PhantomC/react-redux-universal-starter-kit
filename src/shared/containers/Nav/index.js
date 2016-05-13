@@ -1,8 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import CSSModules from 'react-css-modules';
 import styles from './Nav.scss';
+
+import * as memberActions from 'shared/redux/actions/memberActions';
 
 class Nav extends Component {
   renderMemberSection() {
@@ -37,4 +40,8 @@ Nav.contextTypes = {
   router: PropTypes.object
 };
 
-export default CSSModules(Nav, styles);
+function mapStateToProps({member}) {
+  return {member};
+}
+
+export default connect(mapStateToProps, memberActions)(CSSModules(Nav, styles));

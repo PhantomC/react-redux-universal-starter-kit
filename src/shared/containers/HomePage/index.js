@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import * as articleActions from 'shared/redux/actions/articleActions';
 
 import SearchForm from 'shared/components/partials/SearchForm';
 import ArticleList from 'shared/components/partials/Article/ArticleList';
 import PostForm from 'shared/components/partials/PostForm';
 
-export default class Home extends Component {
+class HomePage extends Component {
 
   constructor(props) {
     super(props);
@@ -25,9 +28,24 @@ export default class Home extends Component {
         <div className="col-md-8 col-md-push-2">
           <SearchForm getSearchResults={this.props.getSearchResults} />
           {this.props.member.isAuthenticated ? <PostForm onPostFormSubmit={this.onPostFormSubmit} /> : null}
-          <ArticleList articles={ this.props.articleLatest } addClass="col-xs-12" />
+          <ArticleList articles={ this.props.articles } addClass="col-xs-12" />
         </div>
       </div>
     );
   }
 }
+
+HomePage.prefetchData = [
+  function(params) {
+    return articleActions.getArticleLatest();
+  }
+];
+
+function mapStateToProps({article, member}) {
+  return {
+    articles: article.latest,
+    member
+  };
+}
+
+module.exports = connect(mapStateToProps, articleActions)(HomePage);
