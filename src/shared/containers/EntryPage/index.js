@@ -14,7 +14,7 @@ import styles from './Entry.scss';
 class EntryPage extends Component {
 
   componentDidMount() {
-    if (this.props.articleActive.data.id != this.props.params.id) {
+    if (this.props.article.data.id != this.props.params.id) {
       this.props.getArticleContentById(this.props.params.id);
     }
   }
@@ -26,13 +26,13 @@ class EntryPage extends Component {
   }
 
   renderArticle() {
-    if (this.props.articleActive.error) {
+    if (this.props.article.error) {
       return (
-        <div>{ this.props.articleActive.error.statusText }</div>
+        <div>{ this.props.article.error.statusText }</div>
       );
     }
     return (
-      <ArticleContent article={this.props.articleActive.data} />
+      <ArticleContent article={this.props.article.data} />
     );
   }
 
@@ -49,7 +49,7 @@ class EntryPage extends Component {
       >
         <div styleName="container" key={this.props.location.pathname}>
           <Helmet 
-            title={ this.props.articleActive.data.title }
+            title={ this.props.article.data.title }
             meta={[
               {
                 name: 'description', 
@@ -62,7 +62,7 @@ class EntryPage extends Component {
               { this.renderArticle() }
             </div>
             <div styleName="related">
-              <ArticleList articles={this.props.articleActive.related} />
+              <ArticleList articles={this.props.article.related} />
             </div>
           </div>
         </div>
@@ -71,16 +71,16 @@ class EntryPage extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    articleActive: state.articleActive
-  };
-}
-
 EntryPage.prefetchData = [
   function(params) {
     return articleActions.getArticleContentById(params.id);
   }
 ];
+
+function mapStateToProps({article}) {
+  return {
+    article: article.active
+  };
+}
 
 module.exports = connect(mapStateToProps, articleActions)(CSSModules(EntryPage, styles));

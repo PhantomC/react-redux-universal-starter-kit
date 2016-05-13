@@ -28,7 +28,7 @@ class HomePage extends Component {
         <div className="col-md-8 col-md-push-2">
           <SearchForm getSearchResults={this.props.getSearchResults} />
           {this.props.member.isAuthenticated ? <PostForm onPostFormSubmit={this.onPostFormSubmit} /> : null}
-          <ArticleList articles={ this.props.articleLatest } addClass="col-xs-12" />
+          <ArticleList articles={ this.props.articles } addClass="col-xs-12" />
         </div>
       </div>
     );
@@ -41,10 +41,10 @@ HomePage.prefetchData = [
   }
 ];
 
-function mapStateToProps(state) {
+function mapStateToProps({article, member}) {
   return {
-    articleLatest: state.articleLatest,
-    member: state.member
+    articles: article.latest,
+    member
   };
 }
 
