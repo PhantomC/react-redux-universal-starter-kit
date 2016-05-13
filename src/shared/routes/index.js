@@ -101,6 +101,13 @@ export default ({ dispatch, getState }) => {
             },
             childRoutes: [
               {
+                path: 'bookmarks',
+                getComponent: (location, cb) => {
+                  require.ensure([], (require) => {
+                    cb(null, require('shared/containers/MemberPage/MyBookmarks'));
+                  }, 'myBookmarks');
+                }
+              }, {
                 path: 'articles/:id',
                 getComponent: (location, cb) => {
                   require.ensure([], (require) => {

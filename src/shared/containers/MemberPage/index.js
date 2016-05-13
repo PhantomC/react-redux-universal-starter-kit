@@ -44,7 +44,7 @@ class MemberPage extends Component {
         <p><a href="#" onClick={this.handleProfileLinkClick}>View Profile</a></p>
         <ul>
           <li><Link to={`/member`}>My Articles</Link></li>
-          <li><Link to={`/member/articles/11`}>Edit Article</Link></li>
+          <li><Link to={`/member/bookmarks`}>My Bookmarks</Link></li>
         </ul>
         <button onClick={this.handleLogoutButton}>Logout</button>
       </div>
