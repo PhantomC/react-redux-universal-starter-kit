@@ -76,6 +76,19 @@ export function editArticle(id) {
   };
 }
 
+export function updateArticleById(id, data) {
+  return {
+    type: actionTypes.ARTICLE_UPDATE_BY_ID,
+    request: {
+      path: `/articles/${id}`,
+      options: {
+        method: 'PATCH',
+        body: data
+      }
+    }
+  }
+}
+
 export function deleteArticle(id) {
   return {
     type: actionTypes.ARTICLE_DELETE_BY_ID,

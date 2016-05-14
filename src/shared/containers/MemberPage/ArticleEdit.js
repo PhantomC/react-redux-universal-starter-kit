@@ -18,8 +18,9 @@ class ArticleEdit extends Component {
   }
 
   onPostFormSubmit(data) {
-    console.log(data);
-    // this.props.createNewArticle(data);
+    this.props.updateArticleById(this.props.articleId, data).then(()=>{
+      this.context.router.push(`/member`);
+    });
   }
 
   render() {
@@ -31,4 +32,14 @@ class ArticleEdit extends Component {
   }
 }
 
-module.exports = connect(null, articleActions)(ArticleEdit);
+ArticleEdit.contextTypes = {
+  router: PropTypes.object
+}
+
+function mapStateToProps({member}) {
+  return {
+    articleId: member.myArticleEdit.id
+  }
+}
+
+module.exports = connect(mapStateToProps, articleActions)(ArticleEdit);
