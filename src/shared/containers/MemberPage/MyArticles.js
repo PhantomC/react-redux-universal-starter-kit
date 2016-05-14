@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as memberActions from 'shared/redux/actions/memberActions';
 import * as articleActions from 'shared/redux/actions/articleActions';
 
-import MyArticleList from 'shared/components/partials/Article/MyArticleList';
+import ArticleList from 'shared/components/partials/Article/ArticleList';
 
 class MyArticles extends Component {
 
@@ -31,7 +31,7 @@ class MyArticles extends Component {
     return (
       <div>
         {this.props.member.myArticles.length > 0 ? 
-          <MyArticleList 
+          <ArticleList 
             articles={this.props.member.myArticles} 
             handleEdit={this.handleEdit}
             handleDelete={this.handleDelete}
