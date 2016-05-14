@@ -4,7 +4,8 @@ const initialState = {
   isAuthenticated: false,
   user: {},
   error: null,
-  myArticles: []
+  myArticles: [],
+  myArticleEdit: {}
 };
 
 export default function(state = initialState, action) {
@@ -40,6 +41,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         myArticles: action.data
+      };
+
+    case actionTypes.ARTICLE_EDIT_BY_ID:
+      return {
+        ...state,
+        myArticleEdit: action.data
       };
 
     case actionTypes.ARTICLE_DELETE_BY_ID:

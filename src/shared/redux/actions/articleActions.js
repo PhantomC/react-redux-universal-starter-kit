@@ -69,6 +69,13 @@ export function createNewArticle(data) {
   };
 }
 
+export function editArticle(id) {
+  return {
+    ...getArticleById(id),
+    type: actionTypes.ARTICLE_EDIT_BY_ID
+  };
+}
+
 export function deleteArticle(id) {
   return {
     type: actionTypes.ARTICLE_DELETE_BY_ID,

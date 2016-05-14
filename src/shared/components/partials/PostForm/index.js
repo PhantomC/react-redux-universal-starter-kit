@@ -3,6 +3,7 @@ import { reduxForm } from 'redux-form';
 
 class PostForm extends Component {
   render() {
+    console.log('re-render');
     const { fields: { title, body, tags }, handleSubmit } = this.props;
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit(this.props.onPostFormSubmit) }>
@@ -64,8 +65,15 @@ function validate(values) {
   return errors;
 }
 
+function mapStateToProps({member}) {
+  const { excerpt, memberId, ...rest } = member.myArticleEdit;
+  return {
+    initialValues: rest
+  };
+}
+
 export default reduxForm({
   form: 'postForm',
   fields: ['title', 'body', 'tags'],
   validate
-})(PostForm);
+}, mapStateToProps)(PostForm);
