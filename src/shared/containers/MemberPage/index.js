@@ -41,8 +41,8 @@ class MemberPage extends Component {
           </div>
         </div>
         <p>Hello! {this.props.member.user.name}</p>
-        <p><a href="#" onClick={this.handleProfileLinkClick}>View Profile</a></p>
         <ul>
+          <li><a href="#" onClick={this.handleProfileLinkClick}>My Profile</a></li>
           <li><Link to={`/member`}>My Articles</Link></li>
           <li><Link to={`/member/bookmarks`}>My Bookmarks</Link></li>
         </ul>
