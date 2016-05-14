@@ -3,8 +3,8 @@ import { mount } from 'enzyme';
 import chai, { expect } from 'chai';
 import spies from 'chai-spies';
 
-import Performance from 'shared/components/pages/Performance';
-import Article from 'shared/components/pages/Performance/Article';
+import { PerformancePage } from 'shared/containers/PerformancePage';
+import Article from 'shared/containers/PerformancePage/Article';
 
 chai.use(spies);
 
@@ -39,15 +39,15 @@ function setup(Component) {
   };
 }
 
-describe('<Performance />', () => {
+describe('<PerformancePage />', () => {
 
   it('should render correct amount of <Article />', () => {
-    const { wrapper, articles } = setup(Performance);
+    const { wrapper, articles } = setup(PerformancePage);
     expect(wrapper.find(Article)).to.have.length(articles.length);
   });
 
   it('should call delete action if delete button has been clicked', () => {
-    const { wrapper, actions } = setup(Performance);
+    const { wrapper, actions } = setup(PerformancePage);
     wrapper.find('button').at(1).simulate('click');
     expect(actions.deleteArticle).to.have.been.called();
   });

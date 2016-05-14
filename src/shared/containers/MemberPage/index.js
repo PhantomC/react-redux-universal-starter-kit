@@ -37,8 +37,8 @@ class MemberPage extends Component {
         </div>
         <p>Hello! {this.props.member.user.name}</p>
         <ul>
-          <li><Link to={`/member`}>My Articles</Link></li>
-          <li><Link to={`/member/bookmarks`}>My Bookmarks</Link></li>
+          <li><Link to={'/member'}>My Articles</Link></li>
+          <li><Link to={'/member/bookmarks'}>My Bookmarks</Link></li>
         </ul>
         <button onClick={this.handleLogoutButton}>Logout</button>
       </div>

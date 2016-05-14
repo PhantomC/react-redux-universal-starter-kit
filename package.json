@@ -35,7 +35,7 @@
       }
     },
     "test": {
-      "command": "mocha --compilers js:babel-register --require src/shared/tests/setup.js src/shared/tests/**/*-test.js",
+      "command": "mocha $(find src/shared/tests -name '*-test.js') --require src/shared/tests/setup.js --compilers js:babel-register",
       "env": {
         "NODE_ENV": "development",
         "NODE_PATH": "./src"

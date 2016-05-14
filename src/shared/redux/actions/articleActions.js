@@ -55,7 +55,7 @@ export function createNewArticle(data) {
     ...data,
     memberId: user.id,
     member: user
-  }
+  };
   return {
     type: actionTypes.ARTICLE_CREATE,
     request: {
@@ -85,7 +85,7 @@ export function updateArticleById(id, data) {
         body: data
       }
     }
-  }
+  };
 }
 
 export function deleteArticle(id) {

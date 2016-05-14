@@ -32,5 +32,5 @@ export function memberGetMyArticles(limit = 20) {
     request: {
       path: `/members/${user.id}/articles?_expand=member&_sort=id&_order=DESC&_limit=${limit}`
     }
-  }
+  };
 }

@@ -39,12 +39,12 @@ class MyArticles extends Component {
         }
       </div>
     );
-  }
+  };
 }
 
 MyArticles.contextTypes = {
   router: PropTypes.object
-}
+};
 
 function mapStateToProps({member}) {
   return {member};

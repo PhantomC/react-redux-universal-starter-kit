@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import * as actionTypes from 'shared/redux/constants/actionTypes';
-import articleLatestReducer from 'shared/redux/reducers/articleLatestReducer';
+import articleLatestReducer from 'shared/redux/reducers/articleReducer/articleLatestReducer';
 
 describe('Article Latest Reducer', () => {
   

@@ -9,7 +9,7 @@ const generateArticles = () => {
       body = `${body}<p>${faker.lorem.paragraphs(1)}</p>`;
     }
     return body;
-  } 
+  };
 
   for (let i = 0; i < 10; ++i) {
     const title = faker.lorem.sentence();

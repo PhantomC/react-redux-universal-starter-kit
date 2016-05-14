@@ -5,7 +5,7 @@ import Perf from 'react-addons-perf';
 
 import * as articleActions from 'shared/redux/actions/articleActions';
 
-import Article from './Article';
+import Article from 'shared/containers/PerformancePage/Article';
 
 class PerformancePage extends Component {
   

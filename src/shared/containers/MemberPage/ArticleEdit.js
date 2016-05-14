@@ -19,7 +19,7 @@ class ArticleEdit extends Component {
 
   onPostFormSubmit(data) {
     this.props.updateArticleById(this.props.articleId, data).then(()=>{
-      this.context.router.push(`/member`);
+      this.context.router.push('/member');
     });
   }
 
@@ -34,12 +34,12 @@ class ArticleEdit extends Component {
 
 ArticleEdit.contextTypes = {
   router: PropTypes.object
-}
+};
 
 function mapStateToProps({member}) {
   return {
     articleId: member.myArticleEdit.id
-  }
+  };
 }
 
 module.exports = connect(mapStateToProps, articleActions)(ArticleEdit);
