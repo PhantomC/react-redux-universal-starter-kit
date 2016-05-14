@@ -12,6 +12,7 @@ class MyArticles extends Component {
   constructor(props, context) {
     super(props, context);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   componentDidMount() {
@@ -19,7 +20,7 @@ class MyArticles extends Component {
   }
 
   handleEdit(id) {
-    this.props.deleteArticle(id);
+    this.context.router.push(`member/articles/${id}`);
   }
 
   handleDelete(id) {
@@ -29,10 +30,20 @@ class MyArticles extends Component {
   render() {
     return (
       <div>
-        {this.props.member.myArticles.length > 0 ? <MyArticleList articles={this.props.member.myArticles} handleDelete={this.handleDelete} /> : <p>You haven't written yet.</p>}
+        {this.props.member.myArticles.length > 0 ? 
+          <MyArticleList 
+            articles={this.props.member.myArticles} 
+            handleEdit={this.handleEdit}
+            handleDelete={this.handleDelete}
+           /> : <p>You haven't written yet.</p>
+        }
       </div>
     );
   }
+}
+
+MyArticles.contextTypes = {
+  router: PropTypes.object
 }
 
 function mapStateToProps({member}) {
