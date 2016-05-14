@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post('/login', Authentication.login);
 
-router.get('/member/*', 
+router.get('/member/profile', 
   expressJwt({secret: 'your secret key'}),
   Member.profile
 );
