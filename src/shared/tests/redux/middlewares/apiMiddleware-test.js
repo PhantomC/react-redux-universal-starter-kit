@@ -1,18 +1,15 @@
 import { expect } from 'chai';
-
 import configureMockStore from 'redux-mock-store';
 import nock from 'nock';
 
 import apiMiddleware, { apiURL } from 'shared/redux/middlewares/apiMiddleware';
-
 import * as actionTypes from 'shared/redux/constants/actionTypes';
-
 import * as articleActions from 'shared/redux/actions/articleActions';
 
 const middlewares = [apiMiddleware];
 const mockStore = configureMockStore(middlewares);
 
-describe('Promise Resolver Middleware', () => {
+describe('API Middleware', () => {
 
   afterEach(() => {
     nock.cleanAll();
