@@ -1,5 +1,4 @@
 import express from 'express';
-import expressJwt from 'express-jwt';
 
 import * as Member from 'server/controllers/member';
 
