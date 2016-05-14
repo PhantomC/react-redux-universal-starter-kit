@@ -53,10 +53,9 @@ export function createNewArticle(data) {
   const user = jwt.decode(token);
   data = {
     ...data,
-    excerpt: data.body,
     memberId: user.id,
     member: user
-  }
+  };
   return {
     type: actionTypes.ARTICLE_CREATE,
     request: {
@@ -64,6 +63,39 @@ export function createNewArticle(data) {
       options: {
         method: 'POST',
         body: data
+      }
+    }
+  };
+}
+
+export function editArticle(id) {
+  return {
+    ...getArticleById(id),
+    type: actionTypes.ARTICLE_EDIT_BY_ID
+  };
+}
+
+export function updateArticleById(id, data) {
+  return {
+    type: actionTypes.ARTICLE_UPDATE_BY_ID,
+    request: {
+      path: `/articles/${id}`,
+      options: {
+        method: 'PATCH',
+        body: data
+      }
+    }
+  };
+}
+
+export function deleteArticle(id) {
+  return {
+    type: actionTypes.ARTICLE_DELETE_BY_ID,
+    id,
+    request: {
+      path: `/articles/${id}`,
+      options: {
+        method: 'DELETE'
       }
     }
   };

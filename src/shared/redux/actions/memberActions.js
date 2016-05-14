@@ -1,3 +1,7 @@
+import jwt from 'jsonwebtoken';
+import reactCookie from 'react-cookie';
+import { AUTH_TOKEN } from 'shared/redux/constants/cookieNames';
+
 import * as actionTypes from 'shared/redux/constants/actionTypes';
 
 export function memberLogin(data) {
@@ -20,20 +24,13 @@ export function memberLogout() {
   };
 }
 
-export function memberViewProfile() {
-  return {
-    type: actionTypes.MEMBER_VIEW_PROFILE,
-    request: {
-      path: '/member/profile'
-    }
-  };
-}
-
-export function memberGetMyArticles(memberId, limit = 20) {
+export function memberGetMyArticles(limit = 20) {
+  const token = reactCookie.load(AUTH_TOKEN);
+  const user = jwt.decode(token);
   return {
     type: actionTypes.MEMBER_GET_MY_ARTICLES,
     request: {
-      path: `/members/${memberId}/articles?_expand=member&_sort=id&_order=DESC&_limit=${limit}`
+      path: `/members/${user.id}/articles?_expand=member&_sort=id&_order=DESC&_limit=${limit}`
     }
-  }
+  };
 }

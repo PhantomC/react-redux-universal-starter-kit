@@ -1,18 +1,19 @@
 import { expect } from 'chai';
 
 import * as actionTypes from 'shared/redux/constants/actionTypes';
-import articleLatestReducer from 'shared/redux/reducers/articleLatestReducer';
+import articleLatestReducer from 'shared/redux/reducers/articleReducer/articleLatestReducer';
 
 describe('Article Latest Reducer', () => {
   
-  describe('Delete Article', () => {
-
+  describe('When app starts', () => {
     it('Should return the initial state', () => {
       const state = articleLatestReducer(undefined, {});
       expect(state).to.eql([]);
     });
+  });
 
-    it('Should add the latest article', () => {
+  describe('When receive some new articles', () => {
+    it('Should add that articles in the list', () => {
       const data = [
         {
           id: 1,
@@ -28,8 +29,10 @@ describe('Article Latest Reducer', () => {
       });
       expect(state).to.eql(data);
     });
+  });
 
-    it('Should delete the article', () => {
+  describe('When delete an article', () => {
+    it('Should delete the article from the list', () => {
       const id = 1;
       const initialState = [{id}];
       const state = articleLatestReducer(initialState, {

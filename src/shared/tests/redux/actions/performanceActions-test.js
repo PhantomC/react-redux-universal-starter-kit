@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import * as actionTypes from 'shared/redux/constants/actionTypes';
-import * as performanceActions from 'shared/redux/actions/performanceActions';
+import * as articleActions from 'shared/redux/actions/articleActions';
 
 describe('Performance actions', () => {
 
@@ -10,7 +10,7 @@ describe('Performance actions', () => {
     let id = 1;
 
     beforeEach(() => {
-      action = performanceActions.deleteArticle(id);
+      action = articleActions.deleteArticle(id);
     });
 
     it('should have the correct type', () => {

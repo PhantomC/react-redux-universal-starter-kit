@@ -35,7 +35,7 @@
       }
     },
     "test": {
-      "command": "mocha --compilers js:babel-register --require src/shared/tests/setup.js src/shared/tests/**/*-test.js",
+      "command": "mocha $(find src/shared/tests -name '*-test.js') --require src/shared/tests/setup.js --compilers js:babel-register",
       "env": {
         "NODE_ENV": "development",
         "NODE_PATH": "./src"
@@ -99,7 +99,7 @@
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
-    "redux-form": "^5.1.3",
+    "redux-form": "^5.2.3",
     "resolve-url-loader": "^1.4.3",
     "sass-loader": "^3.2.0",
     "sass-resources-loader": "^1.0.2",

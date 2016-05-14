@@ -1,17 +1,15 @@
 import express from 'express';
 import expressJwt from 'express-jwt';
 
+import { secretKey } from 'server/configs';
+
 import * as Authentication from 'server/controllers/authentication';
-import * as Member from 'server/controllers/member';
 
 const router = express.Router();
 
-router.post('/login', Authentication.login);
+router.use('/members', expressJwt({ secret: secretKey}));
 
-router.get('/member/*', 
-  expressJwt({secret: 'your secret key'}),
-  Member.profile
-);
+router.post('/login', Authentication.login);
 
 router.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {

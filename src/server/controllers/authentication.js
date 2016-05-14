@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const secretKey = 'your secret key';
+import { secretKey } from 'server/configs';
 
 const admin = {
   id: 1,

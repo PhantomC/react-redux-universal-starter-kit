@@ -1,21 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import * as memberActions from 'shared/redux/actions/memberActions';
-
-import ArticleList from 'shared/components/partials/Article/ArticleList';
 
 class MemberPage extends Component {
 
   constructor(props, context) {
     super(props, context);
     this.handleLogoutButton = this.handleLogoutButton.bind(this);
-    this.handleProfileLinkClick = this.handleProfileLinkClick.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.memberGetMyArticles(1);
   }
 
   componentWillUpdate(nextProps) {
@@ -26,10 +20,6 @@ class MemberPage extends Component {
 
   handleLogoutButton() {
     this.props.memberLogout();
-  }
-
-  handleProfileLinkClick() {
-    this.props.memberViewProfile();
   }
 
   renderMemberProfile() {
@@ -46,7 +36,10 @@ class MemberPage extends Component {
           </div>
         </div>
         <p>Hello! {this.props.member.user.name}</p>
-        <p><a href="#" onClick={this.handleProfileLinkClick}>View Profile</a></p>
+        <ul>
+          <li><Link to={'/member'}>My Articles</Link></li>
+          <li><Link to={'/member/bookmarks'}>My Bookmarks</Link></li>
+        </ul>
         <button onClick={this.handleLogoutButton}>Logout</button>
       </div>
     );
@@ -57,7 +50,7 @@ class MemberPage extends Component {
       <div>
         <Helmet title="Member" />
         <div className="col-md-8">
-          {this.props.member.myArticles.length > 0 ? <ArticleList articles={this.props.member.myArticles} /> : <p>You haven't written yet.</p>}
+          {this.props.children}
         </div>
         <div className="col-md-4">
           {this.renderMemberProfile()}
