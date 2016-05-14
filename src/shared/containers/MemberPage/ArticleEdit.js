@@ -14,10 +14,7 @@ class ArticleEdit extends Component {
   }
 
   componentWillMount() {
-    setTimeout(()=>{
-      this.props.editArticle(this.props.params.id);
-    }, 2000);
-    // this.props.editArticle(this.props.params.id);
+    this.props.editArticle(this.props.params.id);
   }
 
   onPostFormSubmit(data) {
@@ -33,11 +30,5 @@ class ArticleEdit extends Component {
     );
   }
 }
-
-// function mapStateToProps({article}) {
-//   return {
-//     article: article.active
-//   };
-// } 
 
 module.exports = connect(null, articleActions)(ArticleEdit);

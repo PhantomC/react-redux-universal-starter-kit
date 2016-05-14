@@ -3,7 +3,6 @@ import { reduxForm } from 'redux-form';
 
 class PostForm extends Component {
   render() {
-    console.log('re-render');
     const { fields: { title, body, tags }, handleSubmit } = this.props;
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit(this.props.onPostFormSubmit) }>
