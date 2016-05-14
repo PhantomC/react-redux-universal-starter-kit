@@ -16,7 +16,7 @@ class MyArticles extends Component {
   }
 
   componentDidMount() {
-    this.props.memberGetMyArticles(1);
+    this.props.memberGetMyArticles();
   }
 
   handleEdit(id) {
