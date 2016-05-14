@@ -1,6 +1,9 @@
+import { secretKey } from 'server/configs';
 import config from 'shared/configs';
 
 import express from 'express';
+import expressJwt from 'express-jwt';
+
 import jsonServer from 'json-server';
 import mockData from 'server/mockData';
 
@@ -8,6 +11,7 @@ import webpack from 'webpack';
 import webpackConfig from '../../webpack.config.js';
 import serverRendering from 'server/renderer';
 import routes from 'server/routes';
+import memberRoutes from 'server/routes/member';
 
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
@@ -20,7 +24,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+app.use('/api/member*', 
+  expressJwt({secret: secretKey}),
+  memberRoutes
+);
 app.use('/api', routes);
+
 app.use('/api', jsonServer.defaults());
 app.use('/api', jsonServerRouter);
 
