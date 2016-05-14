@@ -3,7 +3,7 @@ import { reduxForm } from 'redux-form';
 
 class PostForm extends Component {
   render() {
-    const { fields: { title, body, tags }, handleSubmit } = this.props;
+    const { fields: { title, body, excerpt, tags }, handleSubmit } = this.props;
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit(this.props.onPostFormSubmit) }>
         <div className={`form-group${title.touched && title.invalid ? ' has-danger' : '' }`}>
@@ -18,8 +18,15 @@ class PostForm extends Component {
         <div className={`form-group${body.touched && body.invalid ? ' has-danger' : '' }`}>
           <label className="col-md-2 control-label">Body</label>
           <div className="col-md-4">
-            <textarea placeholder="Body" rows="3" className="form-control" {...body} />
+            <textarea placeholder="Body" rows="5" className="form-control" {...body} />
             { body.touched ? body.error : null }
+          </div>
+        </div>
+        <div className={`form-group${excerpt.touched && excerpt.invalid ? ' has-danger' : '' }`}>
+          <label className="col-md-2 control-label">Excerpt</label>
+          <div className="col-md-4">
+            <textarea placeholder="Excerpt" rows="3" className="form-control" {...excerpt} />
+            { excerpt.touched ? excerpt.error : null }
           </div>
         </div>
         <div className={`form-group${tags.touched && tags.invalid ? ' has-danger' : '' }`}>
@@ -57,6 +64,10 @@ function validate(values) {
     errors.body = 'Please enter body';
   }
 
+  if (!values.excerpt) {
+    errors.excerpt = 'Please enter excerpt';
+  }
+
   if (!values.tags) {
     errors.tags = 'Please enter tags';
   }
@@ -65,7 +76,7 @@ function validate(values) {
 }
 
 function mapStateToProps({member}) {
-  const { excerpt, memberId, ...rest } = member.myArticleEdit;
+  const { memberId, ...rest } = member.myArticleEdit;
   return {
     initialValues: rest
   };
@@ -73,6 +84,6 @@ function mapStateToProps({member}) {
 
 export default reduxForm({
   form: 'postForm',
-  fields: ['title', 'body', 'tags'],
+  fields: ['title', 'body', 'excerpt', 'tags'],
   validate
 }, mapStateToProps)(PostForm);

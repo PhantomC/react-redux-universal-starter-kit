@@ -53,7 +53,6 @@ export function createNewArticle(data) {
   const user = jwt.decode(token);
   data = {
     ...data,
-    excerpt: data.body,
     memberId: user.id,
     member: user
   }
