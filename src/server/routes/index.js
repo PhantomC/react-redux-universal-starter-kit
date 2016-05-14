@@ -1,17 +1,13 @@
 import express from 'express';
 import expressJwt from 'express-jwt';
+
 import { secretKey } from 'server/configs';
 
 import * as Authentication from 'server/controllers/authentication';
 
 const router = express.Router();
 
-// router.use(expressJwt({ secret: secretKey}).unless({
-//   path: [
-//     '/api/login', 
-//     '/articles'
-//   ]
-// }));
+router.use('/members', expressJwt({ secret: secretKey}));
 
 router.post('/login', Authentication.login);
 

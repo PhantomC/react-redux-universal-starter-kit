@@ -1,8 +1,6 @@
-import { secretKey } from 'server/configs';
 import config from 'shared/configs';
 
 import express from 'express';
-import expressJwt from 'express-jwt';
 
 import jsonServer from 'json-server';
 import mockData from 'server/mockData';
@@ -23,12 +21,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use('/api', expressJwt({ secret: secretKey}).unless({
-  path: [
-    '/api/login', 
-    '/api/articles'
-  ]
-}));
 app.use('/api', routeHandlers);
 app.use('/api', jsonServer.defaults());
 app.use('/api', jsonServerRouter);
