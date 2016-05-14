@@ -76,9 +76,8 @@ function validate(values) {
 }
 
 function mapStateToProps({member}) {
-  const { memberId, ...rest } = member.myArticleEdit;
   return {
-    initialValues: rest
+    initialValues: member.myArticleEdit
   };
 }
 
