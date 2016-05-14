@@ -24,15 +24,6 @@ export function memberLogout() {
   };
 }
 
-export function memberViewProfile() {
-  return {
-    type: actionTypes.MEMBER_VIEW_PROFILE,
-    request: {
-      path: '/member/profile'
-    }
-  };
-}
-
 export function memberGetMyArticles(limit = 20) {
   const token = reactCookie.load(AUTH_TOKEN);
   const user = jwt.decode(token);

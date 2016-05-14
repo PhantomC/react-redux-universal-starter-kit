@@ -23,6 +23,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+app.use('/api', expressJwt({ secret: secretKey}).unless({
+  path: [
+    '/api/login', 
+    '/api/articles'
+  ]
+}));
 app.use('/api', routeHandlers);
 app.use('/api', jsonServer.defaults());
 app.use('/api', jsonServerRouter);

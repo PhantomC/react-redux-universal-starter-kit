@@ -10,7 +10,6 @@ class MemberPage extends Component {
   constructor(props, context) {
     super(props, context);
     this.handleLogoutButton = this.handleLogoutButton.bind(this);
-    this.handleProfileLinkClick = this.handleProfileLinkClick.bind(this);
   }
 
   componentWillUpdate(nextProps) {
@@ -21,10 +20,6 @@ class MemberPage extends Component {
 
   handleLogoutButton() {
     this.props.memberLogout();
-  }
-
-  handleProfileLinkClick() {
-    this.props.memberViewProfile();
   }
 
   renderMemberProfile() {
@@ -42,7 +37,6 @@ class MemberPage extends Component {
         </div>
         <p>Hello! {this.props.member.user.name}</p>
         <ul>
-          <li><a href="#" onClick={this.handleProfileLinkClick}>My Profile</a></li>
           <li><Link to={`/member`}>My Articles</Link></li>
           <li><Link to={`/member/bookmarks`}>My Bookmarks</Link></li>
         </ul>
