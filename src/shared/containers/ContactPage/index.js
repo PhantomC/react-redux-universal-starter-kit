@@ -52,10 +52,4 @@ class ContactPage extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    form: state.form
-  };
-}
-
-module.exports = connect(mapStateToProps, contactActions)(ContactPage);
+module.exports = connect(null, contactActions)(ContactPage);

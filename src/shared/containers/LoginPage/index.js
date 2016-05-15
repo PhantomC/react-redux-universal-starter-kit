@@ -48,8 +48,7 @@ LoginPage.contextTypes = {
 
 function mapStateToProps(state) {
   return {
-    member: state.member,
-    form: state.form
+    member: state.member
   };
 }
 
