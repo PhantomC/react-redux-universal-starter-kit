@@ -21,13 +21,17 @@ class PostForm extends Component {
           <div className={`form-group${body.touched && body.invalid ? ' has-danger' : '' }`}>
             <div>
               <textarea placeholder="Body" rows="5" className="form-control" {...body} />
-              { body.touched ? body.error : null }
+              <div className="text-help">
+                  { body.touched ? body.error : null }
+              </div>
             </div>
           </div>
           <div className={`form-group${excerpt.touched && excerpt.invalid ? ' has-danger' : '' }`}>
             <div>
               <textarea placeholder="Excerpt" rows="3" className="form-control" {...excerpt} />
-              { excerpt.touched ? excerpt.error : null }
+              <div className="text-help">
+                  { excerpt.touched ? excerpt.error : null }
+              </div>
             </div>
           </div>
           <div className={`form-group${tags.touched && tags.invalid ? ' has-danger' : '' }`}>

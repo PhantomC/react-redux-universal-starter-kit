@@ -12,7 +12,9 @@
 }
 
 .author {
-  color: $secondColor;
+  color: #263238;
+  font-weight: 700;
+  margin-right: 4px;
 }
 
 .title {
@@ -26,6 +28,26 @@
 .excerpt {
   font-size: 1.2em;
   color: $textColor;
+}
+
+.meta {
+  @include clearfix;
+  height: 35px;
+  margin-bottom: 15px;
+}
+.photo-wrapper {
+    width: 35px;
+    margin-right: 8px;
+    float: left;
+    position: absolute;
+    img {
+        width: 100%;
+    }
+}
+.author-wrapper {
+  margin-left: 45px;
+  float: left;
+  padding-top: 5px;
 }
 
 @media screen and (min-width: 768px) {

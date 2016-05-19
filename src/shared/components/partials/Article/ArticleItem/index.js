@@ -10,11 +10,11 @@ const Article = function(props) {
   return (
     <article styleName="container" className={props.addClass}>
       <header>
-        <div className="row">
-          <div className="col-xs-1">
+        <div styleName="meta">
+          <div styleName="photo-wrapper">
             <img styleName="avatar" src={article.member.avatar} alt=""/>
           </div>
-          <div className="col-xs-11">
+          <div styleName="author-wrapper">
             <span styleName="author">{article.member.name}</span>
           </div>
         </div>
