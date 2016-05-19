@@ -62,7 +62,7 @@ styles:
   dropdowns: false
   button-groups: false
   input-groups: false
-  navs: true
+  navs: false
   navbar: false
   breadcrumbs: false
   pagination: false
