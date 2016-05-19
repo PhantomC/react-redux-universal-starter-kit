@@ -5,22 +5,35 @@ import sinon from 'sinon';
 
 import SearchForm from 'shared/components/partials/SearchForm';
 
+function mountComponent() {
+  const spy = sinon.spy();
+  const wrapper = mount(<SearchForm getSearchResults={spy} />);
+  return {
+    spy,
+    wrapper
+  }
+}
+
 describe('<SearchForm />', () => {
 
-  let wrapper = {};
-  const spy = sinon.spy();
-
-  before(() => {
-    wrapper = mount(<SearchForm getSearchResults={spy} />);
-  });
 
   it('should returns a <form />', () => {
+    const wrapper = shallow(<SearchForm />);
     expect(wrapper.find('form')).to.have.length(1);    
   });
 
-  it('should call getSearchResults when input changed', () => {
-    wrapper.find('input').simulate('change');
-    expect(spy.calledOnce).to.be.true;    
-  });
+  describe('should response actions', () => {
 
+    it('should call getSearchResults after form submitted', () => {
+      const { wrapper, spy } = mountComponent();
+      wrapper.find('form').simulate('submit');
+      expect(spy.calledOnce).to.be.true;    
+    });
+
+    it('should call getSearchResults when input changed', () => {
+      const { wrapper, spy } = mountComponent();
+      wrapper.find('input').simulate('change');
+      expect(spy.calledOnce).to.be.true;    
+    });
+  });
 });
