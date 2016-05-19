@@ -22,6 +22,17 @@ describe('<SearchForm />', () => {
     expect(wrapper.find('form')).to.have.length(1);    
   });
 
+  it('should have onSubmit props', () => {
+    const wrapper = shallow(<SearchForm />);
+    expect(wrapper.find('form').props().onSubmit).to.exist;    
+  });
+
+  it('should have a text input', () => {
+    const wrapper = shallow(<SearchForm />);
+    const textInput = wrapper.find('input[type="text"]');
+    expect(textInput).to.have.length(1);    
+  });
+
   describe('should response actions', () => {
 
     it('should call getSearchResults after form submitted', () => {
