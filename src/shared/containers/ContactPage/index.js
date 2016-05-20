@@ -4,6 +4,10 @@ import Helmet from 'react-helmet';
 
 import * as contactActions from 'shared/redux/actions/contactActions';
 
+import CSSModules from 'react-css-modules';
+import styles from './ContactPage.scss';
+
+
 import ContactForm from 'shared/components/partials/ContactForm';
 
 class ContactPage extends Component {
@@ -36,20 +40,19 @@ class ContactPage extends Component {
     return (
       <div>
         <Helmet title="Contact" />
-        <div className="col-md-8">
-          <ContactForm onContactFormSubmit={ this.onContactFormSubmit } />
-          { this.state.sent ? (
-            <div className="alert alert-success">
-              <strong>Success!</strong> Your message was sent successfully.
-            </div>
-          ) : null }
-        </div>
-        <div className="col-md-4">
-          Sidebar   
+        <div className="col-md-12">
+          <div styleName="container">
+            <ContactForm onContactFormSubmit={ this.onContactFormSubmit } />
+            { this.state.sent ? (
+              <div className="alert alert-success">
+                <strong>Success!</strong> Your message was sent successfully.
+              </div>
+            ) : null }          
+          </div>
         </div>
       </div>
     );
   }
 }
 
-module.exports = connect(null, contactActions)(ContactPage);
+module.exports = connect(null, contactActions)(CSSModules(ContactPage, styles));

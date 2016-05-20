@@ -7,32 +7,25 @@ class ContactForm extends Component {
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit(this.props.onContactFormSubmit) }>
         <div className={`form-group${name.touched && name.invalid ? ' has-danger' : '' }`}>
-          <label className="col-md-2 control-label">Name</label>
-          <div className="col-md-4">
             <input type="text" placeholder="Name" className="form-control" {...name} />
             <div className="text-help">
               { name.touched ? name.error : null }
             </div>
-          </div>
         </div>
         <div className={`form-group${email.touched && email.invalid ? ' has-danger' : '' }`}>
-          <label className="col-md-2 control-label">Email</label>
-          <div className="col-md-4">
             <input type="email" placeholder="Email" className="form-control" {...email} />
+            <div className="text-help">
             { email.touched ? email.error : null }
-          </div>
+            </div>
         </div>
         <div className={`form-group${message.touched && message.invalid ? ' has-danger' : '' }`}>
-          <label className="col-md-2 control-label">Message</label>
-          <div className="col-md-4">
             <textarea placeholder="Message" rows="3" className="form-control" {...message} />
+            <div className="text-help">
             { message.touched ? message.error : null }
-          </div>
+            </div>
         </div>
         <div className="form-group">
-          <div className="col-sm-12 col-md-offset-2">
-            <button type="submit" className="btn btn-default">Submit</button>
-          </div>
+            <button type="submit" className="btn btn-primary">Send</button>
         </div>
       </form>
     );

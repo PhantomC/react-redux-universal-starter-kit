@@ -1,0 +1,14 @@
+.container {
+	@extend %containerShadow;
+	width: 100%;
+	margin: 0 auto;
+
+	button {
+		width: 100%;
+	}
+
+	@include min-screen(960px) {
+		width: 600px;
+	}
+
+}
