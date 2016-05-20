@@ -1,10 +1,29 @@
 .logo {
 	text-transform: uppercase;
 	font-weight: 700;
+	float: left;
+	padding: 12px 10px;
+	height: 45px;
 	&, & a {
 		color: $primaryColor;
 	}
 	span {
-		color: $secondColor;
+		color: #fff;
+	}
+}
+
+.nav {
+	float: right;
+	color: #fff;
+
+	li {
+		display: inline-block;
+		text-transform: uppercase;
+		a {
+			color: #fff;
+			display: block;
+			padding: 12px 10px;
+			height: 45px;
+		}
 	}
 }

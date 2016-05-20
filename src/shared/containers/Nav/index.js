@@ -23,13 +23,11 @@ class Nav extends Component {
   render() {
     return (
       <div>
-        <ul className="nav nav-pills">
-          <li styleName="logo"><Link to="/">React Redux <span>Universal Starter Kit</span></Link></li>
+        <div styleName="logo"><Link to="/">React Redux <span>Universal Starter Kit</span></Link></div>
+        <ul styleName="nav">
           <li><Link to="/gallery">Gallery</Link></li>
           <li><Link to="/contact">Contact</Link></li>
-
           {this.renderMemberSection()}
-
         </ul>
       </div>
     );

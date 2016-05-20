@@ -1,0 +1,59 @@
+.wrapper {
+	background: $secondColor;
+}
+
+.header {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.thumbnail {
+	img {
+		display: block;
+		width: 120px;
+		height: 120px;
+		margin: 0 auto;
+		border: 3px solid #fff;
+		border-radius: 100%;
+	}
+}
+
+.greeting {
+    font-size: 16px;
+    display: block;
+    margin: 0;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    background: darken($secondColor, 6%);
+}
+
+.list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	li {
+		border-bottom: 1px solid lighten($secondColor, 10%);
+		a {
+			color: #fff;
+			display: block;
+			padding: 15px 15px 15px 30px;
+
+			&:hover {
+				background: lighten($secondColor, 10%);
+			}
+		}
+	}
+}
+
+.logout {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    text-transform: uppercase;
+}
+
+.footer {
+	padding: 30px 0;
+}
