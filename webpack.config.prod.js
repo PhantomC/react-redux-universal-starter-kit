@@ -82,7 +82,8 @@ module.exports = {
 
   sassResources: [
     './src/shared/styles/variables.scss',
-    './src/shared/styles/mixins.scss'
+    './src/shared/styles/mixins.scss',
+    './src/shared/styles/placeholder.scss'
   ]
 
 };
