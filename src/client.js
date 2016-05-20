@@ -7,7 +7,8 @@ import useScroll from 'scroll-behavior/lib/useStandardScroll';
 
 import { match, Router, browserHistory, useRouterHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import getRoutes from 'shared/routes';
+// import getRoutes from 'shared/routes';
+import getRoutes from 'shared/routes/jsx';
 
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 const createScrollHistory = useScroll(createBrowserHistory);
