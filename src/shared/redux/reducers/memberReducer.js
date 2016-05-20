@@ -1,6 +1,6 @@
 import * as actionTypes from 'shared/redux/constants/actionTypes';
 
-const initialState = {
+export const initialState = {
   isAuthenticated: false,
   user: {},
   error: null,
