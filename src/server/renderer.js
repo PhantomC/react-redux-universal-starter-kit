@@ -30,6 +30,7 @@ export default function(req, res) {
     }
 
     if (renderProps) {
+
       const routeStatus = renderProps.routes.reduce((prev, cur) => cur.status || prev, null);
       if (routeStatus) {
         res.status(routeStatus);
@@ -38,7 +39,10 @@ export default function(req, res) {
       prefetchComponentData(store.dispatch, renderProps.components, renderProps.params)
         .then(() => {
           const { HTML, status } = renderHTML();
-          res.status(status).end(HTML);
+          if (!routeStatus) {
+            res.status(status);
+          }
+          res.end(HTML);
         })
         .catch(err => res.end(err.message));
     }
