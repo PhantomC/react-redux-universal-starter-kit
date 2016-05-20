@@ -5,7 +5,8 @@ import Helmet from 'react-helmet';
 import reactCookie from 'react-cookie';
 
 import { match, RouterContext } from 'react-router';
-import getRoutes from 'shared/routes';
+// import getRoutes from 'shared/routes';
+import getRoutes from 'shared/routes/jsx';
 
 import prefetchComponentData from 'shared/utils/prefetchComponentData';
 
