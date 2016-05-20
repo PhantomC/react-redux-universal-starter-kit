@@ -4,6 +4,9 @@ import Helmet from 'react-helmet';
 
 import * as memberActions from 'shared/redux/actions/memberActions';
 
+import CSSModules from 'react-css-modules';
+import styles from './LoginPage.scss';
+
 import LoginForm from 'shared/components/partials/LoginForm';
 
 class LoginPage extends Component {
@@ -28,14 +31,11 @@ class LoginPage extends Component {
     return (
       <div>
         <Helmet title="Member Login" />
-        <div className="col-md-8">
-          <LoginForm memberLogin={ this.props.memberLogin } />
-
-          {this.props.member.error && this.renderErrorMessage()}
-
-        </div>
-        <div className="col-md-4">
-          Sidebar   
+        <div className="col-md-12">
+          <div styleName="wrapper">
+            <LoginForm memberLogin={ this.props.memberLogin } />
+            {this.props.member.error && this.renderErrorMessage()}          
+          </div>
         </div>
       </div>
     );
@@ -52,4 +52,4 @@ function mapStateToProps(state) {
   };
 }
 
-module.exports = connect(mapStateToProps, memberActions)(LoginPage);
+module.exports = connect(mapStateToProps, memberActions)(CSSModules(LoginPage, styles));
