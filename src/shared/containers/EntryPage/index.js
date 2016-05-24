@@ -8,6 +8,7 @@ import * as articleActions from 'shared/redux/actions/articleActions';
 
 import ArticleList from 'shared/components/partials/Article/ArticleList';
 import ArticleContent from 'shared/components/partials/Article/ArticleContent';
+import NotFoundPage from 'shared/containers/NotFoundPage';
 
 import styles from './Entry.scss';
 
@@ -25,18 +26,14 @@ class EntryPage extends Component {
     }
   }
 
-  renderArticle() {
+  render() {
+
     if (this.props.article.error) {
       return (
-        <div>{ this.props.article.error.statusText }</div>
+        <NotFoundPage error={this.props.article.error.statusText} />
       );
     }
-    return (
-      <ArticleContent article={this.props.article.data} />
-    );
-  }
 
-  render() {
     this.transitionName = this.props.location.state ? this.props.location.state.transition : 'default';
     return (
       <ReactCSSTransitionGroup
@@ -59,7 +56,7 @@ class EntryPage extends Component {
           />
           <div styleName="body">
             <div styleName="content">
-              { this.renderArticle() }
+              <ArticleContent article={this.props.article.data} />
             </div>
             <div styleName="related">
               <ArticleList articles={this.props.article.related} />
