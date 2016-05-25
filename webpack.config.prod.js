@@ -10,6 +10,7 @@ var cssnano = require('cssnano');
 module.exports = {
 
   entry: [
+    'babel-polyfill',
     'bootstrap-loader',
     path.join(__dirname, 'src/client.js')
   ],
