@@ -10,21 +10,26 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case actionTypes.ARTICLE_GET_BY_ID:
+
+    case `${actionTypes.ARTICLE_GET_BY_ID}_SUCCESS`:
       return u({
         data: action.data,
         error: false
       }, initialState);
-    case `${actionTypes.ARTICLE_GET_BY_ID}_FAIL`:
+
+    case `${actionTypes.ARTICLE_GET_BY_ID}_FAILED`:
       return u({
-        error: action.error
+        error: action.error.response
       }, initialState);
-    case actionTypes.ARTICLE_GET_RELATED_ARTICLES:
+
+    case `${actionTypes.ARTICLE_GET_RELATED_ARTICLES}_SUCCESS`:
       return u({
         related: action.data
       }, state);
+
     case actionTypes.ARTICLE_GET_LATEST:
       return initialState;
+
     default:
       return state;
   }

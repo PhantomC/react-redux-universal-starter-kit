@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 
 import Helmet from 'react-helmet';
 import reactCookie from 'react-cookie';
@@ -7,11 +7,11 @@ import reactCookie from 'react-cookie';
 import { match, RouterContext } from 'react-router';
 import getRoutes from 'shared/routes';
 
-import prefetchComponentData from 'shared/utils/prefetchComponentData';
-
 import { Provider } from 'react-redux';
 
 import createStore from 'shared/redux/store/createStore';
+import rootSaga from 'shared/redux/sagas';
+
 import { MEMBER_LOAD_AUTH } from 'shared/redux/constants/actionTypes';
 
 export default function(req, res) {
@@ -24,74 +24,80 @@ export default function(req, res) {
 
   match({ routes: getRoutes(store), location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
-      res.status(500).end(error.message);
+      res.status(500).send(error.message);
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
-    }
-
-    if (renderProps) {
+    } else if (renderProps && renderProps.components) {
 
       const routeStatus = renderProps.routes.reduce((prev, cur) => cur.status || prev, null);
       if (routeStatus) {
         res.status(routeStatus);
       }
-
-      prefetchComponentData(store.dispatch, renderProps.components, renderProps.params)
-        .then(() => {
-          const { HTML, status } = renderHTML();
-          if (!routeStatus) {
-            res.status(status);
-          }
-          res.end(HTML);
-        })
-        .catch(err => res.end(err.message));
-    }
-
-    function renderHTML() {
-
-      let status = 200;
-
-      const renderedComponent = ReactDOM.renderToString(
+      
+      const rootComp = (
         <Provider store={ store }>
           <RouterContext {...renderProps } /> 
         </Provider>
       );
 
-      const initialState = store.getState();
-      if (initialState.errorMessage.status !== undefined) {
-        status = initialState.errorMessage.status;
-      }
+      store.runSaga(rootSaga).done.then(() => {
+        const { HTML, status = routeStatus } = renderPage(
+          renderToString(rootComp),
+          store.getState()
+        );
+        if (!routeStatus) {
+          res.status(status);
+        }
+        res.end(HTML);
+      }).catch((e) => {
+        console.log(e.message);
+        res.status(500).send(e.message);
+      });
 
-      let head = Helmet.rewind();
+      renderToString(rootComp);
+      store.close();
 
-      const assets = require('../../static/build/assets.json');
-
-      const HTML = `
-        <!DOCTYPE html>
-        <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            ${head.title.toString()}
-            ${head.meta.toString()}
-            ${assets.main.css ? '<link rel="stylesheet" href="' + assets.main.css + '" />' : ''}
-            ${head.link.toString()}
-          </head>
-          <body>
-            <div id="app">${renderedComponent}</div>
-            <script type="application/javascript">
-              window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
-            </script>
-            <script src="${assets.main.js}"></script>
-          </body>
-        </html>    
-      `;
-
-      return {
-        HTML,
-        status
-      };
+    } else {
+      res.status(404).send('Not found');
     }
-
   });
 };
+
+function renderPage(renderedComponent, initialState) {
+
+  let status = 200;
+
+  if (initialState.errorMessage.status !== undefined) {
+    status = initialState.errorMessage.status;
+  }
+
+  let head = Helmet.rewind();
+
+  const assets = require('../../static/build/assets.json');
+
+  const HTML = `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        ${head.title.toString()}
+        ${head.meta.toString()}
+        ${assets.main.css ? '<link rel="stylesheet" href="' + assets.main.css + '" />' : ''}
+        ${head.link.toString()}
+      </head>
+      <body>
+        <div id="app">${renderedComponent}</div>
+        <script type="application/javascript">
+          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+        </script>
+        <script src="${assets.main.js}"></script>
+      </body>
+    </html>    
+  `;
+
+  return {
+    HTML,
+    status
+  };
+}

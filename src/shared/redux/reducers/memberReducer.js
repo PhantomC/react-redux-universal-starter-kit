@@ -10,15 +10,8 @@ export const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case `${actionTypes.MEMBER_LOGIN}_REQUEST`:
-      return { 
-        ...state,
-        isAuthenticated: false, 
-        user: {},
-        error: null
-      };
 
-    case actionTypes.MEMBER_LOGIN:
+    case `${actionTypes.MEMBER_LOGIN}_SUCCESS`:
       return { 
         ...state, 
         isAuthenticated: true,
@@ -26,24 +19,24 @@ export default function(state = initialState, action) {
         user: action.data.user
       };
 
-    case `${actionTypes.MEMBER_LOGIN}_FAIL`:
+    case `${actionTypes.MEMBER_LOGIN}_FAILED`:
       return {
         ...state,
         isAuthenticated: false,
-        error: action.error,
+        error: action.error.response,
         user: {}
       };
 
     case actionTypes.MEMBER_LOGOUT:
       return initialState;
 
-    case actionTypes.MEMBER_GET_MY_ARTICLES:
+    case `${actionTypes.MEMBER_GET_MY_ARTICLES}_SUCCESS`:
       return {
         ...state,
         myArticles: action.data
       };
 
-    case actionTypes.ARTICLE_EDIT_BY_ID:
+    case `${actionTypes.ARTICLE_EDIT_BY_ID}_SUCCESS`:
       return {
         ...state,
         myArticleEdit: action.data

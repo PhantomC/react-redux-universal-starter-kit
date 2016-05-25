@@ -25,15 +25,13 @@ class ContactPage extends Component {
   }
 
   onContactFormSubmit(data) {
-    this.props.saveContactFormData(data)
-      .then(() => {
-        this.setState({
-          sent: true
-        });
-        setTimeout(() => {
-          this.context.router.push('/');
-        }, 2000);
-      });
+    this.props.saveContactFormData(data);
+    this.setState({
+      sent: true
+    });
+    setTimeout(() => {
+      this.context.router.push('/');
+    }, 2000);
   }
 
   render() {

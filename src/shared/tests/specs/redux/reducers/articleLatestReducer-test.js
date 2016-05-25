@@ -24,7 +24,7 @@ describe('Article Latest Reducer', () => {
         }
       ];
       const state = articleLatestReducer(undefined, {
-        type: actionTypes.ARTICLE_GET_LATEST,
+        type: `${actionTypes.ARTICLE_GET_LATEST}_SUCCESS`,
         data
       });
       expect(state).to.eql(data);

@@ -18,9 +18,8 @@ class ArticleEdit extends Component {
   }
 
   onPostFormSubmit(data) {
-    this.props.updateArticleById(this.props.articleId, data).then(()=>{
-      this.context.router.push('/member');
-    });
+    this.props.updateArticleById(this.props.articleId, data);
+    this.context.router.push('/member');
   }
 
   render() {

@@ -15,8 +15,10 @@ const appHistory = useRouterHistory(createScrollHistory)();
 
 import { Provider } from 'react-redux';
 import createStore from 'shared/redux/store/createStore';
+import rootSaga from 'shared/redux/sagas';
 
 const store = createStore(window.__INITIAL_STATE__);
+store.runSaga(rootSaga);
 
 const history = syncHistoryWithStore(appHistory, store);
 

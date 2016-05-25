@@ -11,7 +11,7 @@ function mountComponent() {
   return {
     spy,
     wrapper
-  }
+  };
 }
 
 describe('<SearchForm />', () => {

@@ -14,7 +14,7 @@ import styles from './Entry.scss';
 
 class EntryPage extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.article.data.id != this.props.params.id) {
       this.props.getArticleContentById(this.props.params.id);
     }
@@ -67,12 +67,6 @@ class EntryPage extends Component {
     );
   }
 }
-
-EntryPage.prefetchData = [
-  function(params) {
-    return articleActions.getArticleContentById(params.id);
-  }
-];
 
 function mapStateToProps({article}) {
   return {

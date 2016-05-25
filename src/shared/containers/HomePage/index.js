@@ -14,7 +14,7 @@ class HomePage extends Component {
     this.onPostFormSubmit = this.onPostFormSubmit.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getArticleLatest();
   }
 
@@ -36,12 +36,6 @@ class HomePage extends Component {
     );
   }
 }
-
-HomePage.prefetchData = [
-  function(params) {
-    return articleActions.getArticleLatest();
-  }
-];
 
 function mapStateToProps({article, member}) {
   return {

@@ -63,6 +63,18 @@ function* watchMemberGetMyArticles() {
   yield* takeEvery(actionTypes.MEMBER_GET_MY_ARTICLES, fetchData);
 }
 
+function* watchEditArticle() {
+  yield* takeEvery(actionTypes.ARTICLE_EDIT_BY_ID, fetchData);
+}
+
+function* watchDeleteArticle() {
+  yield* takeEvery(actionTypes.ARTICLE_DELETE_BY_ID, fetchData);
+}
+
+function* watchUpdateArticleById() {
+  yield* takeEvery(actionTypes.ARTICLE_UPDATE_BY_ID, fetchData);
+}
+
 export default function* rootSaga() {
   yield [
     watchGetArticleLatest(),
@@ -72,6 +84,9 @@ export default function* rootSaga() {
     watchCreateNewArticle(),
     watchSaveContactFormData(),
     watchMemberLogin(),
-    watchMemberGetMyArticles()
-  ]
+    watchMemberGetMyArticles(),
+    watchEditArticle(),
+    watchDeleteArticle(),
+    watchUpdateArticleById()
+  ];
 }
