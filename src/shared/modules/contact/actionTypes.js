@@ -1,0 +1,1 @@
+export const CONTACT_SAVE = 'CONTACT_SAVE';
