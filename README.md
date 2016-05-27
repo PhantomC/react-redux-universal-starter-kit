@@ -1,5 +1,7 @@
 # React Redux Universal Starter Kit
 
+[![Build Status](https://travis-ci.org/tatoonz/react-redux-universal-starter-kit.svg)](https://travis-ci.org/tatoonz/react-redux-universal-starter-kit)
+
 ## Overview
 A simple Universal Starter Kit using React, Redux and ECMAScript 2015. As you can see, there are so many starter kits and boilerplates about React out there. But sometimes we've just needed a tool to get thing done quickly and easy to understand! If you don't have much time to do some researches about React and its companies, this starter kit is a good start.
 
