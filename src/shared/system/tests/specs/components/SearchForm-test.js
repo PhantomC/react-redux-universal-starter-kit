@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import SearchForm from 'shared/components/partials/SearchForm';
+import SearchForm from 'shared/containers/HomePage/SearchForm';
 
 function mountComponent() {
   const spy = sinon.spy();
