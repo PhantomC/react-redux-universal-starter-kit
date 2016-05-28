@@ -1,4 +1,4 @@
-import config from 'shared/configs';
+import config from 'shared/system/configs';
 
 import express from 'express';
 

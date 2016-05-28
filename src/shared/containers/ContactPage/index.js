@@ -2,13 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
-import * as contactActions from 'shared/redux/actions/contactActions';
+import * as contactActions from 'shared/modules/contact/contactActions';
 
 import CSSModules from 'react-css-modules';
 import styles from './ContactPage.scss';
 
 
-import ContactForm from 'shared/components/partials/ContactForm';
+import ContactForm from 'shared/containers/ContactPage/ContactForm';
 
 class ContactPage extends Component {
   

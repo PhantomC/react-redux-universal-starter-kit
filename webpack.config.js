@@ -72,9 +72,9 @@ module.exports = {
   postcss: [],
 
   sassResources: [
-    './src/shared/styles/variables.scss',
-    './src/shared/styles/mixins.scss',
-    './src/shared/styles/placeholder.scss'
+    './src/shared/system/styles/variables.scss',
+    './src/shared/system/styles/mixins.scss',
+    './src/shared/system/styles/placeholder.scss'
   ]
 
 };

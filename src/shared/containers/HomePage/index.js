@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as articleActions from 'shared/redux/actions/articleActions';
+import * as articleActions from 'shared/modules/article/articleActions';
 
-import SearchForm from 'shared/components/partials/SearchForm';
-import ArticleList from 'shared/components/partials/Article/ArticleList';
-import PostForm from 'shared/components/partials/PostForm';
+import SearchForm from 'shared/containers/HomePage/SearchForm';
+import ArticleList from 'shared/components/ArticleList';
+import PostForm from 'shared/components/PostForm';
 
 class HomePage extends Component {
 

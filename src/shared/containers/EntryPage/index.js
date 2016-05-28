@@ -4,10 +4,10 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Helmet from 'react-helmet';
 import CSSModules from 'react-css-modules';
 
-import * as articleActions from 'shared/redux/actions/articleActions';
+import * as articleActions from 'shared/modules/article/articleActions';
 
-import ArticleList from 'shared/components/partials/Article/ArticleList';
-import ArticleContent from 'shared/components/partials/Article/ArticleContent';
+import ArticleList from 'shared/components/ArticleList';
+import ArticleContent from 'shared/containers/EntryPage/ArticleContent';
 import NotFoundPage from 'shared/containers/NotFoundPage';
 
 import styles from './Entry.scss';
