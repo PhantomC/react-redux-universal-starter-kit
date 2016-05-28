@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import * as articleActions from 'shared/redux/actions/articleActions';
+import * as articleActions from 'shared/modules/article/articleActions';
 
 import Performance from 'shared/containers/PerformancePage/Performance';
 

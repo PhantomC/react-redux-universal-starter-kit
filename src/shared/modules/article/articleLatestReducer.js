@@ -1,4 +1,4 @@
-import * as actionTypes from 'shared/redux/constants/actionTypes';
+import * as actionTypes from 'shared/modules/article/actionTypes';
 
 export default function(state = [], action) {
   switch (action.type) {

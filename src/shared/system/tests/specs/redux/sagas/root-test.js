@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { take, call, put } from 'redux-saga/effects';
 
-import { fetchData } from 'shared/redux/sagas';
-import requestAPI from 'shared/utils/request';
+import { fetchData } from 'shared/system/sagas';
+import requestAPI from 'shared/system/utils/request';
 
-import * as articleActions from 'shared/redux/actions/articleActions';
+import * as articleActions from 'shared/modules/article/articleActions';
 
 describe('fetchData Saga', () => {
 

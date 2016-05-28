@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import { MEMBER_LOAD_AUTH } from 'shared/redux/constants/actionTypes';
+import { MEMBER_LOAD_AUTH } from 'shared/system/constants';
 
-import App from 'shared/components/layouts/App';
+import App from 'shared/containers/App';
 import HomePage from 'shared/containers/HomePage';
 import ContactPage from 'shared/containers/ContactPage';
 import GalleryPage from 'shared/containers/GalleryPage';

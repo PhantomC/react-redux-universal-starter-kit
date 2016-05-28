@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import * as actionTypes from 'shared/redux/constants/actionTypes';
-import memberReducer, { initialState } from 'shared/redux/reducers/memberReducer';
+import * as actionTypes from 'shared/modules/user/actionTypes';
+import memberReducer, { initialState } from 'shared/modules/user/memberReducer';
 
 describe('Member Reducer', () => {
 

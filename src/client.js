@@ -1,4 +1,4 @@
-import config from 'shared/configs';
+import config from 'shared/system/configs';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -7,15 +7,15 @@ import useScroll from 'scroll-behavior/lib/useStandardScroll';
 
 import { match, Router, browserHistory, useRouterHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import getRoutes from 'shared/routes';
+import getRoutes from 'shared/system/routes';
 
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 const createScrollHistory = useScroll(createBrowserHistory);
 const appHistory = useRouterHistory(createScrollHistory)();
 
 import { Provider } from 'react-redux';
-import createStore from 'shared/redux/store/createStore';
-import rootSaga from 'shared/redux/sagas';
+import createStore from 'shared/system/store/createStore';
+import rootSaga from 'shared/system/sagas';
 
 const store = createStore(window.__INITIAL_STATE__);
 store.runSaga(rootSaga);
@@ -38,7 +38,7 @@ match({ routes, location }, () => {
 });
 
 if (!config.isProduction) {
-  const DevTools = require('shared/components/partials/DevTools');
+  const DevTools = require('shared/components/DevTools');
   match({ routes, location }, () => {
     ReactDOM.render(
       <Provider store={store} key="provider">

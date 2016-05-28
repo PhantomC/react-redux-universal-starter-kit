@@ -2,9 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
-import * as articleActions from 'shared/redux/actions/articleActions';
+import * as articleActions from 'shared/modules/article/articleActions';
 
-import PostForm from 'shared/components/partials/PostForm';
+import PostForm from 'shared/components/PostForm';
 
 class ArticleEdit extends Component {
 

@@ -1,4 +1,5 @@
-import * as actionTypes from 'shared/redux/constants/actionTypes';
+import * as userActionTypes from 'shared/modules/user/actionTypes';
+import * as articleActionTypes from 'shared/modules/article/actionTypes';
 
 export const initialState = {
   isAuthenticated: false,
@@ -11,7 +12,7 @@ export const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
 
-    case `${actionTypes.MEMBER_LOGIN}_SUCCESS`:
+    case `${userActionTypes.MEMBER_LOGIN}_SUCCESS`:
       return { 
         ...state, 
         isAuthenticated: true,
@@ -19,7 +20,7 @@ export default function(state = initialState, action) {
         user: action.data.user
       };
 
-    case `${actionTypes.MEMBER_LOGIN}_FAILED`:
+    case `${userActionTypes.MEMBER_LOGIN}_FAILED`:
       return {
         ...state,
         isAuthenticated: false,
@@ -27,22 +28,22 @@ export default function(state = initialState, action) {
         user: {}
       };
 
-    case actionTypes.MEMBER_LOGOUT:
+    case userActionTypes.MEMBER_LOGOUT:
       return initialState;
 
-    case `${actionTypes.MEMBER_GET_MY_ARTICLES}_SUCCESS`:
+    case `${userActionTypes.MEMBER_GET_MY_ARTICLES}_SUCCESS`:
       return {
         ...state,
         myArticles: action.data
       };
 
-    case `${actionTypes.ARTICLE_EDIT_BY_ID}_SUCCESS`:
+    case `${articleActionTypes.ARTICLE_EDIT_BY_ID}_SUCCESS`:
       return {
         ...state,
         myArticleEdit: action.data
       };
 
-    case actionTypes.ARTICLE_DELETE_BY_ID:
+    case articleActionTypes.ARTICLE_DELETE_BY_ID:
       return {
         ...state,
         myArticles: state.myArticles.filter(article => {

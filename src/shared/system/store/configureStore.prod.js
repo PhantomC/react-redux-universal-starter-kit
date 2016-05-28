@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware, { END } from 'redux-saga';
 
-import rootReducer from 'shared/redux/reducers';
-import authenticationMiddleware from 'shared/redux/middlewares/authenticationMiddleware';
+import rootReducer from 'shared/system/reducers';
+import authenticationMiddleware from 'shared/modules/user/authenticationMiddleware';
 
 const sagaMiddleware = createSagaMiddleware();
 

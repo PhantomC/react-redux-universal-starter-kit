@@ -1,10 +1,10 @@
-import config from 'shared/configs';
+import config from 'shared/system/configs';
 
 require('es6-promise').polyfill();
 import 'isomorphic-fetch';
 
 import reactCookie from 'react-cookie';
-import { AUTH_TOKEN } from 'shared/redux/constants/cookieNames';
+import { AUTH_TOKEN } from 'shared/system/constants';
 
 export const apiURL = `http://${config.apiHost}${config.apiPort !== 80 ? ':' + config.apiPort : ''}/api`;
 

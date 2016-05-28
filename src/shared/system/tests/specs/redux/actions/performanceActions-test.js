@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import * as actionTypes from 'shared/redux/constants/actionTypes';
-import * as articleActions from 'shared/redux/actions/articleActions';
+import * as actionTypes from 'shared/modules/article/actionTypes';
+import * as articleActions from 'shared/modules/article/articleActions';
 
 describe('Performance actions', () => {
 

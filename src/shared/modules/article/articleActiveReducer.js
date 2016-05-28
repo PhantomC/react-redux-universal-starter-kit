@@ -1,6 +1,6 @@
 import u from 'updeep';
 
-import * as actionTypes from 'shared/redux/constants/actionTypes';
+import * as actionTypes from 'shared/modules/article/actionTypes';
 
 const initialState = {
   error: false,

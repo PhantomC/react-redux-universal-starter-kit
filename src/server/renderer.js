@@ -5,14 +5,14 @@ import Helmet from 'react-helmet';
 import reactCookie from 'react-cookie';
 
 import { match, RouterContext } from 'react-router';
-import getRoutes from 'shared/routes';
+import getRoutes from 'shared/system/routes';
 
 import { Provider } from 'react-redux';
 
-import createStore from 'shared/redux/store/createStore';
-import rootSaga from 'shared/redux/sagas';
+import createStore from 'shared/system/store/createStore';
+import rootSaga from 'shared/system/sagas';
 
-import { MEMBER_LOAD_AUTH } from 'shared/redux/constants/actionTypes';
+import { MEMBER_LOAD_AUTH } from 'shared/modules/user/actionTypes';
 
 export default function(req, res) {
   

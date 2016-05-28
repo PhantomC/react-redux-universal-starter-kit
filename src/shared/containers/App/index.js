@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Helmet from 'react-helmet';
 
-import Header from 'shared/components/layouts/Header';
+import Header from 'shared/containers/App/Header';
 
 import CSSModules from 'react-css-modules';
 import styles from './App.scss';

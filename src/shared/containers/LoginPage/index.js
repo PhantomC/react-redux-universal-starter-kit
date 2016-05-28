@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
-import * as memberActions from 'shared/redux/actions/memberActions';
+import * as memberActions from 'shared/modules/user/memberActions';
 
 import CSSModules from 'react-css-modules';
 import styles from './LoginPage.scss';
 
-import LoginForm from 'shared/components/partials/LoginForm';
+import LoginForm from 'shared/containers/LoginPage/LoginForm';
 
 class LoginPage extends Component {
 

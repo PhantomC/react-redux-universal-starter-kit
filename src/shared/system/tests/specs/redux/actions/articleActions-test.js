@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import reactCookie from 'react-cookie';
-import { AUTH_TOKEN } from 'shared/redux/constants/cookieNames';
+import { AUTH_TOKEN } from 'shared/system/constants';
 
-import * as actionTypes from 'shared/redux/constants/actionTypes';
-import * as articleActions from 'shared/redux/actions/articleActions';
+import * as actionTypes from 'shared/modules/article/actionTypes';
+import * as articleActions from 'shared/modules/article/articleActions';
 
 describe('Article Actions', () => {
   

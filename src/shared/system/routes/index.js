@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 
 if (typeof require.ensure !== 'function') require.ensure = function(d, c) { c(require); };
 
-import { MEMBER_LOAD_AUTH } from 'shared/redux/constants/actionTypes';
+import { MEMBER_LOAD_AUTH } from 'shared/system/constants';
 
 export default ({ dispatch, getState }) => {
   
@@ -43,7 +43,7 @@ export default ({ dispatch, getState }) => {
     childRoutes: [
       {
         path: '/',
-        component: require('shared/components/layouts/App'),
+        component: require('shared/containers/App'),
         indexRoute: {
           getComponent: (location, cb) => {
             require.ensure([], (require) => {

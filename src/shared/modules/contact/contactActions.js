@@ -1,4 +1,4 @@
-import * as actionTypes from 'shared/redux/constants/actionTypes';
+import * as actionTypes from 'shared/modules/contact/actionTypes';
 
 export function saveContactFormData(data) {
   return {

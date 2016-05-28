@@ -1,12 +1,14 @@
 import { takeEvery, takeLatest } from 'redux-saga';
 import { take, put, call, fork, select } from 'redux-saga/effects';
 
-import requestAPI from 'shared/utils/request';
+import requestAPI from 'shared/system/utils/request';
 
-import * as actionTypes from 'shared/redux/constants/actionTypes';
+import * as articleActionTypes from 'shared/modules/article/actionTypes';
+import * as userActionTypes from 'shared/modules/user/actionTypes';
+import * as contactActionTypes from 'shared/modules/contact/actionTypes';
 
 import reactCookie from 'react-cookie';
-import { AUTH_TOKEN } from 'shared/redux/constants/cookieNames';
+import { AUTH_TOKEN } from 'shared/system/constants';
 
 export function* fetchData(action) {
 
@@ -32,47 +34,47 @@ export function* fetchData(action) {
 }
 
 function* watchGetArticleLatest() {
-  yield* takeEvery(actionTypes.ARTICLE_GET_LATEST, fetchData);
+  yield* takeEvery(articleActionTypes.ARTICLE_GET_LATEST, fetchData);
 }
 
 function* watchGetSearchResults() {
-  yield* takeEvery(actionTypes.ARTICLE_GET_SEARCH_RESULTS, fetchData);
+  yield* takeEvery(articleActionTypes.ARTICLE_GET_SEARCH_RESULTS, fetchData);
 }
 
 function* watchGetArticleById() {
-  yield* takeEvery(actionTypes.ARTICLE_GET_BY_ID, fetchData);
+  yield* takeEvery(articleActionTypes.ARTICLE_GET_BY_ID, fetchData);
 }
 
 function* watchGetRelatedArticles() {
-  yield* takeEvery(actionTypes.ARTICLE_GET_RELATED_ARTICLES, fetchData);
+  yield* takeEvery(articleActionTypes.ARTICLE_GET_RELATED_ARTICLES, fetchData);
 }
 
 function* watchCreateNewArticle() {
-  yield* takeEvery(actionTypes.ARTICLE_CREATE, fetchData);
+  yield* takeEvery(articleActionTypes.ARTICLE_CREATE, fetchData);
 }
 
 function* watchSaveContactFormData() {
-  yield* takeEvery(actionTypes.CONTACT_SAVE, fetchData);
+  yield* takeEvery(contactActionTypes.CONTACT_SAVE, fetchData);
 }
 
 function* watchMemberLogin() {
-  yield* takeEvery(actionTypes.MEMBER_LOGIN, fetchData);
+  yield* takeEvery(userActionTypes.MEMBER_LOGIN, fetchData);
 }
 
 function* watchMemberGetMyArticles() {
-  yield* takeEvery(actionTypes.MEMBER_GET_MY_ARTICLES, fetchData);
+  yield* takeEvery(userActionTypes.MEMBER_GET_MY_ARTICLES, fetchData);
 }
 
 function* watchEditArticle() {
-  yield* takeEvery(actionTypes.ARTICLE_EDIT_BY_ID, fetchData);
+  yield* takeEvery(articleActionTypes.ARTICLE_EDIT_BY_ID, fetchData);
 }
 
 function* watchDeleteArticle() {
-  yield* takeEvery(actionTypes.ARTICLE_DELETE_BY_ID, fetchData);
+  yield* takeEvery(articleActionTypes.ARTICLE_DELETE_BY_ID, fetchData);
 }
 
 function* watchUpdateArticleById() {
-  yield* takeEvery(actionTypes.ARTICLE_UPDATE_BY_ID, fetchData);
+  yield* takeEvery(articleActionTypes.ARTICLE_UPDATE_BY_ID, fetchData);
 }
 
 export default function* rootSaga() {

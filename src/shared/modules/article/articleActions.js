@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 import reactCookie from 'react-cookie';
-import { AUTH_TOKEN } from 'shared/redux/constants/cookieNames';
+import { AUTH_TOKEN } from 'shared/system/constants';
 
-import * as actionTypes from 'shared/redux/constants/actionTypes';
+import * as actionTypes from 'shared/modules/article/actionTypes';
 
 export function getArticleLatest(limit = 20) {
   return {

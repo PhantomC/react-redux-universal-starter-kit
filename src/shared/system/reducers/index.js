@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import {reducer as formReducer} from 'redux-form';
 
-import articleReducer from './articleReducer';
-import memberReducer from './memberReducer';
-import errorMessageReducer from './errorMessageReducer';
+import articleReducer from 'shared/modules/article/articleReducer';
+import memberReducer from 'shared/modules/user/memberReducer';
+import errorMessageReducer from 'shared/system/reducers/errorMessageReducer';
 
 const rootReducer = combineReducers({
   routing: routerReducer,

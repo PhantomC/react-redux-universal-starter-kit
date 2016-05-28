@@ -1,8 +1,8 @@
-import * as actionTypes from 'shared/redux/constants/actionTypes';
+import * as actionTypes from 'shared/modules/user/actionTypes';
 
 import jwt from 'jsonwebtoken';
 import reactCookie from 'react-cookie';
-import { AUTH_TOKEN } from 'shared/redux/constants/cookieNames';
+import { AUTH_TOKEN } from 'shared/system/constants';
 
 export default store => next => action => {
   const { type, callback } = action;

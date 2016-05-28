@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
-import * as memberActions from 'shared/redux/actions/memberActions';
-import * as articleActions from 'shared/redux/actions/articleActions';
+import * as memberActions from 'shared/modules/user/memberActions';
+import * as articleActions from 'shared/modules/article/articleActions';
 
-import ArticleList from 'shared/components/partials/Article/ArticleList';
+import ArticleList from 'shared/components/ArticleList';
 
 class MyArticles extends Component {
 
