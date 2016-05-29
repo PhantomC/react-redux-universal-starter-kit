@@ -4,7 +4,6 @@ import * as articleActionTypes from 'shared/modules/article/actionTypes';
 export const initialState = {
   isAuthenticated: false,
   user: {},
-  error: null,
   myArticles: [],
   myArticleEdit: {}
 };
@@ -16,16 +15,7 @@ export default function(state = initialState, action) {
       return { 
         ...state, 
         isAuthenticated: true,
-        error: null,
         user: action.data.user
-      };
-
-    case `${userActionTypes.MEMBER_LOGIN}_FAILED`:
-      return {
-        ...state,
-        isAuthenticated: false,
-        error: action.error.response,
-        user: {}
       };
 
     case userActionTypes.MEMBER_LOGOUT:

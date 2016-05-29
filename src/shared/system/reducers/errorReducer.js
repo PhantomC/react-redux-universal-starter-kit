@@ -1,8 +1,6 @@
 import * as actionTypes from 'shared/system/constants/actionTypes';
 
-const initialState = null;
-
-export default function(state = initialState, action) {  
+export default function(state = null, action) {  
 
   const { type, error } = action
 

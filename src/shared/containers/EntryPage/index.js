@@ -17,7 +17,7 @@ class EntryPage extends Component {
 
   componentWillMount() {
     if (
-      this.props.article.error === null
+      this.props.error === null
       && this.props.article.data.id != this.props.params.id
     ) {
       this.props.getArticleContentById(this.props.params.id);
@@ -37,7 +37,7 @@ class EntryPage extends Component {
 
   render() {
 
-    if (this.props.article.error !== null) {
+    if (this.props.error !== null) {
       return <ErrorPage />;
     }
 
@@ -75,9 +75,10 @@ class EntryPage extends Component {
   }
 }
 
-function mapStateToProps({article}) {
+function mapStateToProps({article, error}) {
   return {
-    article: article.active
+    article: article.active,
+    error
   };
 }
 

@@ -1,7 +1,6 @@
 import * as actionTypes from 'shared/modules/article/actionTypes';
 
 const initialState = {
-  error: null,
   data: {},
   related: []
 };
@@ -16,12 +15,6 @@ export default function(state = initialState, action) {
       return {
         ...initialState,
         data: action.data
-      }
-
-    case `${actionTypes.ARTICLE_GET_BY_ID}_FAILED`:
-      return {
-        ...initialState,
-        error: action.error.response
       }
 
     case `${actionTypes.ARTICLE_GET_RELATED_ARTICLES}_SUCCESS`:
