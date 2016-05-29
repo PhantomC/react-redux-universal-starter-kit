@@ -1,10 +1,16 @@
-const initialState = {};
+import * as actionTypes from 'shared/system/constants/actionTypes';
 
-export default function(state = initialState, {error}) {
+const initialState = null;
 
-  if (error) {
-    return error.response;
+export default function(state = initialState, action) {  
+
+  const { type, error } = action
+
+  if (type === actionTypes.RESET_ERROR) {
+    return null;
+  } else if (error) {
+    return action.error.response;
   }
 
-  return initialState;
+  return state;
 }

@@ -41,7 +41,7 @@ export default function(req, res) {
       );
 
       store.runSaga(rootSaga).done.then(() => {
-        const { HTML, status = routeStatus } = renderPage(
+        const { HTML, status } = renderPage(
           renderToString(rootComp),
           store.getState()
         );
@@ -67,7 +67,7 @@ function renderPage(renderedComponent, initialState) {
 
   let status = 200;
 
-  if (initialState.error.status !== undefined) {
+  if (initialState.error !== null) {
     status = initialState.error.status;
   }
 
