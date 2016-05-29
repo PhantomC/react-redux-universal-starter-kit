@@ -6,7 +6,7 @@ import requestAPI from 'shared/system/utils/request';
 
 import * as articleActions from 'shared/modules/article/articleActions';
 
-describe('fetchData Saga', () => {
+describe('Fetch Data Saga', () => {
 
   const mockAction = articleActions.getArticleContentById(1);
   let generator = {};
@@ -16,7 +16,7 @@ describe('fetchData Saga', () => {
     expect(generator.next().value).to.eql(call(requestAPI, mockAction.request.path, mockAction.request.options));
   });
 
-  describe('if it requests the data successfully', () => {
+  describe('If it requests the data successfully', () => {
     const response = {
       data: {
         id: '1',
