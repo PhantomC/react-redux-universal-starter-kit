@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
 import ArticleList from 'shared/components/ArticleList';
-import ArticleItem from 'shared/components/ArticleItem';
+import ArticleItem from 'shared/components/ArticleList/ArticleItem';
 
 describe('<ArticleList />', () => {
   
