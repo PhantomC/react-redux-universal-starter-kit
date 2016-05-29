@@ -4,14 +4,14 @@ import {reducer as formReducer} from 'redux-form';
 
 import articleReducer from 'shared/modules/article/articleReducer';
 import memberReducer from 'shared/modules/user/memberReducer';
-import errorMessageReducer from 'shared/system/reducers/errorMessageReducer';
+import errorReducer from 'shared/system/reducers/errorReducer';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
   form: formReducer,
   member: memberReducer,
   article: articleReducer,
-  errorMessage: errorMessageReducer
+  error: errorReducer
 });
 
 export default rootReducer;

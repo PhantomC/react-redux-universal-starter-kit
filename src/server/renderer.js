@@ -67,8 +67,8 @@ function renderPage(renderedComponent, initialState) {
 
   let status = 200;
 
-  if (initialState.errorMessage.status !== undefined) {
-    status = initialState.errorMessage.status;
+  if (initialState.error.status !== undefined) {
+    status = initialState.error.status;
   }
 
   let head = Helmet.rewind();
