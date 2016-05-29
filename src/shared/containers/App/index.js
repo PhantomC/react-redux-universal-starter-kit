@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import Header from 'shared/containers/App/Header';
 
 import CSSModules from 'react-css-modules';
+import './global.scss';
 import styles from './App.scss';
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
             title="React Redux Universal Starter Kit"
         />
         <Header />
-        <div styleName="body" className="container">
+        <div className="container" styleName="body">
           <div className="row">
             { this.props.children }
           </div>
