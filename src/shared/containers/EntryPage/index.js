@@ -9,7 +9,7 @@ import * as errorActions from 'shared/system/actions/errorActions';
 
 import ArticleList from 'shared/components/ArticleList';
 import ArticleContent from 'shared/containers/EntryPage/ArticleContent';
-import NotFoundPage from 'shared/containers/NotFoundPage';
+import ErrorPage from 'shared/containers/ErrorPage';
 
 import styles from './Entry.scss';
 
@@ -38,9 +38,7 @@ class EntryPage extends Component {
   render() {
 
     if (this.props.article.error !== null) {
-      return (
-        <NotFoundPage error={this.props.article.error.statusText} />
-      );
+      return <ErrorPage />;
     }
 
     this.transitionName = this.props.location.state ? this.props.location.state.transition : 'default';

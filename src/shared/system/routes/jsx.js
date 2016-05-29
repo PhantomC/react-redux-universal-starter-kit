@@ -16,7 +16,7 @@ import MyArticles from 'shared/containers/MemberPage/MyArticles';
 import MyBookmarks from 'shared/containers/MemberPage/MyBookmarks';
 import ArticleEdit from 'shared/containers/MemberPage/ArticleEdit';
 
-import NotFoundPage from 'shared/containers/NotFoundPage';
+import ErrorPage from 'shared/containers/ErrorPage';
 
 export default ({ dispatch, getState }) => {
   
@@ -64,7 +64,7 @@ export default ({ dispatch, getState }) => {
         <Route path="bookmarks" component={MyBookmarks} />
         <Route path="articles/:id" component={ArticleEdit} />
       </Route>
-      <Route path="*" component={NotFoundPage} status="404" />
+      <Route path="*" component={ErrorPage} status="404" />
     </Route>
   );
 };

@@ -13,7 +13,6 @@ import { AUTH_TOKEN } from 'shared/system/constants';
 export function* fetchData(action) {
 
   const { type, request, callback } = action;
-
   const { data, error } = yield call(requestAPI, request.path, request.options);
 
   if (data) {
