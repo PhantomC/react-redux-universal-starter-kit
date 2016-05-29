@@ -1,4 +1,4 @@
-import * as userActionTypes from 'shared/modules/user/actionTypes';
+import * as userActionTypes from 'shared/modules/member/actionTypes';
 import * as articleActionTypes from 'shared/modules/article/actionTypes';
 
 export const initialState = {

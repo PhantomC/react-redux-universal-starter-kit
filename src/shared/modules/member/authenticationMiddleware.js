@@ -1,4 +1,4 @@
-import * as actionTypes from 'shared/modules/user/actionTypes';
+import * as actionTypes from 'shared/modules/member/actionTypes';
 
 import jwt from 'jsonwebtoken';
 import reactCookie from 'react-cookie';

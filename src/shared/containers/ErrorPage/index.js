@@ -7,7 +7,13 @@ import styles from './ErrorPage.scss';
 
 class ErrorPage extends Component {
   render() {
-    const {error = {status: 404, statusText: 'Not Found'}} = this.props;
+    let {error} = this.props;
+    if (error === null) {
+      error = {
+        status: 404, 
+        statusText: 'Not Found'
+      };
+    }
     return (
       <div>
         <Helmet title={`${error.status} - ${error.statusText}`} />

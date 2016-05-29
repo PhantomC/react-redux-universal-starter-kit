@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import {reducer as formReducer} from 'redux-form';
 
 import articleReducer from 'shared/modules/article/articleReducer';
-import memberReducer from 'shared/modules/user/memberReducer';
+import memberReducer from 'shared/modules/member/memberReducer';
 import errorReducer from 'shared/system/reducers/errorReducer';
 
 const rootReducer = combineReducers({

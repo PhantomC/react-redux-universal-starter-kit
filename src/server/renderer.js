@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 import createStore from 'shared/system/store/createStore';
 import rootSaga from 'shared/system/sagas';
 
-import { MEMBER_LOAD_AUTH } from 'shared/modules/user/actionTypes';
+import { MEMBER_LOAD_AUTH } from 'shared/modules/member/actionTypes';
 
 export default function(req, res) {
   
