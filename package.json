@@ -35,7 +35,7 @@
       }
     },
     "test": {
-      "command": "mocha src/shared/system/tests/specs --recursive --require src/shared/system/tests/setup.js --compilers js:babel-register ",
+      "command": "mocha src/shared --recursive --require src/shared/system/tests/setup.js --compilers js:babel-register ",
       "env": {
         "NODE_ENV": "development",
         "NODE_PATH": "./src"
