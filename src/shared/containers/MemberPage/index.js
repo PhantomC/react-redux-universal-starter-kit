@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import CSSModules from 'react-css-modules';
 import styles from './MemberPage.scss';
 
-import * as memberActions from 'shared/modules/user/memberActions';
+import * as memberActions from 'shared/modules/member/memberActions';
 
 class MemberPage extends Component {
 

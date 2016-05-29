@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 import createStore from 'shared/system/store/createStore';
 import rootSaga from 'shared/system/sagas';
 
-import { MEMBER_LOAD_AUTH } from 'shared/modules/user/actionTypes';
+import { MEMBER_LOAD_AUTH } from 'shared/modules/member/actionTypes';
 
 export default function(req, res) {
   
@@ -41,7 +41,7 @@ export default function(req, res) {
       );
 
       store.runSaga(rootSaga).done.then(() => {
-        const { HTML, status = routeStatus } = renderPage(
+        const { HTML, status } = renderPage(
           renderToString(rootComp),
           store.getState()
         );
@@ -67,8 +67,8 @@ function renderPage(renderedComponent, initialState) {
 
   let status = 200;
 
-  if (initialState.errorMessage.status !== undefined) {
-    status = initialState.errorMessage.status;
+  if (initialState.error !== null) {
+    status = initialState.error.status;
   }
 
   let head = Helmet.rewind();

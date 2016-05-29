@@ -4,7 +4,7 @@ import { take, put, call, fork, select } from 'redux-saga/effects';
 import requestAPI from 'shared/system/utils/request';
 
 import * as articleActionTypes from 'shared/modules/article/actionTypes';
-import * as userActionTypes from 'shared/modules/user/actionTypes';
+import * as userActionTypes from 'shared/modules/member/actionTypes';
 import * as contactActionTypes from 'shared/modules/contact/actionTypes';
 
 import reactCookie from 'react-cookie';
@@ -13,7 +13,6 @@ import { AUTH_TOKEN } from 'shared/system/constants';
 export function* fetchData(action) {
 
   const { type, request, callback } = action;
-
   const { data, error } = yield call(requestAPI, request.path, request.options);
 
   if (data) {

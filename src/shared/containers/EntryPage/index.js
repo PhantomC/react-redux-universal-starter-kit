@@ -5,17 +5,21 @@ import Helmet from 'react-helmet';
 import CSSModules from 'react-css-modules';
 
 import * as articleActions from 'shared/modules/article/articleActions';
+import * as errorActions from 'shared/system/actions/errorActions';
 
 import ArticleList from 'shared/components/ArticleList';
 import ArticleContent from 'shared/containers/EntryPage/ArticleContent';
-import NotFoundPage from 'shared/containers/NotFoundPage';
+import ErrorPage from 'shared/containers/ErrorPage';
 
 import styles from './Entry.scss';
 
 class EntryPage extends Component {
 
   componentWillMount() {
-    if (this.props.article.data.id != this.props.params.id) {
+    if (
+      this.props.error === null
+      && this.props.article.data.id != this.props.params.id
+    ) {
       this.props.getArticleContentById(this.props.params.id);
     }
   }
@@ -26,12 +30,15 @@ class EntryPage extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.resetError();
+    this.props.resetActiveArticle();
+  }
+
   render() {
 
-    if (this.props.article.error) {
-      return (
-        <NotFoundPage error={this.props.article.error.statusText} />
-      );
+    if (this.props.error !== null) {
+      return <ErrorPage />;
     }
 
     this.transitionName = this.props.location.state ? this.props.location.state.transition : 'default';
@@ -68,10 +75,11 @@ class EntryPage extends Component {
   }
 }
 
-function mapStateToProps({article}) {
+function mapStateToProps({article, error}) {
   return {
-    article: article.active
+    article: article.active,
+    error
   };
 }
 
-module.exports = connect(mapStateToProps, articleActions)(CSSModules(EntryPage, styles));
+module.exports = connect(mapStateToProps, { ...articleActions, ...errorActions })(CSSModules(EntryPage, styles));

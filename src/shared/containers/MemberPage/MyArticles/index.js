@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 
-import * as memberActions from 'shared/modules/user/memberActions';
+import * as memberActions from 'shared/modules/member/memberActions';
 import * as articleActions from 'shared/modules/article/articleActions';
 
 import ArticleList from 'shared/components/ArticleList';

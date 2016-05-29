@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware, { END } from 'redux-saga';
 
 import rootReducer from 'shared/system/reducers';
-import authenticationMiddleware from 'shared/modules/user/authenticationMiddleware';
+import authenticationMiddleware from 'shared/modules/member/authenticationMiddleware';
 
 const sagaMiddleware = createSagaMiddleware();
 

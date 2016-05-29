@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
-import * as memberActions from 'shared/modules/user/memberActions';
+import * as memberActions from 'shared/modules/member/memberActions';
+import * as errorActions from 'shared/system/actions/errorActions';
 
 import CSSModules from 'react-css-modules';
 import styles from './LoginPage.scss';
@@ -17,11 +18,15 @@ class LoginPage extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.resetError();
+  }
+
   renderErrorMessage() {
     return (
       <div className="row">
         <div className="col-md-12">
-          <p className="text-danger">{this.props.member.error.statusText}</p>
+          <p className="text-danger">{this.props.error.statusText}</p>
         </div>
       </div>
     );
@@ -34,7 +39,7 @@ class LoginPage extends Component {
         <div className="col-md-12">
           <div styleName="wrapper">
             <LoginForm memberLogin={ this.props.memberLogin } />
-            {this.props.member.error && this.renderErrorMessage()}          
+            {this.props.error && this.renderErrorMessage()}          
           </div>
         </div>
       </div>
@@ -46,10 +51,11 @@ LoginPage.contextTypes = {
   router: PropTypes.object
 };
 
-function mapStateToProps(state) {
+function mapStateToProps({member, error}) {
   return {
-    member: state.member
+    member,
+    error
   };
 }
 
-module.exports = connect(mapStateToProps, memberActions)(CSSModules(LoginPage, styles));
+module.exports = connect(mapStateToProps, {...memberActions, ...errorActions})(CSSModules(LoginPage, styles));

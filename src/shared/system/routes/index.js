@@ -120,7 +120,7 @@ export default ({ dispatch, getState }) => {
             path: '*',
             getComponent: (location, cb) => {
               require.ensure([], (require) => {
-                cb(null, require('shared/containers/NotFoundPage'));
+                cb(null, require('shared/containers/ErrorPage'));
               }, 'notfound');
             },
             status: 404

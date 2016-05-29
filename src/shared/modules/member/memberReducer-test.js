@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import * as actionTypes from 'shared/modules/user/actionTypes';
-import memberReducer, { initialState } from 'shared/modules/user/memberReducer';
+import * as actionTypes from 'shared/modules/member/actionTypes';
+import memberReducer, { initialState } from 'shared/modules/member/memberReducer';
 
 describe('Member Reducer', () => {
 

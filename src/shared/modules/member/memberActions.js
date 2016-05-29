@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import reactCookie from 'react-cookie';
 import { AUTH_TOKEN } from 'shared/system/constants';
 
-import * as actionTypes from 'shared/modules/user/actionTypes';
+import * as actionTypes from 'shared/modules/member/actionTypes';
 
 export function memberLogin(data) {
   return {

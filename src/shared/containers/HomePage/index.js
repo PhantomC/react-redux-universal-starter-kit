@@ -7,6 +7,8 @@ import SearchForm from 'shared/containers/HomePage/SearchForm';
 import ArticleList from 'shared/components/ArticleList';
 import PostForm from 'shared/components/PostForm';
 
+import ErrorPage from 'shared/containers/ErrorPage';
+
 class HomePage extends Component {
 
   constructor(props) {
@@ -23,6 +25,11 @@ class HomePage extends Component {
   }
 
   render() {
+    
+    if (this.props.error !== null) {
+      return <ErrorPage />;
+    }
+
     return (
       <div>
         <div className="col-md-8 col-md-push-2">
@@ -37,10 +44,11 @@ class HomePage extends Component {
   }
 }
 
-function mapStateToProps({article, member}) {
+function mapStateToProps({article, member, error}) {
   return {
     articles: article.latest,
-    member
+    member,
+    error
   };
 }
 

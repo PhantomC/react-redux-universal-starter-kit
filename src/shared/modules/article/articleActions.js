@@ -100,3 +100,9 @@ export function deleteArticle(id) {
     }
   };
 }
+
+export function resetActiveArticle() {
+  return {
+    type: actionTypes.ARTICLE_ACTIVE_RESET
+  };
+}
