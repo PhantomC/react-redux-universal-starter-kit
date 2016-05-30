@@ -3,20 +3,17 @@ import * as memberWatchers from 'shared/modules/member/watchers';
 import * as contactWatchers from 'shared/modules/contact/watchers';
 
 export default function* rootSaga() {
-  yield [
-    articleWatchers.watchGetArticleLatest(),
-    articleWatchers.watchGetSearchResults(),
-    articleWatchers.watchGetArticleById(),
-    articleWatchers.watchGetRelatedArticles(),
-    articleWatchers.watchCreateNewArticle(),
-    
-    contactWatchers.watchSaveContactFormData(),
 
-    memberWatchers.watchMemberLogin(),
-    memberWatchers.watchMemberGetMyArticles(),
+  let watchers = [];
+  let mergedWatchers = {
+    ...articleWatchers, 
+    ...memberWatchers, 
+    ...contactWatchers
+  };
 
-    articleWatchers.watchEditArticle(),
-    articleWatchers.watchDeleteArticle(),
-    articleWatchers.watchUpdateArticleById()
-  ];
+  for (let watcher in mergedWatchers) {
+    watchers.push(mergedWatchers[watcher]());
+  }
+
+  yield watchers;
 }
