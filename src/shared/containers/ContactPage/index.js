@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
 import * as contactActions from 'shared/modules/contact/contactActions';
-import * as errorActions from 'shared/system/actions/errorActions';
 
 import CSSModules from 'react-css-modules';
 import styles from './ContactPage.scss';
@@ -54,4 +53,4 @@ class ContactPage extends Component {
   }
 }
 
-module.exports = connect(null, {...contactActions, ...errorActions})(Page(CSSModules(ContactPage, styles)));
+module.exports = connect(null, contactActions)(Page(CSSModules(ContactPage, styles)));
