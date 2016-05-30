@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { take, call, put } from 'redux-saga/effects';
 
-import { fetchData } from 'shared/system/sagas';
+import { fetchData } from 'shared/system/sagas/fetchData';
 import requestAPI from 'shared/system/utils/request';
 
 import * as articleActions from 'shared/modules/article/articleActions';
