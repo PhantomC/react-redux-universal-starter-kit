@@ -8,7 +8,7 @@ import * as errorActions from 'shared/system/actions/errorActions';
 import CSSModules from 'react-css-modules';
 import styles from './ContactPage.scss';
 
-
+import Page from 'shared/components/Page';
 import ContactForm from 'shared/containers/ContactPage/ContactForm';
 
 class ContactPage extends Component {
@@ -34,11 +34,7 @@ class ContactPage extends Component {
       this.context.router.push('/');
     }, 2000);
   }
-
-  componentWillUnmount() {
-    this.props.resetError();
-  }
-
+  
   render() {
     return (
       <div>
@@ -58,4 +54,4 @@ class ContactPage extends Component {
   }
 }
 
-module.exports = connect(null, {...contactActions, ...errorActions})(CSSModules(ContactPage, styles));
+module.exports = connect(null, {...contactActions, ...errorActions})(Page(CSSModules(ContactPage, styles)));

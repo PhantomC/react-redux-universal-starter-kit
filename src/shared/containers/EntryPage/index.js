@@ -7,6 +7,7 @@ import CSSModules from 'react-css-modules';
 import * as articleActions from 'shared/modules/article/articleActions';
 import * as errorActions from 'shared/system/actions/errorActions';
 
+import Page from 'shared/components/Page';
 import ArticleList from 'shared/components/ArticleList';
 import ArticleContent from 'shared/containers/EntryPage/ArticleContent';
 import ErrorPage from 'shared/containers/ErrorPage';
@@ -31,7 +32,6 @@ class EntryPage extends Component {
   }
 
   componentWillUnmount() {
-    this.props.resetError();
     this.props.resetActiveArticle();
   }
 
@@ -82,4 +82,4 @@ function mapStateToProps({article, error}) {
   };
 }
 
-module.exports = connect(mapStateToProps, { ...articleActions, ...errorActions })(CSSModules(EntryPage, styles));
+module.exports = connect(mapStateToProps, { ...articleActions, ...errorActions })(Page(CSSModules(EntryPage, styles)));
