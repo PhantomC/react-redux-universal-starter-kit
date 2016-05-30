@@ -9,6 +9,8 @@ if (process.env.BROWSER == true) {
   require('./magnific-popup/magnific-popup');
 }
 
+import Page from 'shared/components/Page';
+
 class Gallery extends Component {
   
   componentDidMount() {
@@ -54,4 +56,4 @@ class Gallery extends Component {
   }
 }
 
-module.exports = Gallery;
+module.exports = Page(Gallery);

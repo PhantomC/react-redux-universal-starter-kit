@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import * as articleActions from 'shared/modules/article/articleActions';
 
+import Page from 'shared/components/Page';
 import SearchForm from 'shared/containers/HomePage/SearchForm';
 import ArticleList from 'shared/components/ArticleList';
 import PostForm from 'shared/components/PostForm';
@@ -52,4 +53,4 @@ function mapStateToProps({article, member, error}) {
   };
 }
 
-module.exports = connect(mapStateToProps, articleActions)(HomePage);
+module.exports = connect(mapStateToProps, articleActions)(Page(HomePage));

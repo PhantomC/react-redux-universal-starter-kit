@@ -8,6 +8,8 @@ import styles from './MemberPage.scss';
 
 import * as memberActions from 'shared/modules/member/memberActions';
 
+import Page from 'shared/components/Page';
+
 class MemberPage extends Component {
 
   constructor(props, context) {
@@ -73,4 +75,4 @@ function mapStateToProps({member}) {
   return {member};
 }
 
-module.exports = connect(mapStateToProps, memberActions)(CSSModules(MemberPage, styles));
+module.exports = connect(mapStateToProps, memberActions)(Page(CSSModules(MemberPage, styles)));

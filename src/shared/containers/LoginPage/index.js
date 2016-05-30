@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
 import * as memberActions from 'shared/modules/member/memberActions';
-import * as errorActions from 'shared/system/actions/errorActions';
 
 import CSSModules from 'react-css-modules';
 import styles from './LoginPage.scss';
 
+import Page from 'shared/components/Page';
 import LoginForm from 'shared/containers/LoginPage/LoginForm';
 
 class LoginPage extends Component {
@@ -16,10 +16,6 @@ class LoginPage extends Component {
     if (nextProps.member.isAuthenticated) {
       this.context.router.push('/member');
     }
-  }
-
-  componentWillUnmount() {
-    this.props.resetError();
   }
 
   renderErrorMessage() {
@@ -58,4 +54,4 @@ function mapStateToProps({member, error}) {
   };
 }
 
-module.exports = connect(mapStateToProps, {...memberActions, ...errorActions})(CSSModules(LoginPage, styles));
+module.exports = connect(mapStateToProps, memberActions)(Page(CSSModules(LoginPage, styles)));

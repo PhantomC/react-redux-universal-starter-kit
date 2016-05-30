@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
 import * as contactActions from 'shared/modules/contact/contactActions';
-import * as errorActions from 'shared/system/actions/errorActions';
 
 import CSSModules from 'react-css-modules';
 import styles from './ContactPage.scss';
 
-
+import Page from 'shared/components/Page';
 import ContactForm from 'shared/containers/ContactPage/ContactForm';
 
 class ContactPage extends Component {
@@ -34,11 +33,7 @@ class ContactPage extends Component {
       this.context.router.push('/');
     }, 2000);
   }
-
-  componentWillUnmount() {
-    this.props.resetError();
-  }
-
+  
   render() {
     return (
       <div>
@@ -58,4 +53,4 @@ class ContactPage extends Component {
   }
 }
 
-module.exports = connect(null, {...contactActions, ...errorActions})(CSSModules(ContactPage, styles));
+module.exports = connect(null, contactActions)(Page(CSSModules(ContactPage, styles)));

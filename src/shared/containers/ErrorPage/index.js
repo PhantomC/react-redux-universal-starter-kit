@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
 import styles from './ErrorPage.scss';
 
+import Page from 'shared/components/Page';
+
 class ErrorPage extends Component {
   render() {
     let {error} = this.props;
@@ -33,4 +35,4 @@ function mapStateToProps({error}) {
   return {error};
 }
 
-module.exports = connect(mapStateToProps)(CSSModules(ErrorPage, styles));
+module.exports = connect(mapStateToProps)(Page(CSSModules(ErrorPage, styles)));
