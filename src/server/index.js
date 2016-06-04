@@ -14,10 +14,11 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
 import passport from 'passport';
-require('server/authentication');
+import passportRouteHandlers from 'server/routes/passport';
+require('server/configs/passport/configurations')(passport);
 
 const app = express();
-const jsonServerRouter = jsonServer.router(mockData());
+const jsonServerRouteHandlers = jsonServer.router(mockData());
 
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -29,21 +30,9 @@ app.use('/api', routeHandlers);
 // json-server
 app.use('/api', routeHandlers);
 app.use('/api', jsonServer.defaults());
-app.use('/api', jsonServerRouter);
+app.use('/api', jsonServerRouteHandlers);
 
-// Passport Routes
-app.get('/auth/facebook', passport.authenticate('facebook', { 
-  scope: 'email'
-}));
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { 
-    successRedirect : '/', 
-    failureRedirect: '/login',
-    session: false
-  }),
-  function(req, res) {
-    res.redirect('/');
-  });
+app.use(passportRouteHandlers);
 
 if (!config.isProduction) {
   const compiler = webpack(webpackConfig);

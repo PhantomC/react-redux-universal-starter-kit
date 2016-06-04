@@ -1,10 +1,10 @@
-import oauthConfig from 'server/configs/oauth';
+import oauthConfig from 'server/configs/passport/oauth';
 
-import passport from 'passport';
 import passportFacebook from 'passport-facebook';
 const FacebookStrategy = passportFacebook.Strategy;
 
-passport.use(new FacebookStrategy({
+module.exports = function(passport) {
+  passport.use(new FacebookStrategy({
     clientID: oauthConfig.facebook.clientID,
     clientSecret: oauthConfig.facebook.clientSecret ,
     callbackURL: oauthConfig.facebook.callbackURL
@@ -18,5 +18,4 @@ passport.use(new FacebookStrategy({
     });
   }
 ));
-
-module.exports = passport;
+};
