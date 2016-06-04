@@ -1,4 +1,4 @@
-import * as serverConfig from 'server/configs';
+import oauthConfig from 'server/configs/oauth';
 import config from 'shared/system/configs';
 
 import express from 'express';
@@ -21,17 +21,11 @@ import cookieParser from 'cookie-parser';
 const app = express();
 const jsonServerRouter = jsonServer.router(mockData());
 
-app.use(express.static('static'));
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(passport.initialize());
-
 // Passport configuration
 passport.use(new FacebookStrategy({
-    clientID: serverConfig.passport.facebook_api_key,
-    clientSecret:serverConfig.passport.facebook_api_secret ,
-    callbackURL: serverConfig.passport.callback_url
+    clientID: oauthConfig.facebook.clientID,
+    clientSecret: oauthConfig.facebook.clientSecret ,
+    callbackURL: oauthConfig.facebook.callbackURL
   },
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
@@ -42,6 +36,18 @@ passport.use(new FacebookStrategy({
     });
   }
 ));
+
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(passport.initialize());
+app.use(express.static(__dirname + 'static'));
+app.use('/api', routeHandlers);
+
+// json-server
+app.use('/api', routeHandlers);
+app.use('/api', jsonServer.defaults());
+app.use('/api', jsonServerRouter);
 
 // Passport Routes
 app.get('/auth/facebook', passport.authenticate('facebook', { 
@@ -56,15 +62,6 @@ app.get('/auth/facebook/callback',
   function(req, res) {
     res.redirect('/');
   });
-// app.get('/logout', function(req, res){
-//   req.logout();
-//   res.redirect('/');
-// });
-
-// json-server
-app.use('/api', routeHandlers);
-app.use('/api', jsonServer.defaults());
-app.use('/api', jsonServerRouter);
 
 if (!config.isProduction) {
   const compiler = webpack(webpackConfig);
