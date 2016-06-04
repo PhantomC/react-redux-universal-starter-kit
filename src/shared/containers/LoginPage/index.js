@@ -35,7 +35,8 @@ class LoginPage extends Component {
         <div className="col-md-12">
           <div styleName="wrapper">
             <LoginForm memberLogin={ this.props.memberLogin } />
-            {this.props.error && this.renderErrorMessage()}          
+            {this.props.error && this.renderErrorMessage()}
+            <a href="/auth/facebook">Log In with Facebook</a>     
           </div>
         </div>
       </div>
