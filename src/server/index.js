@@ -1,11 +1,6 @@
-import oauthConfig from 'server/configs/oauth';
 import config from 'shared/system/configs';
 
 import express from 'express';
-
-import passport from 'passport';
-import passportFacebook from 'passport-facebook';
-const FacebookStrategy = passportFacebook.Strategy;
 
 import jsonServer from 'json-server';
 import mockData from 'server/mockData';
@@ -18,24 +13,11 @@ import routeHandlers from 'server/routes';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
+import passport from 'passport';
+require('server/authentication');
+
 const app = express();
 const jsonServerRouter = jsonServer.router(mockData());
-
-// Passport configuration
-passport.use(new FacebookStrategy({
-    clientID: oauthConfig.facebook.clientID,
-    clientSecret: oauthConfig.facebook.clientSecret ,
-    callbackURL: oauthConfig.facebook.callbackURL
-  },
-  function(accessToken, refreshToken, profile, done) {
-    process.nextTick(function () {
-      //Check whether the User exists or not using profile.id
-      //Further DB code.
-      console.log({accessToken, refreshToken, profile});
-      return done(null, profile);
-    });
-  }
-));
 
 app.use(cookieParser());
 app.use(bodyParser.json());
