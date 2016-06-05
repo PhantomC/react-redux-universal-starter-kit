@@ -36,7 +36,6 @@ export function signup(req, res, next) {
     }
 
     if (existingUser) {
-      console.log(existingUser);
       res.status(422).json({ error: 'Email is in use' });
     }
 

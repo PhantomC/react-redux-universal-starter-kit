@@ -9,7 +9,16 @@ const userSchema = new Schema({
     unique: true,
     lowercase: true
   },
-  password: String
+  password: String,
+  oauthID: Number,
+  oauthStrategy: String,
+  name: {
+    type: 'string'
+  },
+  email: {
+    type: 'string',
+    unique: true
+  }
 });
 
 userSchema.pre('save', function(next) {

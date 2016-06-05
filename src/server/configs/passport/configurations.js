@@ -3,6 +3,9 @@ import oauthConfig from 'server/configs/passport/oauth';
 import passportFacebook from 'passport-facebook';
 const FacebookStrategy = passportFacebook.Strategy;
 
+import mongoose from 'mongoose';
+const User = mongoose.model('user');
+
 module.exports = function(passport) {
 
   passport.use(new FacebookStrategy({
@@ -11,27 +14,35 @@ module.exports = function(passport) {
       callbackURL: oauthConfig.facebook.callbackURL
     },
     function(accessToken, refreshToken, profile, done) {
-      // process.nextTick(function () {
-      //   //Check whether the User exists or not using profile.id
-      //   //Further DB code.
-      //   console.log({accessToken, refreshToken, profile});
-      //   return done(null, profile);
-      // });
+      User.findOne({ 
+        oauthStrategy: 'facebook',
+        oauthID: profile.id 
+      }, function(err, user) {
+        if (err) {
+          return done(err);
+        }
+        if (user !== null) {
+          return done(null, user);
+        }
 
-      // return done(null, profile);
+        user = new User({
+          username: '',
+          password: '',
+          email: profile.emails !== undefined ? profile.emails[0].value : '',
+          oauthID: profile.id,
+          oauthStrategy: 'facebook',
+          name: profile.displayName || '',
+          created: Date.now()
+        });
 
-      // User.findOne({
-      //   provider: 'facebook',
-      //   provider_id: profile.id
-      // }, function(err, user) {
-      //   if (err) {
-      //     return done(err);
-      //   }
-      //   if (!user) {
-      //     return done(null, false)
-      //   }
-      //   return done(null, user);
-      // });
+        user.save(function(err) {
+          if(err) {
+            return done(err);
+          } else {
+            done(null, user);
+          }
+        });
+      });
     }
   ));
 
