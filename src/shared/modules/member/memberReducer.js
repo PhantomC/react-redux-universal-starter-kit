@@ -11,6 +11,7 @@ export const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
 
+    case `${userActionTypes.MEMBER_SIGNUP}_SUCCESS`:
     case `${userActionTypes.MEMBER_LOGIN}_SUCCESS`:
       return { 
         ...state, 

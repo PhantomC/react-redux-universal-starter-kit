@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.use('/members', expressJwt({ secret: secretKey}));
 
+router.post('/signup', Authentication.signup);
 router.post('/login', Authentication.login);
 
 router.use(function (err, req, res, next) {

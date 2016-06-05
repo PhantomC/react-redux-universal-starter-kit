@@ -3,6 +3,10 @@ import { fetchData } from 'shared/system/sagas/fetchData';
 
 import * as memberActionTypes from 'shared/modules/member/actionTypes';
 
+export function* watchMemberSignup() {
+  yield* takeEvery(memberActionTypes.MEMBER_SIGNUP, fetchData);
+}
+
 export function* watchMemberLogin() {
   yield* takeEvery(memberActionTypes.MEMBER_LOGIN, fetchData);
 }

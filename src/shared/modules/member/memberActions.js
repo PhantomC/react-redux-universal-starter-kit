@@ -4,6 +4,20 @@ import { AUTH_TOKEN } from 'shared/system/constants';
 
 import * as actionTypes from 'shared/modules/member/actionTypes';
 
+export function memberSignup(data) {
+  return {
+    type: actionTypes.MEMBER_SIGNUP,
+    data,
+    request: {
+      path: '/signup',
+      options: {
+        method: 'POST',
+        body: data
+      }
+    }
+  };
+}
+
 export function memberLogin(data) {
   return {
     type: actionTypes.MEMBER_LOGIN,

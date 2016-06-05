@@ -89,6 +89,14 @@ export default ({ dispatch, getState }) => {
               }, 'login');
             }
           }, {
+            onEnter: hasAlreadyLoggedIn,     
+            path: 'signup',
+            getComponent: (location, cb) => {
+              require.ensure([], (require) => {
+                cb(null, require('shared/containers/SignupPage'));
+              }, 'signup');
+            }
+          }, {
             onEnter: isAuthenticated,     
             path: 'member',
             component: require('shared/containers/MemberPage'),

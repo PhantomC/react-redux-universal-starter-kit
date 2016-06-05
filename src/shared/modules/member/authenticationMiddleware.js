@@ -9,6 +9,7 @@ export default store => next => action => {
 
   switch (type) {
 
+    case `${actionTypes.MEMBER_SIGNUP}_SUCCESS`:
     case `${actionTypes.MEMBER_LOGIN}_SUCCESS`:
       reactCookie.save(AUTH_TOKEN, action.data.token);
       const user = jwt.decode(action.data.token);
