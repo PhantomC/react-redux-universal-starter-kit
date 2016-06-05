@@ -50,8 +50,6 @@ export function signup(req, res, next) {
         return next(err);
       }
       const token = generateToken(user);
-      // res.json(user);
-      // res.json({ success: true });
       res.json({ token });
     });
 
@@ -59,27 +57,5 @@ export function signup(req, res, next) {
 }
 
 export function login(req, res, next) {
-  const { username, password } = req.body;
-
-  if (! username || ! password) {
-    return res.status(400)
-      .json({
-        message: 'You must provide username and password'
-      });
-  }
-
-  if (username == admin.username && password == admin.password) {
-    const user = { ...admin };
-    delete user.username;
-    delete user.password;
-
-    const token = jwt.sign(user, secretKey);
-    
-    return res.json({token});
-  }
-
-  return res.status(401)
-    .json({
-      message: 'Your username or password incorrect'
-    });
+  res.json({ token: generateToken(req.user) });
 }
