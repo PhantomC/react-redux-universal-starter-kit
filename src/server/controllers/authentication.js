@@ -12,7 +12,7 @@ import User from 'server/models/user';
 //   avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/alxleroydeval/128.jpg'
 // };
 
-function generateToken(user) {
+export function generateToken(user) {
   const token = jwt.sign({
     sub: user.id,
     iat: new Date().getTime()

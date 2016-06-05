@@ -45,14 +45,4 @@ module.exports = function(passport) {
       });
     }
   ));
-
-  passport.serializeUser(function(user, done) {
-    // console.log('serializeUser', user);
-    done(null, user);
-  });
-  passport.deserializeUser(function(obj, done) {
-    // console.log('deserializeUser', obj);
-    done(null, obj);
-  });
-
 };

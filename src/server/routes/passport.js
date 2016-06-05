@@ -1,6 +1,9 @@
 import express from 'express';
 import passport from 'passport';
 
+import { generateToken } from 'server/controllers/authentication';
+import { AUTH_TOKEN } from 'shared/system/constants';
+
 const router = express.Router();
 
 router.get('/auth/facebook', passport.authenticate('facebook', { 
@@ -9,17 +12,12 @@ router.get('/auth/facebook', passport.authenticate('facebook', {
 
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { 
-    successRedirect : '/', 
-    failureRedirect: '/login'
+    failureRedirect: '/login',
+    session: false
   }),
   function(req, res) {
-    // console.log(req.user);
-    // generate token and store in cookie
+    res.cookie(AUTH_TOKEN, generateToken(req.user), { maxAge: 60*30*1000, httpOnly: true });
     res.redirect('/');
   });
-
-router.get('/auth/loadAuth', function(req, res) {
-  res.json(req.session.passport ? req.session.passport.user : null);
-});
 
 export default router;

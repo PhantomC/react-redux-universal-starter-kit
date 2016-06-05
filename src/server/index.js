@@ -12,7 +12,6 @@ import webpackConfig from '../../webpack.config.js';
 import serverRendering from 'server/renderer';
 import routeHandlers from 'server/routes';
 
-import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import passport from 'passport';
@@ -24,19 +23,10 @@ mongoose.connect('mongodb://localhost:auth/auth');
 const app = express();
 const jsonServerRouteHandlers = jsonServer.router(mockData());
 
-app.use(session({ 
-  resave: false,
-  saveUninitialized: false,
-  secret: 'suranart',
-  cookie: { 
-    maxAge: 60000 
-  }
-}));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
-app.use(passport.session());
 app.use(express.static(__dirname + 'static'));
 app.use('/api', routeHandlers);
 
