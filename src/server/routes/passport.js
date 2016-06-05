@@ -13,6 +13,8 @@ router.get('/auth/facebook/callback',
     failureRedirect: '/login'
   }),
   function(req, res) {
+    console.log(req.user);
+    // generate token and store in cookie
     res.redirect('/');
   });
 

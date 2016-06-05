@@ -17,7 +17,21 @@ module.exports = function(passport) {
       //   console.log({accessToken, refreshToken, profile});
       //   return done(null, profile);
       // });
-      return done(null, profile);
+
+      // return done(null, profile);
+
+      // User.findOne({
+      //   provider: 'facebook',
+      //   provider_id: profile.id
+      // }, function(err, user) {
+      //   if (err) {
+      //     return done(err);
+      //   }
+      //   if (!user) {
+      //     return done(null, false)
+      //   }
+      //   return done(null, user);
+      // });
     }
   ));
 
