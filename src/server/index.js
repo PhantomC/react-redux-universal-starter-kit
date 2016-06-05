@@ -2,6 +2,8 @@ import config from 'shared/system/configs';
 
 import express from 'express';
 
+import mongoose from 'mongoose';
+
 import jsonServer from 'json-server';
 import mockData from 'server/mockData';
 
@@ -16,6 +18,8 @@ import bodyParser from 'body-parser';
 import passport from 'passport';
 import passportRouteHandlers from 'server/routes/passport';
 require('server/configs/passport/configurations')(passport);
+
+mongoose.connect('mongodb://localhost:auth/auth');
 
 const app = express();
 const jsonServerRouteHandlers = jsonServer.router(mockData());
