@@ -10,9 +10,9 @@ import webpackConfig from '../../webpack.config.js';
 import serverRendering from 'server/renderer';
 import routeHandlers from 'server/routes';
 
-import bodyParser from 'body-parser';
+import session from 'express-session';
 import cookieParser from 'cookie-parser';
-
+import bodyParser from 'body-parser';
 import passport from 'passport';
 import passportRouteHandlers from 'server/routes/passport';
 require('server/configs/passport/configurations')(passport);
@@ -20,10 +20,14 @@ require('server/configs/passport/configurations')(passport);
 const app = express();
 const jsonServerRouteHandlers = jsonServer.router(mockData());
 
+app.use(session({ 
+  resave: true,
+  saveUninitialized: true,
+  secret: 'suranart' 
+}));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.session({ secret: 'suranart' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname + 'static'));
