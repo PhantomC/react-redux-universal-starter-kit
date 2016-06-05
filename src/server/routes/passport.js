@@ -10,11 +10,14 @@ router.get('/auth/facebook', passport.authenticate('facebook', {
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { 
     successRedirect : '/', 
-    failureRedirect: '/login',
-    session: false
+    failureRedirect: '/login'
   }),
   function(req, res) {
     res.redirect('/');
   });
+
+router.get('/auth/loadAuth', function(req, res) {
+  res.json(req.session.passport ? req.session.passport.user : null);
+});
 
 export default router;

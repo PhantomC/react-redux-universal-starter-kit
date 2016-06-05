@@ -21,9 +21,12 @@ const app = express();
 const jsonServerRouteHandlers = jsonServer.router(mockData());
 
 app.use(session({ 
-  resave: true,
-  saveUninitialized: true,
-  secret: 'suranart' 
+  resave: false,
+  saveUninitialized: false,
+  secret: 'suranart',
+  cookie: { 
+    maxAge: 60000 
+  }
 }));
 app.use(cookieParser());
 app.use(bodyParser.json());
