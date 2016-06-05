@@ -12,7 +12,15 @@ import User from 'server/models/user';
 //   avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/alxleroydeval/128.jpg'
 // };
 
-export function signup(req, res, next) {
+function generateToken(user) {
+  const token = jwt.sign({
+    sub: user.id,
+    iat: new Date().getTime()
+  }, secretKey);
+  return token;
+}
+
+export function login(req, res, next) {
   const { username, password } = req.body;
 
   if (! username || ! password) {
@@ -41,35 +49,37 @@ export function signup(req, res, next) {
       if (err) {
         return next(err);
       }
+      const token = generateToken(user);
       // res.json(user);
-      res.json({ success: true });
+      // res.json({ success: true });
+      res.json({ token });
     });
 
   });
 }
 
-export function login(req, res, next) {
-  const { username, password } = req.body;
+// export function login(req, res, next) {
+//   const { username, password } = req.body;
 
-  // if (! username || ! password) {
-  //   return res.status(400)
-  //     .json({
-  //       message: 'You must provide username and password'
-  //     });
-  // }
+//   if (! username || ! password) {
+//     return res.status(400)
+//       .json({
+//         message: 'You must provide username and password'
+//       });
+//   }
 
-  // if (username == admin.username && password == admin.password) {
-  //   const user = { ...admin };
-  //   delete user.username;
-  //   delete user.password;
+//   if (username == admin.username && password == admin.password) {
+//     const user = { ...admin };
+//     delete user.username;
+//     delete user.password;
 
-  //   const token = jwt.sign(user, secretKey);
+//     const token = jwt.sign(user, secretKey);
     
-  //   return res.json({token});
-  // }
+//     return res.json({token});
+//   }
 
-  // return res.status(401)
-  //   .json({
-  //     message: 'Your username or password incorrect'
-  //   });
-}
+//   return res.status(401)
+//     .json({
+//       message: 'Your username or password incorrect'
+//     });
+// }
