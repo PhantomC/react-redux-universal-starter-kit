@@ -4,7 +4,9 @@ import expressJwt from 'express-jwt';
 import { secretKey } from 'server/configs';
 
 import * as Authentication from 'server/controllers/authentication';
+import passportService from 'server/services/passport';
 
+const requiredAuth = passport.authenticate('jwt', { session: false });
 const router = express.Router();
 
 router.use('/members', expressJwt({ secret: secretKey}));
