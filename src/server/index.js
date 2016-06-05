@@ -23,7 +23,9 @@ const jsonServerRouteHandlers = jsonServer.router(mockData());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.session({ secret: 'suranart' }));
 app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(__dirname + 'static'));
 app.use('/api', routeHandlers);
 

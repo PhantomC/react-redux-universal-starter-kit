@@ -4,6 +4,20 @@ import passportFacebook from 'passport-facebook';
 const FacebookStrategy = passportFacebook.Strategy;
 
 module.exports = function(passport) {
+
+  // Maintaining persistent login sessions
+  // serialized  authenticated user to the session
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  // deserialized when subsequent requests are made
+  passport.deserializeUser(function(id, done) {
+      User.findById(id, function(err, user) {
+        done(err, user);
+      });
+  });
+
   passport.use(new FacebookStrategy({
     clientID: oauthConfig.facebook.clientID,
     clientSecret: oauthConfig.facebook.clientSecret ,
