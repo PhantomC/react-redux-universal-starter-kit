@@ -27,7 +27,7 @@ export default function request(url, options = {}) {
   if (token) {
     options.headers = {
       ...options.headers,
-      'Authorization': `Bearer ${token}`
+      'Authorization': token
     };
   }
 
