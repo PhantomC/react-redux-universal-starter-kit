@@ -28,7 +28,10 @@ export default store => next => action => {
         const user = jwt.decode(token);
         user.token = token;
         action.data = {user};
-        return next({ ...action, type: `${actionTypes.MEMBER_LOGIN}_SUCCESS`});
+        result = next({ ...action, type: `${actionTypes.MEMBER_LOGIN}_SUCCESS`});
+      }
+      if (typeof callback === 'function') {
+        callback(!!token);
       }
       return result;
       

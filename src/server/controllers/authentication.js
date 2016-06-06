@@ -5,16 +5,7 @@ import { AUTH_TOKEN } from 'shared/system/constants';
 
 import User from 'server/models/user';
 
-// const admin = {
-//   id: 1,
-//   username: 'admin',
-//   password: 'admin',
-//   name: 'Suranart Niamcome',
-//   avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/alxleroydeval/128.jpg'
-// };
-
 export function generateToken(user) {
-  // console.log(user);
   const token = jwt.sign({
     sub: user._id,
     name: user.name,

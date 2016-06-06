@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 
 if (typeof require.ensure !== 'function') require.ensure = function(d, c) { c(require); };
 
-import { MEMBER_LOAD_AUTH } from 'shared/system/constants';
+import { MEMBER_LOAD_AUTH } from 'shared/modules/member/actionTypes';
 
 export default ({ dispatch, getState }) => {
   

@@ -56,7 +56,6 @@ export function createNewArticle(data) {
     memberId: user.sub,
     member: user
   };
-  console.log(data);
   return {
     type: actionTypes.ARTICLE_CREATE,
     request: {
