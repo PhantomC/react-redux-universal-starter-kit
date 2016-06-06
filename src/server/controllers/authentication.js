@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 import { secretKey } from 'server/configs';
+import { AUTH_TOKEN } from 'shared/system/constants';
 
 import User from 'server/models/user';
 
@@ -36,7 +37,7 @@ export function signup(req, res, next) {
     }
 
     if (existingUser) {
-      res.status(422).json({ error: 'Email is in use' });
+      return res.status(422).json({ error: 'Username is in use' });
     }
 
     const user = new User({
@@ -57,4 +58,12 @@ export function signup(req, res, next) {
 
 export function login(req, res, next) {
   res.json({ token: generateToken(req.user) });
+}
+
+export function oAuthCallback(req, res, next) {
+  res.cookie(AUTH_TOKEN, generateToken(req.user), { 
+    maxAge: 60*30*1000, 
+    httpOnly: true 
+  });
+  res.redirect('/');
 }
