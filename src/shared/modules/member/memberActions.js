@@ -44,7 +44,7 @@ export function memberGetMyArticles(limit = 20) {
   return {
     type: actionTypes.MEMBER_GET_MY_ARTICLES,
     request: {
-      path: `/members/${user.id}/articles?_expand=member&_sort=id&_order=DESC&_limit=${limit}`
+      path: `/members/${user.sub}/articles?_sort=id&_order=DESC&_limit=${limit}`
     }
   };
 }

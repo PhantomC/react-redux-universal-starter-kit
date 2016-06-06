@@ -14,8 +14,11 @@ import User from 'server/models/user';
 // };
 
 export function generateToken(user) {
+  // console.log(user);
   const token = jwt.sign({
-    sub: user.id,
+    sub: user._id,
+    name: user.name,
+    avatar: user.avatar || 'https://s3.amazonaws.com/uifaces/faces/twitter/alxleroydeval/128.jpg',
     iat: new Date().getTime()
   }, secretKey);
   return token;
@@ -62,8 +65,8 @@ export function login(req, res, next) {
 
 export function oAuthCallback(req, res, next) {
   res.cookie(AUTH_TOKEN, generateToken(req.user), { 
-    maxAge: 60*30*1000, 
-    httpOnly: true 
+    maxAge: 60 * 30 * 1000, 
+    // httpOnly: true 
   });
   res.redirect('/');
 }

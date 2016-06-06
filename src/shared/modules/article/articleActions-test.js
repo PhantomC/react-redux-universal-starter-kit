@@ -21,7 +21,7 @@ describe('Article Actions', () => {
     });
 
     it('should have the correct payload', () => {
-      expect(testedAction.request.path).to.eql(`/articles?_expand=member&_sort=id&_order=DESC&_limit=${limit}`);
+      expect(testedAction.request.path).to.eql(`/articles?_sort=id&_order=DESC&_limit=${limit}`);
     });
   });
 

@@ -8,7 +8,7 @@ export function getArticleLatest(limit = 20) {
   return {
     type: actionTypes.ARTICLE_GET_LATEST,
     request: {
-      path: `/articles?_expand=member&_sort=id&_order=DESC&_limit=${limit}`
+      path: `/articles?_sort=id&_order=DESC&_limit=${limit}`
     }
   };
 }
@@ -17,7 +17,7 @@ export function getSearchResults(keyword, limit = 20) {
   return {
     type: actionTypes.ARTICLE_GET_SEARCH_RESULTS,
     request: {
-      path: `/articles?q=${keyword}&_expand=member&_sort=id&_order=DESC&_limit=${limit}`
+      path: `/articles?q=${keyword}&_sort=id&_order=DESC&_limit=${limit}`
     }
   };
 }
@@ -26,7 +26,7 @@ export function getArticleById(id) {
   return {
     type: actionTypes.ARTICLE_GET_BY_ID,
     request: {
-      path: `/articles/${id}?_expand=member`
+      path: `/articles/${id}`
     }
   };
 }
@@ -53,9 +53,10 @@ export function createNewArticle(data) {
   const user = jwt.decode(token);
   data = {
     ...data,
-    memberId: user.id,
+    memberId: user.sub,
     member: user
   };
+  console.log(data);
   return {
     type: actionTypes.ARTICLE_CREATE,
     request: {
