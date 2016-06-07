@@ -1,17 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { Link } from 'react-router';
 
 import * as memberActions from 'shared/modules/member/memberActions';
 
 import CSSModules from 'react-css-modules';
-import styles from './LoginPage.scss';
+import styles from './SignupPage.scss';
 
 import Page from 'shared/components/Page';
-import LoginForm from 'shared/containers/LoginPage/LoginForm';
+import SignupForm from 'shared/containers/SignupPage/SignupForm';
 
-class LoginPage extends Component {
+class SignupPage extends Component {
 
   componentWillUpdate(nextProps) {
     if (nextProps.member.isAuthenticated) {
@@ -32,13 +31,12 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <Helmet title="Member Login" />
+        <Helmet title="Signup" />
         <div className="col-md-12">
           <div styleName="wrapper">
-            <LoginForm memberLogin={ this.props.memberLogin } />
+            <SignupForm memberSignup={ this.props.memberSignup } />
             {this.props.error && this.renderErrorMessage()}
-            <p><a href="/auth/facebook">Log In with Facebook</a></p> 
-            <p><Link to="/signup">Signup</Link></p>
+            <a href="/auth/facebook">Log In with Facebook</a>     
           </div>
         </div>
       </div>
@@ -46,7 +44,7 @@ class LoginPage extends Component {
   }
 }
 
-LoginPage.contextTypes = {
+SignupPage.contextTypes = {
   router: PropTypes.object
 };
 
@@ -57,4 +55,4 @@ function mapStateToProps({member, error}) {
   };
 }
 
-module.exports = connect(mapStateToProps, memberActions)(Page(CSSModules(LoginPage, styles)));
+module.exports = connect(mapStateToProps, memberActions)(Page(CSSModules(SignupPage, styles)));

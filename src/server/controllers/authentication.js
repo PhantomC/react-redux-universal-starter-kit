@@ -1,37 +1,63 @@
 import jwt from 'jsonwebtoken';
 
 import { secretKey } from 'server/configs';
+import { AUTH_TOKEN } from 'shared/system/constants';
 
-const admin = {
-  id: 1,
-  username: 'admin',
-  password: 'admin',
-  name: 'Suranart Niamcome',
-  avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/alxleroydeval/128.jpg'
-};
+import User from 'server/models/user';
 
-export function login(req, res, next) {
+export function generateToken(user) {
+  const token = jwt.sign({
+    sub: user._id,
+    name: user.name,
+    avatar: user.avatar || 'https://s3.amazonaws.com/uifaces/faces/twitter/alxleroydeval/128.jpg',
+    iat: new Date().getTime()
+  }, secretKey);
+  return token;
+}
+
+export function signup(req, res, next) {
   const { username, password } = req.body;
 
   if (! username || ! password) {
-    return res.status(400)
+    return res.status(422)
       .json({
         message: 'You must provide username and password'
       });
   }
 
-  if (username == admin.username && password == admin.password) {
-    const user = { ...admin };
-    delete user.username;
-    delete user.password;
+  User.findOne({username: username}, function(err, existingUser) {
+    if (err) {
+      return next(err);
+    }
 
-    const token = jwt.sign(user, secretKey);
-    
-    return res.json({token});
-  }
+    if (existingUser) {
+      return res.status(422).json({ error: 'Username is in use' });
+    }
 
-  return res.status(401)
-    .json({
-      message: 'Your username or password incorrect'
+    const user = new User({
+      username: username,
+      password: password
     });
+
+    user.save(function(err) {
+      if (err) {
+        return next(err);
+      }
+      const token = generateToken(user);
+      res.json({ token });
+    });
+
+  });
+}
+
+export function login(req, res, next) {
+  res.json({ token: generateToken(req.user) });
+}
+
+export function oAuthCallback(req, res, next) {
+  res.cookie(AUTH_TOKEN, generateToken(req.user), { 
+    maxAge: 60 * 30 * 1000, 
+    // httpOnly: true 
+  });
+  res.redirect('/');
 }

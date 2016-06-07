@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 
 if (typeof require.ensure !== 'function') require.ensure = function(d, c) { c(require); };
 
-import { MEMBER_LOAD_AUTH } from 'shared/system/constants';
+import { MEMBER_LOAD_AUTH } from 'shared/modules/member/actionTypes';
 
 export default ({ dispatch, getState }) => {
   
@@ -87,6 +87,14 @@ export default ({ dispatch, getState }) => {
               require.ensure([], (require) => {
                 cb(null, require('shared/containers/LoginPage'));
               }, 'login');
+            }
+          }, {
+            onEnter: hasAlreadyLoggedIn,     
+            path: 'signup',
+            getComponent: (location, cb) => {
+              require.ensure([], (require) => {
+                cb(null, require('shared/containers/SignupPage'));
+              }, 'signup');
             }
           }, {
             onEnter: isAuthenticated,     

@@ -1,29 +1,40 @@
 import config from 'shared/system/configs';
 
 import express from 'express';
+import mongoose from 'mongoose';
+import passport from 'passport';
+
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 
 import jsonServer from 'json-server';
 import mockData from 'server/mockData';
 
+import routeHandlers from 'server/routes';
+
 import webpack from 'webpack';
 import webpackConfig from '../../webpack.config.js';
 import serverRendering from 'server/renderer';
-import routeHandlers from 'server/routes';
 
-import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
+mongoose.connect('mongodb://localhost:project/members', function(err) {
+  if (err) {
+    console.log('Please check your MongoDB connection', err);
+  }
+});
 
 const app = express();
-const jsonServerRouter = jsonServer.router(mockData());
+const jsonServerRouteHandlers = jsonServer.router(mockData());
 
-app.use(express.static('static'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(passport.initialize());
+app.use(express.static('static'));
+app.use(routeHandlers);
 
-app.use('/api', routeHandlers);
+// json-server
 app.use('/api', jsonServer.defaults());
-app.use('/api', jsonServerRouter);
+app.use('/api', jsonServerRouteHandlers);
 
 if (!config.isProduction) {
   const compiler = webpack(webpackConfig);

@@ -1,0 +1,12 @@
+.wrapper {
+    @extend %containerShadow;
+    width: 350px;
+    margin: 0 auto;
+
+    .form-group {
+    	margin: 0 !important;
+    }
+    button {
+    	width: 100%;
+    }
+}

@@ -9,6 +9,7 @@ export default store => next => action => {
 
   switch (type) {
 
+    case `${actionTypes.MEMBER_SIGNUP}_SUCCESS`:
     case `${actionTypes.MEMBER_LOGIN}_SUCCESS`:
       reactCookie.save(AUTH_TOKEN, action.data.token);
       const user = jwt.decode(action.data.token);
@@ -27,7 +28,10 @@ export default store => next => action => {
         const user = jwt.decode(token);
         user.token = token;
         action.data = {user};
-        return next({ ...action, type: `${actionTypes.MEMBER_LOGIN}_SUCCESS`});
+        result = next({ ...action, type: `${actionTypes.MEMBER_LOGIN}_SUCCESS`});
+      }
+      if (typeof callback === 'function') {
+        callback(!!token);
       }
       return result;
       

@@ -1,3 +1,4 @@
+export const MEMBER_SIGNUP = 'MEMBER_SIGNUP';
 export const MEMBER_LOGIN = 'MEMBER_LOGIN';
 export const MEMBER_LOGOUT = 'MEMBER_LOGOUT';
 export const MEMBER_LOAD_AUTH = 'MEMBER_LOAD_AUTH';
