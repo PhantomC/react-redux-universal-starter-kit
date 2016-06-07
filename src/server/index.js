@@ -16,7 +16,11 @@ import webpack from 'webpack';
 import webpackConfig from '../../webpack.config.js';
 import serverRendering from 'server/renderer';
 
-mongoose.connect('mongodb://localhost:project/members');
+mongoose.connect('mongodb://localhost:project/members', function(err) {
+  if (err) {
+    console.log('Please check your MongoDB connection', err);
+  }
+});
 
 const app = express();
 const jsonServerRouteHandlers = jsonServer.router(mockData());
